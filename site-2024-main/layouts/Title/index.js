@@ -19,10 +19,10 @@ export default function HomeVideo() {
               at the <b>University of Illinois Urbana-Champaign</b> brings
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-montserrat w-full tracking-wider mt-3">
-              Aspire to Inspire
+              The Age of Exploration
             </h1>
             <h1 className="font-montserrat lg:text-3xl text-2xl font-bold tracking-wider pt-5 hero-text">
-              April 5th & April 6th, 2025
+              April 4th & April 5th, 2025
             </h1>
           </div>
 
