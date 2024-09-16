@@ -26,9 +26,20 @@ export default function HomeVideo() {
             </h1>
           </div>
 
-          <div className="relative lg:self-end lg:pl-4 pr-2 mx-auto md:mx-0">
-            <AnimatedLogo />
+          <div className="relative flex flex-col items-end lg:items-end lg:pl-4 pr-2 mx-auto md:mx-0 py-2">
+            <p className="text-lg font-semibold mb-2 text-right">
+              Click below for the submission link!
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb2wrx5jFCLW0A_HZ4mPr_yj-6Vi2i4xSXIq38aLGdOyZxEw/formrestricted" target="_blank" rel="noopener noreferrer">
+              <img 
+                src="assets/images/2025LogoComp.webp" 
+                alt="2025 Logo" 
+                style={{ borderWidth: '10px' }} 
+                className="border-solid border-black m-4 w-3/4 lg:w-7/8 shadow-2xl shadow-gray-800 items-end"
+              />
+            </a>
           </div>
+
         </span>
 
         <span className="flex flex-row justify-between w-full min-h-[14vh] lg:h-36 z-10">
