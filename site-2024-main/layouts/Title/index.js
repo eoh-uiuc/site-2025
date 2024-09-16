@@ -22,7 +22,7 @@ export default function HomeVideo() {
               Aspire to Inspire
             </h1>
             <h1 className="font-montserrat lg:text-3xl text-2xl font-bold tracking-wider pt-5 hero-text">
-              April 5th & April 6th, 2024
+              April 5th & April 6th, 2025
             </h1>
           </div>
 
