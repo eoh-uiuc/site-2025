@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <Fragment>
       <Head>
-        <title>EOH 2024</title>
+        <title>EOH 2025</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
