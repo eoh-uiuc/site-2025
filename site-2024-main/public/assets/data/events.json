@@ -1,0 +1,61 @@
+{
+  "events": [
+    {
+      "name": "Mini Research Fair",
+      "times": ["Friday, April 5th, 3-4:30 pm"],
+      "location": "CIF 2035",
+      "description": "Some professors will have posters with their research, and undergraduates will be able to talk to them about the research they are doing. They also might have monitors for their research."
+    },
+    {
+      "name": "Professor Panel",
+      "times": ["Friday, April 5th, 12-2 pm"],
+      "location": "CIF 2018",
+      "description": "Professors will talk about the research they do and how undergraduates can get involved."
+    },
+    {
+      "name": "I'm Admitted! Grainger Engineering Welcome",
+      "times": [
+        "Friday, April 5th, 10 am- 1 pm",
+        "Saturday, April 6th, 10 am- 3 pm"
+      ],
+      "location": "CIF 1035",
+      "description": "Congratulations to our incoming new first-year and transfer students! Come tell us what you’re excited about at Illinois and receive a limited edition gift while supplies last. All students who have accepted or are still deciding on their offer of admission to Grainger are invited to stop by the Campus Instructional Facility (CIF) Room 1035 and learn about future opportunities, meet faculty and staff, and take a commemorative photo."
+    },
+    {
+      "name": "Prospective/Admitted Students Panel",
+      "times": ["Friday, April 5th, 2-3 pm"],
+      "location": "CIF 2035",
+      "description": "Want to get a feel for life on campus as a Grainger engineering student? Come listen to students talk about their first hand experience. They will be discussing everything from favorite classes to their favorite way to destress on campus!"
+    },
+    {
+      "name": "What I Wish I Knew When I Was in High School Panel",
+      "times": ["Friday, April 5th, 1-2 pm"],
+      "location": "CIF 2035",
+      "description": "Listen in on advice from current college students on what activities helped them discover their passion and any tips they have for prospective students!"
+    },
+    {
+      "name": "Women in Engineering Panel",
+      "times": ["Saturday, April 6th, 1-2 pm"],
+      "location": "CIF 2035",
+      "description": "Check out some of our women engineering students and professors talk about their experiences in their respective fields!"
+    },
+    {
+      "name": "Fusion 360 Workshop",
+      "times": [
+        "Friday, April 5th, 11 am-12 pm",
+        "Saturday, April 6th, 11 am-12 pm"
+      ],
+      "location": "E-Hall Computer Labs",
+      "description": "Learn design skills from UIUC’s engineering students themselves! Join us for a workshop in Fusion 360 at the Engineering Hall computer lab."
+    },
+    {
+      "name": "Python Workshop",
+      "times": [
+        "Friday, April 5th, 12 - 1 pm",
+        "Saturday, April 6th, 12 - 1 pm"
+      ],
+      "location": "E-Hall Computer Labs",
+      "description": "Learn design skills from UIUC’s engineering students themselves! Join us for a workshop in Python at the Engineering Hall computer lab."
+    }
+  ]
+}
