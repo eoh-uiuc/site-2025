@@ -26,8 +26,8 @@ export default function HomeVideo() {
             </h1>
           </div>
 
-          <div className="relative flex flex-col items-end lg:items-end lg:pl-4 pr-2 mx-auto md:mx-0 py-2">
-            <p className="text-lg font-semibold mb-2 text-right">
+          <div className="relative flex flex-col lg:pl-4 py-2">
+            <p className="text-lg font-semibold mb-2 m-4">
               Click below for the submission link!
             </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb2wrx5jFCLW0A_HZ4mPr_yj-6Vi2i4xSXIq38aLGdOyZxEw/formrestricted" target="_blank" rel="noopener noreferrer">
