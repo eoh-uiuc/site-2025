@@ -17,7 +17,7 @@ export default function HomeVideo() {
               at the <b>University of Illinois Urbana-Champaign</b> brings
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-montserrat w-full tracking-wider mt-3 break-words">
-              The Age of Exploration
+              The Age of Innovation
             </h1>
             <h1 className="font-montserrat lg:text-3xl text-2xl font-bold tracking-wider pt-5 hero-text break-words">
               April 4th & April 5th, 2025
