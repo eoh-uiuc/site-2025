@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exhibits",
+  "info": {
+    "singularName": "exhibit",
+    "pluralName": "exhibits",
+    "displayName": "Exhibit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}
