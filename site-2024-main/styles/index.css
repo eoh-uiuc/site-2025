@@ -284,8 +284,8 @@ ul {
   background: rgb(255, 0, 69);
   background: linear-gradient(
     148deg,
-    rgb(255, 0, 137) 0%,
-    rgb(136, 183, 255) 100%
+    #ff8400 0%,
+    #c578d6 100%
   );
   background-size: 150% 150%;
   animation: gradient 5s ease infinite;

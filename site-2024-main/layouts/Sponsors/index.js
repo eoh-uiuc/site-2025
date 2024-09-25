@@ -12,7 +12,7 @@ export default function Sponsors() {
 						<div className="font-montserrat text-lg md:text-2xl text-center">I'm a<br />
 							<h1 className="text-2xl lg:text-3xl md:pt-2">Student or Visitor</h1>
 						</div>
-						<a className="bg-yellow-200 hover:bg-yellow-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={STRIPE_DONATE_LINK}>
+						<a className="bg-theme-grey hover:bg-yellow-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={STRIPE_DONATE_LINK}>
 							Donate
 						</a>
 						<p>via Stripe</p>
@@ -23,7 +23,7 @@ export default function Sponsors() {
 							I'm a <br />
 							<h1 className="text-2xl lg:text-3xl md:pt-2">Company Representative</h1>
 						</div>
-						<a className="bg-pink-200 hover:bg-pink-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={UIF_SPONSOR_LINK}>
+						<a className="bg-theme-purp hover:bg-purple-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={UIF_SPONSOR_LINK}>
 							Sponsor
 						</a>
 						<p>via UIF</p>

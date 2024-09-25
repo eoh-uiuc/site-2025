@@ -4,7 +4,7 @@ import { useAuth } from "@clerk/nextjs";
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 
-const LINKTREE_URL = 'https://linktr.ee/eoh2024';
+const LINKTREE_URL = 'https://linktr.ee/eoh2025';
 const FB_URL = 'https://www.facebook.com/EngineeringOpenHouse/';
 const INSTA_URL = 'https://www.instagram.com/eoh_illinois/';
 const TWITTER_URL = 'https://twitter.com/IllinoisEOH';

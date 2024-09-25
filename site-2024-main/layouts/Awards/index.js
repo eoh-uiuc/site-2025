@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { Icon } from '@iconify/react';
 
 const slotGradients = {
-	0: 'bg-gradient-to-tr from-red-800 via-red-500 to-red-700',
-	1: 'bg-gradient-to-tr from-yellow-600 via-yellow-500 to-yellow-500',
-	2: 'bg-gradient-to-tr from-purple-800 via-purple-700 to-blue-800',
-	3: 'bg-gradient-to-tr from-red-500 via-pink-600 to-pink-400',
-	4: 'bg-gradient-to-tr from-gray-800 via-gray-500 to-gray-700',
-	5: 'bg-gradient-to-tr from-green-800 via-green-500 to-green-700',
+	0: 'bg-gradient-to-tr from-[#d62828] via-[#d62828] to-[#d62828]',
+	1: 'bg-gradient-to-tr from-[#ff8400] via-[#ff8400] to-[#ff8400]',
+	2: 'bg-gradient-to-tr from-[#c578d6] via-[#c578d6] to-[#c578d6]',
+	3: 'bg-gradient-to-tr from-[#a2d3c2] via-[#a2d3c2] to-[#a2d3c2]',
+	4: 'bg-gradient-to-tr from-[#c578d6] via-[#c578d6] to-[#c578d6]',
+	5: 'bg-gradient-to-tr from-[#a2d3c2] via-[#a2d3c2] to-[#a2d3c2]',
 }
 
 const awards = [

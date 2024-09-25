@@ -4,7 +4,8 @@
   "info": {
     "singularName": "exhibit",
     "pluralName": "exhibits",
-    "displayName": "Exhibit"
+    "displayName": "Exhibit",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,18 @@
   "attributes": {
     "Title": {
       "type": "string"
+    },
+    "buildingA": {
+      "type": "string"
+    },
+    "subBuildingA": {
+      "type": "string"
+    },
+    "affiliation": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
     }
   }
 }
