@@ -62,6 +62,7 @@ export default function Header({ headerItems }) {
               />
             </Link>
             <div className="mt-6 flex flex-row w-full justify-end">
+              {/* These are the nav bar buttons dynamically loaded in */}
               {headerItems.map(({ type, text, href, target, menuItems }) => (
                 <Button
                   key={text}
