@@ -616,12 +616,17 @@ export interface ApiExhibitExhibit extends Struct.CollectionTypeSchema {
     singularName: 'exhibit';
     pluralName: 'exhibits';
     displayName: 'Exhibit';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Title: Schema.Attribute.String;
+    buildingA: Schema.Attribute.String;
+    subBuildingA: Schema.Attribute.String;
+    affiliation: Schema.Attribute.String;
+    content: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
