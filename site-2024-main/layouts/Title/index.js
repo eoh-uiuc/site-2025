@@ -26,24 +26,23 @@ export default function HomeVideo() {
 
           <div className="relative flex flex-col lg:pl-4 py-2 w-full max-w-full z-20">
             <p className="text-lg font-semibold mb-2 m-4 break-words">
-              Click below for the submission link!
+              Thank you all for your submissions! Competition closed.
             </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb2wrx5jFCLW0A_HZ4mPr_yj-6Vi2i4xSXIq38aLGdOyZxEw/formrestricted" target="_blank" rel="noopener noreferrer">
               <img 
                 src="assets/images/2025LogoComp.webp" 
                 alt="2025 Logo" 
                 style={{ borderWidth: '10px' }} 
                 className="border-solid border-black m-4 w-full lg:w-[50%] md:w-[60%] sm:w-[70%] w-[80%] shadow-2xl shadow-gray-800"
               />
-            </a>
           </div>
         </span>
 
         <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-30">
           <a
             href="/vv"
-            className="text-left bg-yellow-200 w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-yellow-400 py-3 z-30"
-          >
+            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-30 mx-5 my-1 rounded-xl shadow-lg "
+          > 
+          {/* bg-yellow-200 g-yellow-200*/}
             <h2 className="md:pl-10 pl-2">Exhibits</h2>
             <Icon
               icon="icon-park-outline:right"
@@ -51,7 +50,7 @@ export default function HomeVideo() {
             />
           </a>
           <a
-            className="text-left bg-blue-300 w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-30"
+            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-30 ms-2 mx-5 my-1 rounded-xl shadow-lg"
             href="/vv?t=map"
           >
             <h2 className="md:pl-10 pl-2">Campus Map</h2>
