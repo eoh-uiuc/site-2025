@@ -1,66 +1,91 @@
+import React from 'react';
 import { Icon } from "@iconify/react";
-import AnimatedLogo from "../../components/logo/index.js";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css"; 
 
 export default function HomeVideo() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000, // Change image every 5 seconds
+    fade: true
+  };
+
   return (
     <>
-      <div className="flex flex-col pt-24 md:pt-20 justify-between md:h-screen h-auto min-h-screen">
-
-        <span className="flex flex-col md:flex-row justify-center items-center text-2xl h-full px-4 text-center md:text-left">
-          <div className="flex flex-col md:gap-3 w-full max-w-full">
-            <span className="flex flex-row items-end justify-start">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold w-full tracking-wider break-words">
-                Engineering Open House
-              </h1>
-            </span>
-            <h1 className="text-xl md:text-2xl lg:text-2xl w-full tracking-wider font-montserrat mt-2 md:mt-5 break-words">
-              at the <b>University of Illinois Urbana-Champaign</b> brings
-            </h1>
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-montserrat w-full tracking-wider mt-3 break-words">
-              The Age of Innovation
-            </h1>
-            <h1 className="font-montserrat lg:text-3xl text-2xl font-bold tracking-wider pt-5 hero-text break-words">
-              April 4th & April 5th, 2025
-            </h1>
+      <div className="relative w-full h-screen overflow-hidden">
+        {/* Carousel Section */}
+        <Slider {...settings} className="absolute top-0 left-0 w-full h-full">
+          <div>
+            <img
+              src="assets/title/grainger_library.jpg"
+              alt="Carousel Image 1"
+              className="w-full h-screen object-cover"
+            />
           </div>
-
-          <div className="relative flex flex-col lg:pl-4 py-2 w-full max-w-full z-20">
-            <p className="text-lg font-semibold mb-2 m-4 break-words">
-              Thank you all for your submissions! Competition closed.
-            </p>
-              <img 
-                src="assets/images/2025LogoComp.webp" 
-                alt="2025 Logo" 
-                style={{ borderWidth: '10px' }} 
-                className="border-solid border-black m-4 w-full lg:w-[50%] md:w-[60%] sm:w-[70%] w-[80%] shadow-2xl shadow-gray-800"
-              />
+          <div>
+            <img
+              src="/assets/title/tesla_coil.jpg"
+              alt="Carousel Image 2"
+              className="w-full h-screen object-cover"
+            />
           </div>
-        </span>
+          <div>
+            <img
+              src="assets/title/main_quad.jpg"
+              alt="Carousel Image 3"
+              className="w-full h-screen object-cover"
+            />
+          </div>
+        </Slider>
 
-        <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-30">
+        {/* Text Overlay Section */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-0 text-center p-6">
+          <h1 className="text-white text-5xl md:text-7xl font-bold" style={{ fontFamily: 'NORWESTER' }}>
+            Engineering Open House
+          </h1>
+          <h2 className="text-white text-2xl md:text-3xl mt-4" style={{ fontFamily: 'Montserrat Classic' }}>
+            at the <b>University of Illinois Urbana-Champaign</b> brings
+          </h2>
+          <h1 className="text-white text-6xl md:text-8xl mt-6" style={{ fontFamily: 'TAN Headline' }}>
+            The Age of Innovation
+          </h1>
+          <h3 className="text-white text-3xl md:text-4xl mt-6" style={{ fontFamily: 'Montserrat Classic' }}>
+            April 4th & April 5th, 2025
+          </h3>
+        </div>
+        </div>
+
+        <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-0">
           <a
-            href="/vv"
-            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-30 mx-5 my-1 rounded-xl shadow-lg "
+            href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform?usp=sf_link"
+            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 mx-5 my-1 rounded-xl shadow-lg"
           > 
           {/* bg-yellow-200 g-yellow-200*/}
-            <h2 className="md:pl-10 pl-2">Exhibits</h2>
+            <h2 className="md:pl-10 pl-2">Exhibits Application</h2>
             <Icon
               icon="icon-park-outline:right"
               className="text-2xl md:text-4xl"
             />
           </a>
           <a
-            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-30 ms-2 mx-5 my-1 rounded-xl shadow-lg"
-            href="/vv?t=map"
+            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 ms-2 mx-5 my-1 rounded-xl shadow-lg"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform?usp=pp_url"
+            // href="/vv?t=map"
           >
-            <h2 className="md:pl-10 pl-2">Campus Map</h2>
+            <h2 className="md:pl-10 pl-2">School Interest Form</h2>
             <Icon
               icon="icon-park-outline:right"
               className="text-2xl md:text-4xl"
             />
           </a>
         </span>
-      </div>
+    
     </>
   );
 }

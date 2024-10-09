@@ -116,7 +116,7 @@ export default function Footer({ socials }) {
 					}
 				</div>
 			</div>
-			<p className="font-montserrat text-sm text-white text-center">Copyright EOH 2024</p>
+			<p className="font-montserrat text-sm text-white text-center">Copyright EOH 2025</p>
 		</footer>
 	);
 }
