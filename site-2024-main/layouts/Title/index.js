@@ -64,7 +64,7 @@ export default function HomeVideo() {
         <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-0">
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform?usp=sf_link"
-            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 mx-5 my-1 rounded-xl shadow-lg"
+            className="text-left bg-theme-teal  md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 mx-5 my-1 rounded-xl shadow-lg"
           > 
           {/* bg-yellow-200 g-yellow-200*/}
             <h2 className="md:pl-10 pl-2">Exhibits Application</h2>
@@ -74,7 +74,7 @@ export default function HomeVideo() {
             />
           </a>
           <a
-            className="text-left bg-theme-teal w-full md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 ms-2 mx-5 my-1 rounded-xl shadow-lg"
+            className="text-left bg-theme-teal  md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 ms-2 mx-5 my-1 rounded-xl shadow-lg"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform?usp=pp_url"
             // href="/vv?t=map"
           >
