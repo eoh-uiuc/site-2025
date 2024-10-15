@@ -18,6 +18,7 @@ export default function Home() {
       <Head>
         <title>EOH 2025</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="N_zq-IzUiNIJFGldY3CVIn-PDSYtHkdklYt2VuMSa4E" />
       </Head>
 
       <main>
