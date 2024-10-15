@@ -54,7 +54,7 @@ export const ShuttleInformation = () => {
                           w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-[#c578d6] via-[#d292e0] to-[#c578d6] shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
                 <Icon icon="bxs:bus" className="text-2xl" />
-                <span>Shuttle Information</span>
+                <span>Shuttle Info</span>
             </button>
         </>
     )
