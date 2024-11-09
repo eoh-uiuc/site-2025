@@ -23,9 +23,11 @@ const Faqs = () => {
   const [expandedId, setExpandedId] = useState(null);
 
   const { data, error, isLoading } = useSWR(
-    `https://n1.eohillinois.org/api/faqs`,
+    `https://growing-flowers-203b0c0690.strapiapp.com/api/faqs`,
     fetcher
   );
+
+  // `https://n1.eohillinois.org/api/faqs`
 
   const [categories, setCategories] = useState({
     'Event FAQs': [],
