@@ -9,7 +9,7 @@ export default function FaqPage() {
         { question: "What is EOH?", answer: "Engineering Open House (EOH) is an annual event organized entirely by engineering students at the University of Illinois at Urbana-Champaign.  It is held each spring semester, and draws estimated crowds of 20,000 people including, students, teachers, parents and families, from all over Illinois (and beyond). RailTEC participates in EOH each year by working with major railroads who to set up various exhibits and displays of railroad technology." },
         { question: "What kinds of exhibits can we expect?", answer: "We have an exhibit for every major this year! Ranging from robotic hands, solar cars, and a coffee-serving robot, to an oobleck pool and DIY plastic, we will have something for everyone to experience engineering." },
         { question: "What kinds of special events will you have?", answer: "We will have several different kinds of events, including a Tesla Coil concert, a Startup Showcase, and prospective student panels among many others!" },
-        // Add more FAQs as needed
+        // Add more FAQs as needed!
     ];
 
     const toggleFAQ = (index) => {
