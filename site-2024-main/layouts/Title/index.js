@@ -18,7 +18,7 @@ export default function HomeVideo() {
 
   return (
     <>
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="mt-20 relative w-full h-screen overflow-hidden">
         {/* Carousel Section */}
         <Slider {...settings} className="absolute top-0 left-0 w-full h-full">
           <div>
@@ -44,9 +44,13 @@ export default function HomeVideo() {
           </div>
         </Slider>
 
-        {/* Text Overlay Section */}
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-0 text-center p-6">
-          <h1 className="text-white text-5xl md:text-7xl font-bold" style={{ fontFamily: 'NORWESTER' }}>
+        {/* Full-Screen Brown Overlay and Split Content */}
+        <div className="absolute top-0 left-0 w-full h-screen bg-[#473335] bg-opacity-70 z-10 flex items-center justify-center p-6">
+          {/* Content Wrapper - Shorter height and centered */}
+          <div className="flex w-full max-w-7xl h-[30vh] items-center justify-center">
+            {/* Text Section - Left Half */}
+            <div className="w-1/2 flex flex-col justify-center items-center text-center">
+            <h1 className="text-white text-5xl md:text-7xl font-bold" style={{ fontFamily: 'NORWESTER' }}>
             Engineering Open House
           </h1>
           <h2 className="text-white text-2xl md:text-3xl mt-4" style={{ fontFamily: 'Montserrat Classic' }}>
@@ -59,7 +63,17 @@ export default function HomeVideo() {
             April 4th & April 5th, 2025
           </h3>
         </div>
+             {/* Image Section - Right Half */}
+             <div className="w-1/2 flex justify-center items-center">
+              <img
+                src="/assets/background/White-no-outline-EOH_Logo.png" // Adjusted to match your provided path
+                alt="EOH 2025 Logo"
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+          </div>
         </div>
+      </div>
 
         <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-0">
           <a

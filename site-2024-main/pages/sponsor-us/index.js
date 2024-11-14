@@ -64,7 +64,7 @@ export default function SponsorUsPage() {
                     </div>
                 </div>
                 <Section color="white" title="Sponsorship Packages">
-                    <div className="inline-block font-montserrat text-sm">
+                <div className="inline-block font-montserrat text-sm w-3/4 ml-auto mr-auto">
                         <div className="font-montserrat mb-8">
                             Our sponsorship offerings broadly fall into three key categories: choosing a tier in our <span className='italic'>Sponsorship Package</span> system,
                             selecting one of our <span className='italic'>Focus Bundles</span> to sponsor a particular aspect of EOH, or choosing to sponsor a <span className="italic">Specific Event
@@ -73,7 +73,7 @@ export default function SponsorUsPage() {
                         </div>
                         <div className="max-w-2xl mx-auto">
                             <div className="font-montserrat font-white">
-                                <Collapsible trigger={[<p className="p-4">SPONSORSHIP PACKAGE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='sponsorship-outer' openedClassName='sponsorship-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold">
+                                <Collapsible trigger={[<p className="p-4">SPONSORSHIP PACKAGE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='sponsorship-outer' openedClassName='sponsorship-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#a2d3c2] hover:bg-[#8bbfa3] text-white">
                                     <Collapsible trigger={[<p className="p-4">Silver Sponsorship Package - $3,000</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
                                         <span className="sponsor-package-describe py-3">
                                             <span className="text-lg font-bold italic p-10">Company Name and Logo Publicity</span> <br />
@@ -194,7 +194,7 @@ export default function SponsorUsPage() {
                                     </div>
                                     <img src='/assets/images/sponsorship_comparison.png' className="mx-auto object-contain h-64 my-5" />
                                 </Collapsible>
-                                <Collapsible trigger={[<p className="p-4">FOCUS BUNDLE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='focus-bundle-outer' openedClassName='focus-bundle-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold">
+                                <Collapsible trigger={[<p className="p-4">FOCUS BUNDLE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='focus-bundle-outer' openedClassName='focus-bundle-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
                                     <Collapsible trigger={[<p className="p-4">Outreach Focus Bundle</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
                                         <p className="text-lg text-left my-3 mx-10">
                                             You have the option of being the title sponsor of our Illinois Engineering
@@ -260,7 +260,7 @@ export default function SponsorUsPage() {
                                     </div>
                                     <span className="text-xl font-bold">All of our focused sponsorship bundles are valued at $2,500.</span>
                                 </Collapsible>
-                                <Collapsible trigger={[<p className="p-4">ITEMIZED SPONSORSHIP</p>, <div className="mr-4"><BsChevronDown /></div>]} className="itemized-sponsorship-outer" openedClassName='itemized-sponsorship-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold">
+                                <Collapsible trigger={[<p className="p-4">ITEMIZED SPONSORSHIP</p>, <div className="mr-4"><BsChevronDown /></div>]} className="itemized-sponsorship-outer" openedClassName='itemized-sponsorship-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#ff8400] hover:bg-[#e67300] text-white">
                                     <Collapsible trigger={[<p className="p-4">Advertisements</p>, <div className="mr-4"><BsChevronDown /></div>]} contentOuterClassName="opened-sub-content-content" triggerOpenedClassName="trigger-opened">
                                         <p className="font-bold text-xl mt-5">Display Vehicle Advertisement</p>
                                         <span className="italic">
@@ -397,11 +397,11 @@ export default function SponsorUsPage() {
                                     </ Collapsible>
                                 </Collapsible>
                             </div>
-                            <p className="font-montserrat w-5/6 text-center mx-auto mt-5 mb-2">
+                            <p className="font-montserrat w-5/6 text-center mx-auto mt-5 mb-2 pt-7">
                                 To view sponsorship options as a PDF, see below.<br /><span className='font-bold'>Thanks for considering sponsoring EOH!</span>
                             </p>
                             <div className="mx-auto text-center mb-5">
-                                <Button type="big" className="px-4 rounded-none drop-shadow-md font-montserrat" href="https://drive.google.com/file/d/14BecRUlypW4fGYsufuhRR585I6nGLWq4/view?usp=sharing">
+                                <Button type="big" className="px-4 rounded-none drop-shadow-md font-montserrat bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
                                     <span className="font-montserrat font-bold text-md">Corporate Sponsorship Packet</span>
                                 </Button>
                             </div>

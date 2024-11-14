@@ -29,10 +29,6 @@ const HEADER_ITEMS = [
     ]
   },
   {
-    text: "Schedule",
-    href: "/#schedule"
-  },
-  {
     text: "FAQs",
     href: "/faq"
   },

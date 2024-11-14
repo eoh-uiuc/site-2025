@@ -48,6 +48,7 @@ export default function Home() {
           id="featured-events"
           wide
         >
+          <p className="text-center">2025 events coming soon!</p>
           <EventList />
         </Section>
         <Section title="Schedule" color="bg-white" id="schedule" wide>

@@ -36,15 +36,15 @@ const footerSections = [
 		links: [
 			{
 				text: "Linktree",
-				href: "https://linktr.ee/eoh2024"
+				href: "https://linktr.ee/eoh2025"
 			},
 			{
-				text: "Volunteer Interest",
-				href: "https://docs.google.com/forms/d/e/1FAIpQLSfXMPKqUqPbuXvEY6CmlR8lLbFqCM7IYjls1iAi6unnfy-YDQ/viewform?usp=sf_link"
+				//text: "Volunteer Interest",
+				//href: "https://docs.google.com/forms/d/e/1FAIpQLSfXMPKqUqPbuXvEY6CmlR8lLbFqCM7IYjls1iAi6unnfy-YDQ/viewform?usp=sf_link"
 			},
 			{
-				text: "Judging Interest",
-				href: "https://forms.gle/3HXs2EHvqt87nQM19"
+				//text: "Judging Interest",
+				//href: "https://forms.gle/3HXs2EHvqt87nQM19"
 			},
 		]
 	},
@@ -94,7 +94,10 @@ const footerSections = [
 
 export default function Footer({ socials }) {
 	return (
-		<footer className="flex flex-col w-full p-3 md:p-12 bg-waves-bottom2 md:bg-waves-bottom bg-no-repeat bg-bottom bg-cover">
+		<footer
+			className="flex flex-col w-full p-3 md:p-12 bg-no-repeat bg-bottom bg-cover"
+			style={{ backgroundImage: "url('/assets/background/website-wide.png')" }} // Path to your PNG file
+		>
 			<div className="flex flex-col md:flex-row w-full items-center md:items-start">
 				{/* <div className="">
 					<img src="/android-chrome-512x512.png" alt="Alma Mater" className='h-60 lg:h-72 w-60 lg:w-72 min-w-min md:mr-12' />
