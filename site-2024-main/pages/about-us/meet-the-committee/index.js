@@ -29,8 +29,8 @@ const COMMITTEE_HEADSHOTS = [
     img: "alyssa.jpg",
     Name: "Alyssa Huang",
     Position: "Co-Director",
-    Class: "Senior",
-    Major: "Electrical Engineering",
+    Class: "Masters",
+    Major: "Electrical and Computer Engineering",
   },
   {
     img: "adithi.jpg",

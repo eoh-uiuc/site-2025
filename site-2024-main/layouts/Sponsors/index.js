@@ -1,7 +1,7 @@
 export default function Sponsors() {
 
 	const STRIPE_DONATE_LINK = 'https://buy.stripe.com/dR68Ai6IXdRNcDK144'
-	const UIF_SPONSOR_LINK = '/sponsor-us'
+	const UIF_SPONSOR_LINK = '' // /sponsor-us
 
 	return (
 		<>
@@ -23,7 +23,7 @@ export default function Sponsors() {
 							I'm a <br />
 							<h1 className="text-2xl lg:text-3xl md:pt-2">Company Representative</h1>
 						</div>
-						<a className="bg-theme-purp hover:bg-purple-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={UIF_SPONSOR_LINK}>
+						<a className="bg-theme-purp  p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" >
 							Sponsor
 						</a>
 						<p>via UIF</p>
