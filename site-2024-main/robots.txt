@@ -1,0 +1,11 @@
+//robots.txt
+
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /volunteer
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://eohillinois.org/sitemap.xml
