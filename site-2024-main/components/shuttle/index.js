@@ -9,7 +9,21 @@ export const ShuttleInformation = () => {
 
     return (
         <>
-            <Modal title="Shuttle Information" open={modalOpen} setOpen={setModalOpen}>
+            Shuttle info coming soon! Check back later.
+            <button onClick={() => setModalOpen(true)}
+                className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
+                          w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-[#c578d6] via-[#d292e0] to-[#c578d6] shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+                <Icon icon="bxs:bus" className="text-2xl" />
+                <span>Shuttle Info</span>
+            </button>
+        </>
+    )
+}
+
+/*
+
+<Modal title="Shuttle Information" open={modalOpen} setOpen={setModalOpen}>
                 <div className="mb-5">
                     <div className="h-2"></div>
                     <Info>
@@ -49,13 +63,5 @@ export const ShuttleInformation = () => {
                     src="/shuttle-map.svg"
                 />
             </Modal>
-            <button onClick={() => setModalOpen(true)}
-                className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
-                          w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-[#c578d6] via-[#d292e0] to-[#c578d6] shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-                <Icon icon="bxs:bus" className="text-2xl" />
-                <span>Shuttle Info</span>
-            </button>
-        </>
-    )
-}
+
+            */
