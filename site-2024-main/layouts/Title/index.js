@@ -64,7 +64,7 @@ export default function HomeVideo() {
               </h3>
             </div>
 
-            {/* Image Section */}
+            {/* Image Section  */}
             <div className="w-full md:w-1/2 flex justify-center items-center">
               <img
                 src="/assets/background/White-no-outline-EOH_Logo.png"
