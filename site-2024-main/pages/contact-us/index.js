@@ -18,29 +18,44 @@ const CONTACTS = [{
 	title: "Director of Exhibits",
 	email: "eoh-exhibits@ec.illinois.edu"
 }, {
-	title: "Director of External",
-	email: "eoh-external@ec.illinois.edu"
-}, {
 	title: "Director of Facilities",
 	email: "eoh-facilities@ec.illinois.edu"
 }, {
-	title: "Director of Internal",
-	email: " eoh-internal@ec.illinois.edu"
+	title: "Director of High School Design",
+	email: "eoh-hsdc@ec.illinois.edu"
 }, {
-	title: "Director of Judging",
+	title: "Director of Hospitality",
+	email: "eoh-hospitality@ec.illinois.edu"
+}, {
+	title: "Director of Judging & Awards",
 	email: "eoh-judging@ec.illinois.edu"
 }, {
-	title: "Director of Safety",
-	email: "eoh-safety@ec.illinois.edu"
+	title: "Director of Marketing",
+	email: "eoh-marketing@ec.illinois.edu"
+}, {
+	title: "Director of Middle School Design",
+	email: "eoh-msdc@ec.illinois.edu"
+}, {
+	title: "Director of Outreach",
+	email: "eoh-outreach@ec.illinois.edu"
+}, {
+	title: "Secretary/Treasurer",
+	email: "eoh-treasurer@ec.illinois.edu"
+}, {
+	title: "Director of Special Events",
+	email: "eoh-events@ec.illinois.edu"
+}, {
+	title: "Director of Startup Showcase",
+	email: "eoh-startup@ec.illinois.edu"
 }, {
 	title: "Director of Technology",
 	email: "eoh-tech@ec.illinois.edu"
 }, {
-	title: "Director of Visitors",
-	email: "eoh-visitors@ec.illinois.edu"
+	title: "Director of Traffic & Safety",
+	email: "eoh-safety@ec.illinois.edu"
 }, {
-	title: "Treasurer",
-	email: "eoh-treasurer@ec.illinois.edu"
+	title: "Visitor's Information",
+	email: "eoh-visitors@ec.illinois.edu"
 }]
 
 export default function ContactUsPage() {
