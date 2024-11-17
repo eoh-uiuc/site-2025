@@ -1,103 +1,229 @@
-import React from 'react';
 import { Icon } from "@iconify/react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css"; 
 
 export default function HomeVideo() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    fade: true
-  };
+  const elements = [
+    {
+      src: "/assets/logo/fan.png",
+      size: "18rem",
+      top: "80%",
+      left: "65%",
+      animation: "float 6s ease-in-out infinite",
+    },
+    {
+      src: "/assets/logo/beaker.png",
+      size: "10rem",
+      top: "20%",
+      left: "75%",
+      animation: "float 4s ease-in-out infinite",
+    },
+    {
+      src: "/assets/logo/circuit.png",
+      size: "8rem",
+      top: "60%",
+      left: "20%",
+      animation: "float 5s ease-in-out infinite",
+    },
+    {
+      src: "/assets/logo/compass.png",
+      size: "8rem",
+      top: "28%",
+      left: "5%",
+    },
+    {
+      src: "/assets/logo/magnifier.png",
+      size: "15rem",
+      top: "80%",
+      left: "12%",
+      zIndex: 3,
+      animation: "float 7s ease-in-out infinite",
+    },
+    {
+      src: "/assets/logo/moon.png",
+      size: "5rem",
+      top: "75%",
+      left: "78%",
+      animation: "float 6s ease-in-out infinite",
+    },
+    {
+      src: "/assets/logo/newrocket.png",
+      size: "20rem",
+      top: "50%",
+      left: "0%",
+      zIndex: 2,
+      transform: "translate(-10%, -20%)",
+    },
+    {
+      src: "/assets/logo/windmill.png",
+      size: "23rem",
+      top: "68%",
+      left: "90%",
+    },
+    {
+      src: "/assets/logo/world.png",
+      size: "20rem",
+      top: "75%",
+      left: "85%",
+      animation: "float 8s ease-in-out infinite",
+    },
+  ];
 
   return (
-    <>
-      <div className="mt-20 relative w-full h-screen overflow-hidden">
-        {/* Carousel Section */}
-        <Slider {...settings} className="absolute top-0 left-0 w-full h-full">
-          <div>
-            <img
-              src="assets/title/grainger_library.jpg"
-              alt="Carousel Image 1"
-              className="w-full h-screen object-cover"
-            />
-          </div>
-          <div>
-            <img
-              src="/assets/title/tesla_coil.jpg"
-              alt="Carousel Image 2"
-              className="w-full h-screen object-cover"
-            />
-          </div>
-          <div>
-            <img
-              src="assets/title/main_quad.jpg"
-              alt="Carousel Image 3"
-              className="w-full h-screen object-cover"
-            />
-          </div>
-        </Slider>
+    <div
+      className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-indigo-100 via-white to-blue-100 overflow-hidden"
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        background: "linear-gradient(to right, #ebf4ff, #ffffff, #cce4ff)",
+      }}
+    >
+      {/* Scattered Elements */}
+      <div className="scattered-elements">
+        {elements.map((element, index) => (
+          <img
+            key={index}
+            src={element.src}
+            alt={`Decorative Element ${index + 1}`}
+            style={{
+              width: element.size,
+              height: "auto",
+              position: "absolute",
+              top: element.top,
+              left: element.left,
+              transform: element.transform || "translate(-50%, -50%)",
+              animation: element.animation,
+              zIndex: 1,
+              filter: "drop-shadow(0 8px 16px rgba(255, 192, 203, 0.4))",
+            }}
+          />
+        ))}
+      </div>
+      
 
-        {/* Full-Screen Brown Overlay and Split Content */}
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#473335] bg-opacity-70 z-10 flex items-center justify-center p-6">
-          {/* Content Wrapper - Shorter height and centered */}
-          <div className="flex flex-col md:flex-row w-full max-w-5xl items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-4">
-            {/* Text Section */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center space-y-2">
-              <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold" style={{ fontFamily: 'NORWESTER' }}>
-                Engineering Open House
-              </h1>
-              <h2 className="text-white text-lg sm:text-xl md:text-2xl mt-2" style={{ fontFamily: 'Montserrat Classic' }}>
-                at the <b>University of Illinois Urbana-Champaign</b> brings
-              </h2>
-              <h1 className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl mt-4" style={{ fontFamily: 'TAN Headline' }}>
-                The Age of Innovation
-              </h1>
-              <h3 className="text-white text-base sm:text-lg md:text-xl lg:text-2xl mt-4" style={{ fontFamily: 'Montserrat Classic' }}>
-                April 4th & April 5th, 2025
-              </h3>
-            </div>
+      {/* Centered Title Area */}
+      <header
+        style={{
+          position: "relative",
+          textAlign: "center",
+          zIndex: 0,
+          padding: "2rem 1rem",
+        }}
+      >
+        <h1 className="title">Engineering Open House</h1>
+        <p className="subtitle">
+          at the <strong>University of Illinois Urbana-Champaign</strong> brings
+        </p>
+        <h2 className="highlight">The Age of Innovation</h2>
+        <p className="date">April 4th & April 5th, 2025</p>
+      </header>
 
-            {/* Image Section */}
-            <div className="w-full md:w-1/2 flex justify-center items-center">
-              <img
-                src="/assets/background/White-no-outline-EOH_Logo.png"
-                alt="EOH 2025 Logo"
-                className="w-32 sm:w-40 md:w-48 lg:w-3/4 max-w-xs sm:max-w-sm md:max-w-md object-contain"
-              />
-            </div>
-          </div>
-        </div>
+       {/* Buttons */}
+       <div className="flex justify-center gap-8">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+        >
+          Exhibits Application
+          <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
+        </a>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+        >
+          School Interest Form
+          <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
+        </a>
       </div>
 
-      <span className="flex flex-col md:flex-row justify-between w-full min-h-[14vh] lg:h-36 z-0">
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform?usp=sf_link"
-          className="text-left bg-theme-teal md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 mx-5 my-1 rounded-xl shadow-lg"
-        >
-          <h2 className="md:pl-10 pl-2">Exhibits Application</h2>
-          <Icon
-            icon="icon-park-outline:right"
-            className="text-2xl md:text-4xl"
-          />
-        </a>
-        <a
-          className="text-left bg-theme-teal md:w-1/2 lg:text-4xl md:text-3xl text-2xl flex flex-row items-center font-montserrat gap-3 hover:bg-blue-400 py-3 z-0 ms-2 mx-5 my-1 rounded-xl shadow-lg"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform?usp=pp_url"
-        >
-          <h2 className="md:pl-10 pl-2">School Interest Form</h2>
-          <Icon
-            icon="icon-park-outline:right"
-            className="text-2xl md:text-4xl"
-          />
-        </a>
-      </span>
-    </>
+      {/* Inline Keyframes */}
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .scattered-elements {
+          display: block;
+        }
+
+        .title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #333;
+          margin-bottom: 1rem;
+        }
+
+        .subtitle {
+          font-size: 1.25rem;
+          color: #666;
+          font-weight: 500;
+          margin-bottom: 1rem;
+        }
+
+        .highlight {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c578d6; /* Changed from gradient to solid color */
+  margin-bottom: 1rem;
+}
+
+
+        .date {
+          font-size: 1rem;
+          color: #333;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+        }
+
+        .button-container {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+        }
+
+        .button {
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
+          font-weight: 600;
+          text-decoration: none;
+          border-radius: 0.75rem;
+          transition: transform 0.3s ease;
+        }
+
+        .button-exhibits {
+          background-color: #ffefd5;
+          color: #333;
+        }
+
+        .button-interest {
+          background-color: #cce7ff;
+          color: #333;
+        }
+
+        @media (max-width: 768px) {
+          .scattered-elements {
+            display: none;
+          }
+
+          .title {
+            font-size: 2rem;
+          }
+
+          .subtitle, .highlight, .date {
+            font-size: 1rem;
+          }
+
+          .button {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+          }
+        }
+      `}</style>
+    </div>
   );
 }
