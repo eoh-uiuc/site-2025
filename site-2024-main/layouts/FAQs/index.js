@@ -37,6 +37,7 @@ const Faqs = () => {
   React.useEffect(() => {
     if (data && data.data) {
       const sortedFaqs = data.data.reduce((acc, faq) => {
+        console.log(faq.Question);
         const { Category, Question, Description } = faq.attributes;
         const faqItem = { id: Question, title: Question, content: Description };
         if (!acc[Category]) {
