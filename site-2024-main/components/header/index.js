@@ -32,8 +32,8 @@ export default function Header({ headerItems }) {
         <div className="flex justify-center flex-row w-full">
           <Link href="/">
             <img
-              src="/assets/logo/eoh-textonly.png"
-              className="absolute left-6 top-0 h-24 w-min cursor-pointer object-contain "
+              src="/assets/logo/eohlogo2025.png"
+              className="absolute left-6 top-0 h-16 w-min mt-3 cursor-pointer object-contain "
             />
           </Link>
 
@@ -56,8 +56,8 @@ export default function Header({ headerItems }) {
           <nav className="flex flex-row w-full">
             <Link href="/">
               <img
-                src="/assets/logo/eoh-textonly.png"
-                className="h-20 w-20 cursor-pointer"
+                src="/assets/logo/eohlogo2025.png"
+                className="h-16 w-30 mt-2.5 cursor-pointer"
                 draggable={false}
               />
             </Link>
