@@ -23,7 +23,7 @@ const Faqs = () => {
   const [expandedId, setExpandedId] = useState(null);
 
   const { data, error, isLoading } = useSWR(
-    `https://n1.eohillinois.org/api/faqs`,
+    `https://n11.eohillinois.org/api/faqs`,
     fetcher
   );
 
@@ -37,7 +37,7 @@ const Faqs = () => {
   React.useEffect(() => {
     if (data && data.data) {
       const sortedFaqs = data.data.reduce((acc, faq) => {
-        const { Category, Question, Description } = faq.attributes;
+        const { Category, Question, Description } = faq;
         const faqItem = { id: Question, title: Question, content: Description };
         if (!acc[Category]) {
           acc[Category] = [faqItem];
