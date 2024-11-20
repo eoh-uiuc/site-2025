@@ -1,71 +1,93 @@
+import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 
 export default function HomeVideo() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const elements = [
     {
       src: "/assets/logo/fan.png",
-      size: "18rem",
+      size: `${windowWidth / 6}px`, // Adjust size dynamically
       top: "80%",
-      left: "65%",
-      animation: "float 6s ease-in-out infinite",
+      left: "50%",
+      animation: "float 5s ease-in-out infinite",
     },
     {
       src: "/assets/logo/beaker.png",
-      size: "10rem",
+      size: `${windowWidth / 10}px`,
       top: "20%",
-      left: "75%",
-      animation: "float 4s ease-in-out infinite",
+      left: "10%",
+      animation: "float 5s ease-in-out infinite",
     },
     {
       src: "/assets/logo/circuit.png",
-      size: "8rem",
-      top: "60%",
-      left: "20%",
+      size: `${windowWidth / 12}px`,
+      top: "40%",
+      left: "72%",
       animation: "float 5s ease-in-out infinite",
     },
     {
       src: "/assets/logo/compass.png",
-      size: "8rem",
+      size: `${windowWidth / 13}px`,
       top: "28%",
-      left: "5%",
+      left: "90%",
+      animation: "float 5s ease-in-out infinite"
     },
     {
       src: "/assets/logo/magnifier.png",
-      size: "15rem",
+      size: `${windowWidth / 8}px`,
       top: "80%",
       left: "12%",
       zIndex: 3,
-      animation: "float 7s ease-in-out infinite",
+      animation: "float 5s ease-in-out infinite",
     },
     {
       src: "/assets/logo/moon.png",
-      size: "5rem",
-      top: "75%",
-      left: "78%",
-      animation: "float 6s ease-in-out infinite",
+      size: `${windowWidth / 20}px`,
+      top: "60%",
+      left: "15%",
+      animation: "float 5s ease-in-out infinite",
     },
     {
       src: "/assets/logo/newrocket.png",
-      size: "20rem",
+      size: `${windowWidth / 5}px`,
       top: "50%",
       left: "0%",
-      zIndex: 2,
+      zIndex: 1,
       transform: "translate(-10%, -20%)",
-    },
+      animation: "fly-across 10s linear forwards", 
+    },    
     {
       src: "/assets/logo/windmill.png",
-      size: "23rem",
-      top: "68%",
-      left: "90%",
+      size: `${windowWidth / 5}px`,
+      top: "70%",
+      left: "5%",
+      zIndex: 3,
     },
     {
       src: "/assets/logo/world.png",
-      size: "20rem",
+      size: `${windowWidth / 4.5}px`,
       top: "75%",
-      left: "85%",
+      left: "-10%",
       animation: "float 8s ease-in-out infinite",
+      zIndex: 1
     },
   ];
+
+  // Filter elements based on screen size (only fan and beaker for small screens)
+  const filteredElements = windowWidth < 768 
+    ? elements.filter((element) => element.src === "/assets/logo/fan.png" || element.src === "/assets/logo/beaker.png")
+    : elements;
 
   return (
     <div
@@ -78,7 +100,7 @@ export default function HomeVideo() {
     >
       {/* Scattered Elements */}
       <div className="scattered-elements">
-        {elements.map((element, index) => (
+        {filteredElements.map((element, index) => (
           <img
             key={index}
             src={element.src}
@@ -97,7 +119,6 @@ export default function HomeVideo() {
           />
         ))}
       </div>
-      
 
       {/* Centered Title Area */}
       <header
@@ -108,16 +129,56 @@ export default function HomeVideo() {
           padding: "2rem 1rem",
         }}
       >
-        <h1 className="title">Engineering Open House</h1>
-        <p className="subtitle">
+        <h1
+          className="title"
+          style={{
+            fontFamily: "'Norwester', sans-serif",
+            fontSize: windowWidth < 768 ? "2rem" : "2.5rem",
+            fontWeight: "800",
+            color: "#333",
+            marginBottom: "1rem",
+          }}
+        >
+          Engineering Open House
+        </h1>
+        <p
+          className="subtitle"
+          style={{
+            fontSize: windowWidth < 768 ? "1rem" : "1.25rem",
+            color: "#666",
+            fontWeight: "500",
+            marginBottom: "1rem",
+          }}
+        >
           at the <strong>University of Illinois Urbana-Champaign</strong> brings
         </p>
-        <h2 className="highlight">The Age of Innovation</h2>
-        <p className="date">April 4th & April 5th, 2025</p>
+        <h2
+          className="highlight"
+          style={{
+            fontFamily: "'Norwester', san-serif",
+            fontSize: windowWidth < 768 ? "2rem" : "2.5rem",
+            fontWeight: "700",
+            color: "#c578d6",
+            marginBottom: "1rem",
+          }}
+        >
+          The Age of Innovation
+        </h2>
+        <p
+          className="date"
+          style={{
+            fontSize: windowWidth < 768 ? "1rem" : "1.25rem",
+            color: "#333",
+            fontWeight: "600",
+            marginBottom: "1.5rem",
+          }}
+        >
+          April 4th & April 5th, 2025
+        </p>
       </header>
 
-       {/* Buttons */}
-       <div className="flex justify-center gap-8">
+      {/* Buttons */}
+      <div className="flex justify-center gap-8">
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
@@ -145,84 +206,23 @@ export default function HomeVideo() {
           }
         }
 
-        .scattered-elements {
-          display: block;
-        }
-
-        .title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: #333;
-          margin-bottom: 1rem;
-        }
-
-        .subtitle {
-          font-size: 1.25rem;
-          color: #666;
-          font-weight: 500;
-          margin-bottom: 1rem;
-        }
-
-        .highlight {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #c578d6; /* Changed from gradient to solid color */
-  margin-bottom: 1rem;
+       @keyframes fly-across {
+  0% {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+  25% {
+    transform: translate(25vw, -30vh) rotate(45deg);
+  }
+  50% {
+    transform: translate(50vw, -50vh) rotate(90deg);
+  }
+  75% {
+    transform: translate(75vw, -30vh) rotate(135deg);
+  }
+  100% {
+    transform: translate(80vw, 0vh) rotate(320deg); /* Adjusted to fit within screen */
+  }
 }
-
-
-        .date {
-          font-size: 1rem;
-          color: #333;
-          font-weight: 600;
-          margin-bottom: 1.5rem;
-        }
-
-        .button-container {
-          display: flex;
-          justify-content: center;
-          gap: 1.5rem;
-        }
-
-        .button {
-          display: flex;
-          align-items: center;
-          padding: 0.75rem 1.5rem;
-          font-size: 1rem;
-          font-weight: 600;
-          text-decoration: none;
-          border-radius: 0.75rem;
-          transition: transform 0.3s ease;
-        }
-
-        .button-exhibits {
-          background-color: #ffefd5;
-          color: #333;
-        }
-
-        .button-interest {
-          background-color: #cce7ff;
-          color: #333;
-        }
-
-        @media (max-width: 768px) {
-          .scattered-elements {
-            display: none;
-          }
-
-          .title {
-            font-size: 2rem;
-          }
-
-          .subtitle, .highlight, .date {
-            font-size: 1rem;
-          }
-
-          .button {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-          }
-        }
       `}</style>
     </div>
   );

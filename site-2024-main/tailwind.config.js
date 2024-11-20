@@ -62,6 +62,7 @@ module.exports = {
         "3xl": "1720px",
       },
       backgroundImage: {
+        'rockets-layer': "url('/assets/background/website_rockets_layer.png')",
         "red-line": "url('/assets/background/redline.jpg')",
         'robobrawl': "url('/assets/background/card/rb24.jpg')",
         'msdc': "url('/assets/background/card/msdc24.jpg')",

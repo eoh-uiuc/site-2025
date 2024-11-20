@@ -30,7 +30,7 @@ const COMMITTEE_HEADSHOTS = [
     Name: "Alyssa Huang",
     Position: "Co-Director",
     Class: "Masters",
-    Major: "Electrical and Computer Engineering",
+    Major: "Electrical Engineering",
   },
   {
     img: "adithi.jpg",
@@ -82,7 +82,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "Civil Engineering",
   },
   {
-    img: "madeline.jpg",
+    img: "BlankProfile.png",
     Name: "Madeline Kim",
     Position: "Junior Corporate Director",
     Class: "Freshman",
@@ -147,14 +147,14 @@ const COMMITTEE_HEADSHOTS = [
   {
     img: "katerina.jpg",
     Name: "Katerina Baxter",
-    Position: "Middle School Design Competition Director",
+    Position: "Middle School Design Director",
     Class: "Senior",
     Major: "Bioengineering",
   },
   {
     img: "manasi2.jpg",
     Name: "Manasi Bhargava",
-    Position: "High School Design Competition Director",
+    Position: "High School Design Director",
     Class: "Sophomore",
     Major: "Engineering Mechanics",
   },

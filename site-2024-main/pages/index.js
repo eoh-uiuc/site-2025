@@ -17,7 +17,7 @@ export default function Home() {
     <Fragment>
       <Head>
         <title>EOH 2025</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon_black_outline.ico" />
         <meta name="google-site-verification" content="N_zq-IzUiNIJFGldY3CVIn-PDSYtHkdklYt2VuMSa4E" />
       </Head>
 
@@ -73,7 +73,7 @@ export default function Home() {
         <Section
           title="Support Our Mission"
           id="sponsors"
-          color="bg-waves-blue2 bg-cover bg-center min-h-[550px]"
+          color="bg-rockets-layer bg-cover bg-center min-h-[550px]"
         >
           <Sponsors />
         </Section>
