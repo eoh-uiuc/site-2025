@@ -82,7 +82,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "Civil Engineering",
   },
   {
-    img: "BlankProfile.png",
+    img: "madeline.png",
     Name: "Madeline Kim",
     Position: "Junior Corporate Director",
     Class: "Freshman",
@@ -131,7 +131,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "CS + Crop Sciences",
   },
   {
-    img: "madeline.jpg",
+    img: "BlankProfile.png",
     Name: "Maddie Conrad",
     Position: "Visitor's Information Director",
     Class: "Junior",

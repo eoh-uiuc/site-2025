@@ -190,10 +190,18 @@ export default function HomeVideo() {
           href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
         >
-          School Interest Form
+          Field Trip Interest Form
+          <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
+        </a>
+        <a
+          href="https://forms.gle/2yo5mJYCTqR8jixQA"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+        >
+          MSDC Interest Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
       </div>
+
 
       {/* Inline Keyframes */}
       <style>{`
