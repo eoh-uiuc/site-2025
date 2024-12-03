@@ -181,7 +181,7 @@ export default function SponsorUsPage() {
                                         </span>
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
-                                                cost="$9,000"
+                                                cost="$8,000"
                                                 id="platinum-bundle-form"
                                                 giftAmount1="8,495.00"
                                                 nongiftAmount2="505.00"
