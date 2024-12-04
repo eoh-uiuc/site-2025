@@ -194,7 +194,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "Industrial Engineering",
   },
   {
-    img: "BlankProfile.png",
+    img: "atsi.png",
     Name: "Atsi Gupta",
     Position: "Junior Director of Technology",
     Class: "Junior",
