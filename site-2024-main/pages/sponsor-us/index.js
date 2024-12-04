@@ -192,7 +192,7 @@ export default function SponsorUsPage() {
                                         <div className="flex-grow border-t border-gray-400"></div>
                                         <div className="flex-grow border-t border-gray-400"></div>
                                     </div>
-                                    <img src='/assets/images/sponsorship_comparison.png' className="mx-auto object-contain h-64 my-5" />
+                                    {/* <img src='/assets/images/sponsorship_comparison.png' className="mx-auto object-contain h-64 my-5" /> */}
                                 </Collapsible>
                                 <Collapsible trigger={[<p className="p-4">FOCUS BUNDLE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='focus-bundle-outer' openedClassName='focus-bundle-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
                                     <Collapsible trigger={[<p className="p-4">Outreach Focus Bundle</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
