@@ -65,7 +65,7 @@ export default function HomeVideo() {
       left: "0%",
       zIndex: 1,
       transform: "translate(-10%, -20%)",
-      animation: "fly-across 10s linear forwards", 
+      animation: "fly-across 4s linear forwards", 
     },    
     {
       src: "/assets/logo/windmill.png",
