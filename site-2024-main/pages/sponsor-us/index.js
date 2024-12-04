@@ -183,7 +183,7 @@ export default function SponsorUsPage() {
                                             <SponsorCard
                                                 cost="$8,000"
                                                 id="platinum-bundle-form"
-                                                giftAmount1="8,495.00"
+                                                giftAmount1="7,495.00"
                                                 nongiftAmount2="505.00"
                                             />
                                         </div>
@@ -342,59 +342,37 @@ export default function SponsorUsPage() {
                                             id="interactive-techtalk-bundle-form"
                                             giftAmount1="800.00" /><br />
                                         <SponsorCard
-                                            text={"Access to Exhibitor Resume Book - $500"}
-                                            cost="$500"
+                                            text={"Sponsor the Exhibitor Ceremonies - $3,000"}
+                                            cost="$3,000"
                                             id="interactive-resumebook-form"
-                                            giftAmount1="500.00" /><br />
+                                            giftAmount1="3,000.00" /><br />
                                         <SponsorCard
-                                            text={"EOH Booth with a Product Demo - $500"}
+                                            text={"Student Career Fair Booth - $500"}
                                             cost="$500"
                                             id="interactive-productdemo-form"
                                             giftAmount1="500.00" /><br />
                                         <SponsorCard
-                                            text={"Capstone Project with a Student Exhibitor Group - $500"}
+                                            text={"Exhibitor Resume Book - $500"}
                                             cost="$500"
                                             id="interactive-capstone-form"
                                             giftAmount1="500.00" /><br />
-                                    </ Collapsible>
-                                    <Collapsible trigger={[<p className="p-4">Individual Sponsorships</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
-                                        <br />
                                         <SponsorCard
-                                            text={"Sponsor an Exhibit - $500"}
+                                            text={"Additional Representative - $500"}
                                             cost="$500"
-                                            id="individual-exhibit-form"
+                                            id="interactive-capstone-form"
                                             giftAmount1="500.00" /><br />
                                         <SponsorCard
-                                            text={"Sponsor an Exhibit - $500"}
+                                            text={"Product/Project Demo - $500"}
                                             cost="$500"
-                                            id="individual-exhibit-form"
+                                            id="interactive-capstone-form"
                                             giftAmount1="500.00" /><br />
                                         <SponsorCard
-                                            text={"Sponsor the Startup Showcase - $800"}
+                                            text={"Startup Showcase - $800"}
                                             cost="$800"
-                                            id="individual-showcase-form"
+                                            id="interactive-capstone-form"
                                             giftAmount1="800.00" /><br />
-                                        <SponsorCard
-                                            text={"Sponsor our new Drone Show - $800"}
-                                            cost="$800"
-                                            id="individual-droneshow-form"
-                                            giftAmount1="800.00" /><br />
-                                        <SponsorCard
-                                            text={"Sponsor Exhibitor Breakfast - $1,500"}
-                                            cost="$1,500"
-                                            id="individual-breakfast-form"
-                                            giftAmount1="1,500.00" /><br />
-                                        <SponsorCard
-                                            text={"Sponsor an Award - $1,500"}
-                                            cost="$1,500"
-                                            id="individual-award-form"
-                                            giftAmount1="1,500.00" /><br />
-                                        <SponsorCard
-                                            text={"Sponsor Build-A-Blinkie - $2,500"}
-                                            cost="$2,500"
-                                            id="individual-build-a-blinkie-form"
-                                            giftAmount1="2,500.00" /><br />
                                     </ Collapsible>
+                                    
                                 </Collapsible>
                             </div>
                             <p className="font-montserrat w-5/6 text-center mx-auto mt-5 mb-2 pt-7">
