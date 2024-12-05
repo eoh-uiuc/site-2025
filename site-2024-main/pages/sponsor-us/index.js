@@ -217,7 +217,14 @@ export default function SponsorUsPage() {
                                 <Collapsible trigger={[<p className="p-4">FOCUS BUNDLE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='focus-bundle-outer' openedClassName='focus-bundle-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
                                     <Collapsible trigger={[<p className="p-4">Outreach Focus Bundle</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
                                         <p className="text-lg text-left my-3 mx-10">
-                                        You have the option of being the title sponsor of our Illinois Engineering Challenge or the Discover EOH program for K-12 students which helps bring students to visit EOH, and are able to participate in a tech talk or panel of your choice. There is an additional option of sponsoring the Build-a-Blinkie Program which helps students learn how to solder, where each board given out has the sponsor logo on the back.
+                                        You have the option of being the title sponsor of our 
+                                        Illinois Engineering Challenge or the Discover EOH 
+                                        program for K-12 students which helps bring students 
+                                        to visit EOH, and are able to participate in a tech 
+                                        talk or panel of your choice. There is an additional 
+                                        option of sponsoring the Build-a-Blinkie Program which 
+                                        helps visitors learn how to solder, and each printed 
+                                        circuit board given out has the sponsor logo on the back.
                                         </p>
                                         <div className="mx-auto text-center mb-5">
                                                 <p className="text-lg mb-2"></p>
