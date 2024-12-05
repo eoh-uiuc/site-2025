@@ -499,7 +499,8 @@ export default function SponsorUsPage() {
                                 To view sponsorship options as a PDF, see below.<br /><span className='font-bold'>Thanks for considering sponsoring EOH!</span>
                             </p>
                             <div className="mx-auto text-center mb-5">
-                                <Button type="big" className="px-4 rounded-none drop-shadow-md font-montserrat bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
+                                <Button type="big" className="px-4 rounded-none drop-shadow-md font-montserrat bg-[#c578d6] hover:bg-[#9e4fb8] text-white"
+                                onClick={() => window.open('/assets/sponsors/Sponsorship Packet 2024-2025.pptx.pdf', '_blank')}>
                                     <span className="font-montserrat font-bold text-md">Corporate Sponsorship Packet</span>
                                 </Button>
                             </div>
