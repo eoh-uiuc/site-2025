@@ -81,6 +81,7 @@ export default function SponsorUsPage() {
                                                 Your company name and logo will be advertised on the EOH website, ads and
                                                 materials, and your sponsorship will be announced across our channels
                                             </p>
+                                                                                     
                                         </span>
                                         <span className="sponsor-package-describe py-3">
                                             <span className="text-lg font-bold italic p-10">Distribute Promotional Items</span> <br />
@@ -95,7 +96,14 @@ export default function SponsorUsPage() {
                                                 We will run an ad in the EOH newsletter with your company's message and
                                                 logo, based on your chosen corporate sponsorship tier
                                             </p>
+                                            
                                         </span>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55197/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$3,000"
@@ -134,6 +142,12 @@ export default function SponsorUsPage() {
                                                 professional connections with engineering talent from University of Illinois
                                             </p>
                                         </span>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55199/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$5,000"
@@ -179,6 +193,12 @@ export default function SponsorUsPage() {
                                                 weekend, as a part of your sponsorship benefits
                                             </p>
                                         </span>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55203/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$8,000"
@@ -197,11 +217,14 @@ export default function SponsorUsPage() {
                                 <Collapsible trigger={[<p className="p-4">FOCUS BUNDLE</p>, <div className="mr-4"><BsChevronDown /></div>]} className='focus-bundle-outer' openedClassName='focus-bundle-outer' contentOuterClassName="opened-content" triggerOpenedClassName="trigger-bold" triggerClassName="bg-[#c578d6] hover:bg-[#9e4fb8] text-white">
                                     <Collapsible trigger={[<p className="p-4">Outreach Focus Bundle</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
                                         <p className="text-lg text-left my-3 mx-10">
-                                            You have the option of being the title sponsor of our Illinois Engineering
-                                            Challenge or the Discover EOH program for
-                                            K-12 students, and are able to participate in
-                                            a tech talk or panel of your choice.
+                                        You have the option of being the title sponsor of our Illinois Engineering Challenge or the Discover EOH program for K-12 students which helps bring students to visit EOH, and are able to participate in a tech talk or panel of your choice. There is an additional option of sponsoring the Build-a-Blinkie Program which helps students learn how to solder, where each board given out has the sponsor logo on the back.
                                         </p>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=2500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$2,500"
@@ -218,6 +241,12 @@ export default function SponsorUsPage() {
                                             have the benefit of sponsoring our Student
                                             Exhibit Awards.
                                         </p>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=2500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$2,500"
@@ -246,6 +275,12 @@ export default function SponsorUsPage() {
                                                 <li key="uniqueId3">- Robotics Design Competition</li>
                                             </ul>
                                         </p>
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=2500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                        </div>  
                                         <div className="mx-auto text-center mb-3 mt-5">
                                             <SponsorCard
                                                 cost="$2,500"
@@ -266,6 +301,12 @@ export default function SponsorUsPage() {
                                         <span className="italic">
                                             <ul key="total4">
                                                 <li key="uniqueId4">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"Regular - $500"}
                                                         cost="$500"
@@ -273,6 +314,12 @@ export default function SponsorUsPage() {
                                                         giftAmount1="500.00" />
                                                 </li>
                                                 <li key="uniqueId5">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=1500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"Oversized - $1,500"}
                                                         cost="$1,500"
@@ -286,6 +333,12 @@ export default function SponsorUsPage() {
                                         <span className="italic">
                                             <ul key="total2">
                                                 <li key="uniqueId6">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55293/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"1/4 Page - $250"}
                                                         cost="$250"
@@ -294,6 +347,12 @@ export default function SponsorUsPage() {
                                                         nongiftAmount2="7.50" />
                                                 </li>
                                                 <li key="uniqueId7">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href=" https://www.givecampus.com/campaigns/55295/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"1/2 Page - $500"}
                                                         cost="$500"
@@ -302,6 +361,12 @@ export default function SponsorUsPage() {
                                                         nongiftAmount2="15.00" />
                                                 </li>
                                                 <li key="uniqueId8">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55296/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"Full Page - $750"}
                                                         cost="$750"
@@ -316,6 +381,12 @@ export default function SponsorUsPage() {
                                         <span className="italic">
                                             <ul key="total3">
                                                 <li key="uniqueId9">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55299/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"1/2 Page - $1,000"}
                                                         cost="$1,000"
@@ -324,6 +395,12 @@ export default function SponsorUsPage() {
                                                         nongiftAmount2="40.00" />
                                                 </li>
                                                 <li key="uniqueId10">&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55302/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                                     <SponsorCard
                                                         text={"Full Page - $2,000"}
                                                         cost="$2,000"
@@ -336,41 +413,84 @@ export default function SponsorUsPage() {
                                     </ Collapsible>
                                     <Collapsible trigger={[<p className="p-4">Interactive</p>, <div className="mr-4"><BsChevronDown /></div>]} triggerOpenedClassName="trigger-opened" contentOuterClassName="opened-sub-content-content">
                                         <br />
+                                        <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=800&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Host a Tech Talk or Panel - $800"}
                                             cost="$800"
                                             id="interactive-techtalk-bundle-form"
                                             giftAmount1="800.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=3000&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Sponsor the Exhibitor Ceremonies - $3,000"}
                                             cost="$3,000"
                                             id="interactive-resumebook-form"
                                             giftAmount1="3,000.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55588/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Student Career Fair Booth - $500"}
                                             cost="$500"
                                             id="interactive-productdemo-form"
-                                            giftAmount1="500.00" /><br />
+                                            giftAmount1="450.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=500&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Exhibitor Resume Book - $500"}
                                             cost="$500"
                                             id="interactive-capstone-form"
                                             giftAmount1="500.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55623/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Additional Representative - $500"}
                                             cost="$500"
                                             id="interactive-capstone-form"
-                                            giftAmount1="500.00" /><br />
+                                            giftAmount1="460.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/55625/donations/new">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Product/Project Demo - $500"}
                                             cost="$500"
                                             id="interactive-capstone-form"
-                                            giftAmount1="500.00" /><br />
+                                            giftAmount1="450.00" /><br />
+                                            <div className="mx-auto text-center mb-5">
+                                                <p className="text-lg mb-2"></p>
+                                                <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="https://www.givecampus.com/campaigns/49636/donations/new?value=800&">
+                                                    <span className="font-montserrat font-bold text-2xl">Donate</span>
+                                                </Button>
+                                                </div>  
                                         <SponsorCard
                                             text={"Startup Showcase - $800"}
                                             cost="$800"
                                             id="interactive-capstone-form"
                                             giftAmount1="800.00" /><br />
+                                            
                                     </ Collapsible>
                                     
                                 </Collapsible>

@@ -34,9 +34,7 @@ export default function SponsorCard({
       >
         <div className="mx-auto text-center mb-5">
           <p className="text-lg mb-2">{text}</p>
-          <Button type='big' className="px-5 py-5 rounded-none drop-shadow-sm font-montserrat hover:shadow-lg max-w-md" href="">
-              <span className="font-montserrat font-bold text-2xl">Donate</span>
-          </Button>
+          
           <p className="italic text-xs mt-3">${giftAmount1} may be tax-deductible as allowed by law.</p>
         </div>
       </button>
