@@ -1,30 +1,43 @@
-import { authMiddleware } from "@clerk/nextjs";
+import dns from 'dns/promises';
+import { NextResponse } from 'next/server';
 
-export default authMiddleware({
-  // Define public routes using an array instead of a function
-  publicRoutes: [
-    "/",
-    "/contact-us",
-    "/about",
-    // Add all your public routes here
-  ],
-  
-  // Add beforeAuth to handle Googlebot
-  beforeAuth: (req) => {
-    const userAgent = req.headers.get('user-agent') || '';
-    if (userAgent.includes('google')) {
-      return true;
-    }
-    return false;
-  },
-});
+async function isGooglebot(req) {
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  try {
+    const hostnames = await dns.reverse(ip);
+    return hostnames.some((hostname) => hostname.endsWith('.googlebot.com') || hostname.endsWith('.google.com'));
+  } catch (err) {
+    return false; // If DNS fails, assume it's not a Googlebot
+  }
+}
+
+export default async function middleware(req) {
+  const publicRoutes = ['/', '/contact-us', '/about'];
+  const url = req.nextUrl.pathname;
+
+  if (publicRoutes.includes(url)) {
+    return NextResponse.next(); // Allow public routes without auth
+  }
+
+  if (await isGooglebot(req)) {
+    return NextResponse.next(); // Allow Googlebot to access
+  }
+
+  // Proceed with your auth logic here
+  const authHeader = req.headers.get('Authorization');
+  if (!authHeader) {
+    return NextResponse.redirect('/login'); // Redirect to login if not authenticated
+  }
+
+  return NextResponse.next(); // Allow access if authenticated
+}
 
 export const config = {
   matcher: [
-    "/((?!.*\\.[\\w]+$|_next).*)", // exclude static files
-    "/",
-    "/(api|trpc)(.*)",
-    "/volunteer",
-    "/admin",
+    '/((?!.*\\..*|_next).*)', // Exclude static files and _next folder
+    '/',
+    '/api/trpc/(.*)',
+    '/volunteer',
+    '/admin',
   ],
 };
