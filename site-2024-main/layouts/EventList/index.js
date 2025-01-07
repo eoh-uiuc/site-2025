@@ -58,7 +58,7 @@ export default function EventList() {
     ]
 
     return (
-        <div className="flex flex-wrap justify-center gap-3 bg-waves-pink2 bg-cover bg-center py-10">
+        <div className="flex flex-wrap justify-center gap-3 bg-cover bg-center py-10" style={{ backgroundImage: "url('/assets/background/wavespic.png')" }}>
             {events.map(e => EventCard(e))}
         </div>
     )
