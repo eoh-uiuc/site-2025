@@ -1,16 +1,9 @@
 //robots.txt
 
-# Block all crawlers for /accounts
+# Allow all crawlers to access the site except for specific directories
 User-agent: *
+Disallow: /noindex-directory/  # Prevent crawlers from indexing this directory
+Disallow: /accounts/           # Block access to user accounts area
 
-# Allow all crawlers
-User-agent: *
-Allow: /
-
+# Sitemap for efficient crawling
 Sitemap: https://eohillinois.org/sitemap.xml
-
-#Mysitemapgenerator does not need to visit URL starting with /noindex-directory/
-    #But allows to index pages with a specific extension
-User-agent: Mysitemapgenerator
-Disallow: /noindex-directory/
-Allow: /noindex-directory/*.html
