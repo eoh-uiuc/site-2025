@@ -26,6 +26,8 @@ export default async function middleware(req) {
   // Proceed with your auth logic here
   const authHeader = req.headers.get('Authorization');
   if (!authHeader) {
+    const url = req.nextUrl.clone();
+    url.pathname = '/login';
     return NextResponse.redirect('/login'); // Redirect to login if not authenticated
   }
 
