@@ -12,15 +12,15 @@ export default function volunteer() {
         <div className=" w-7/12">
           <h1>Welcome {user.firstName}</h1>
           <div className="font-montserrat">
-            Please sign up for a shift at EOH 2024! We need all the help we can
+            Please sign up for a shift at EOH 2025! We need all the help we can
             get to make this event a success. We will be in contact with you as
             the event approaches to give you more information about your shift.
             Thank you for your interest in volunteering!
           </div>
           <div className="font-montserrat w-full text-center">
             <a
-              href="https://join.slack.com/t/eoh2024volunteers/shared_invite/zt-2fh5ftkts-WhB8Z3MSwf3yLGbsySgOQQ"
-              className="underline"
+              // href="https://join.slack.com/t/eoh2024volunteers/shared_invite/zt-2fh5ftkts-WhB8Z3MSwf3yLGbsySgOQQ"
+              // className="underline"
             >
               Volunteer Slack
             </a>
