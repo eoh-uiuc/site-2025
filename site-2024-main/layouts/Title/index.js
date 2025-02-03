@@ -32,7 +32,7 @@ export default function HomeVideo() {
     {
       src: "/assets/gifs/breadboard animation.gif",
       size: `${windowWidth / 3}px`,
-      top: "-10%",
+      top: "-25%",
       left: "10%",
       animation: "float 3s ease-in-out infinite",
     },
