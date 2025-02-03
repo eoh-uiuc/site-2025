@@ -149,9 +149,9 @@ const Exhibits = () => {
       <div className="flex w-full justify-center items-center flex-col">
         <p className="font-bold text-xl m-4">Loading...</p>
         <img
-          src="/assets/logo/gear1.png"
+          src="/assets/logo/gear1.gif"
           alt="loading"
-          className="w-10 h-10 md:w-16 md:h-16 animate-spin"
+          className="w-20"
         />
       </div>
     )

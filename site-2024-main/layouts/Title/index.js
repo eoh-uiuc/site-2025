@@ -16,38 +16,45 @@ export default function HomeVideo() {
 
   const elements = [
     {
-      src: "/assets/logo/fan.png",
-      size: `${windowWidth / 6}px`, // Adjust size dynamically
-      top: "80%",
-      left: "50%",
-      animation: "float 5s ease-in-out infinite",
+      src: "/assets/gifs/satellite.gif",
+      size: `${windowWidth / 2}px`, // Adjust size dynamically
+      top: "95%",
+      left: "85%",
+      animation: "float infinite",
     },
     {
-      src: "/assets/logo/beaker.png",
-      size: `${windowWidth / 10}px`,
-      top: "20%",
-      left: "10%",
-      animation: "float 5s ease-in-out infinite",
-    },
-    {
-      src: "/assets/logo/circuit.png",
-      size: `${windowWidth / 12}px`,
+      src: "/assets/gifs/beaker.gif",
+      size: `${windowWidth / 2}px`,
       top: "40%",
-      left: "72%",
-      animation: "float 5s ease-in-out infinite",
+      left: "80%",
+      animation: "float infinite",
     },
     {
-      src: "/assets/logo/compass.png",
-      size: `${windowWidth / 13}px`,
-      top: "28%",
-      left: "90%",
-      animation: "float 5s ease-in-out infinite"
+      src: "/assets/gifs/breadboard animation.gif",
+      size: `${windowWidth / 3}px`,
+      top: "-10%",
+      left: "10%",
+      animation: "float 3s ease-in-out infinite",
+    },
+    {
+      src: "/assets/gifs/compass.gif",
+      size: `${windowWidth / 2}px`,
+      top: "25%",
+      left: "85%",
+      animation: "float infinite"
+    },
+    {
+      src: "/assets/gifs/compass needle.png",
+      size: `${windowWidth / 3}px`,
+      top: "25%",
+      left: "100%",
+      animation: "spin 3s linear infinite"
     },
     {
       src: "/assets/logo/magnifier.png",
       size: `${windowWidth / 8}px`,
-      top: "80%",
-      left: "12%",
+      top: "81%",
+      left: "30%",
       zIndex: 3,
       animation: "float 5s ease-in-out infinite",
     },
@@ -68,10 +75,10 @@ export default function HomeVideo() {
       animation: "fly-across 4s linear forwards", 
     },    
     {
-      src: "/assets/logo/windmill.png",
-      size: `${windowWidth / 5}px`,
-      top: "70%",
-      left: "5%",
+      src: "/assets/gifs/turbine blades.gif",
+      size: `${windowWidth / 1.25}px`,
+      top: "75%",
+      left: "10%",
       zIndex: 3,
     },
     {
@@ -232,6 +239,21 @@ export default function HomeVideo() {
   }
 }
       `}</style>
+      <style>{`
+  .spin-element {
+  animation: spin 3s linear infinite;
+  transform-origin: center center;
+  position: absolute;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}`}</style>
+
     </div>
   );
 }

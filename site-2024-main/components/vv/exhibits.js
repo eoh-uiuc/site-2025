@@ -80,9 +80,9 @@ const Exhibits = () => {
           Loading...
         </p>
         <img
-          src="/assets/logo/gear1.png"
+          src="/assets/logo/gear1.gif"
           alt="loading"
-          className="w-10 h-10 md:w-16 md:h-16 animate-spin"
+          className="w-20"
         />
       </div>);
 
