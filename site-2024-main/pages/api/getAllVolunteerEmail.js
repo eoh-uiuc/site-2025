@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client"
-
+// Need to add privacy to these API routes! - anyone can call them
 const prisma = new PrismaClient()
 
 export default async function handler(req, res) {
