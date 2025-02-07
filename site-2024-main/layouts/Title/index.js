@@ -185,15 +185,17 @@ export default function HomeVideo() {
       </header>
 
       {/* Buttons */}
-      <div className="flex justify-center gap-8">
+      <div className="flex justify-center gap-8 z-10">
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSew_CTrs-Swtdlz9IDwmmpXeAP7VsEUQ2S-KpsSho4Vr1U66A/viewform"
+          target="_blank"
+          href="https://forms.gle/iwQscCT5DvWS5Fiq8"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
         >
-          Exhibits Application
+          Judging Interest Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
         <a
+          target="_blank"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
         >
@@ -201,6 +203,7 @@ export default function HomeVideo() {
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
         <a
+          target="_blank"
           href="https://forms.gle/2yo5mJYCTqR8jixQA"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
         >
