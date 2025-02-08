@@ -63,7 +63,8 @@ const Exhibits = () => {
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data, error, isLoading } = useSWR(
-    `https://n1.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
+    // 'https://n11.eohillinois.org/api/exhibits',
+    `https://n11.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
     ${searchTerm == '' ? '' :
       `&filters[$or][0][Exhibit_Name][$contains]=${searchTerm}&filters[$or][1][VisGuide_Description][$contains]=${searchTerm}&filters[$or][2][Exhibit_Number][$eq]=${searchTerm}&filters[$or][3][Affiliation][$eq]=${searchTerm}&filters[$or][4][Building_A][$contains]=${searchTerm}&filters[$or][5][Tags][$contains]=${searchTerm}`}`,
     fetcher
@@ -86,7 +87,8 @@ const Exhibits = () => {
         />
       </div>);
 
-  const items = data.data.map(e => e.attributes)
+// .map(e => e.attributes)
+  const items = data.data
     .map(exhibit => {
       return {
         id: exhibit['Exhibit_Number'],

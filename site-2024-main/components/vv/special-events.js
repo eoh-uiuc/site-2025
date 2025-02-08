@@ -126,7 +126,7 @@ const Exhibits = () => {
   const fetcher = (url) => fetch(url).then((res) => res.json())
 
   const { data, error, isLoading } = useSWR(
-    `https://n1.eohillinois.org/api/events?populate=occurences&pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
+    `https://n11.eohillinois.org/api/events?populate=occurences&pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
     ${
       searchTerm == ""
         ? ""
@@ -167,11 +167,11 @@ const Exhibits = () => {
   //     });
 
   const items = data.data.map((event, idx) => {
-    const occurences = event.attributes.occurences.data
+    const occurences = event.occurences
       .map((occ) => {
         return {
-          startTime: occ.attributes.startTime,
-          endTime: occ.attributes.endTime,
+          startTime: occ.startTime,
+          endTime: occ.endTime,
           colIndex: idx,
         }
       })
@@ -187,11 +187,11 @@ const Exhibits = () => {
 
     return {
       id: idx,
-      title: event.attributes.title,
-      location: event.attributes.location,
-      picture: event.attributes.picture,
-      shortTitle: event.attributes.shortTitle,
-      description: event.attributes.Description,
+      title: event.title,
+      location: event.location,
+      picture: (event.picture?.url || ""), // event.picture
+      shortTitle: event.shortTitle,
+      description: event.Description,
       slots: occurences,
     }
   })

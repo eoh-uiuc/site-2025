@@ -75,10 +75,10 @@ export default function HomeVideo() {
       animation: "fly-across 4s linear forwards", 
     },    
     {
-      src: "/assets/gifs/turbine blades.gif",
-      size: `${windowWidth / 1.25}px`,
-      top: "75%",
-      left: "10%",
+      src: "/assets/logo/windmill.png",
+      size: `${windowWidth / 7}px`,
+      top: "70%",
+      left: "6%",
       zIndex: 3,
     },
     {
