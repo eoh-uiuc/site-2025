@@ -1,6 +1,6 @@
 export default function Sponsors() {
 
-	const STRIPE_DONATE_LINK = 'https://buy.stripe.com/dR68Ai6IXdRNcDK144'
+	const STRIPE_DONATE_LINK = 'https://buy.stripe.com/dR600h8hs3iy1S8cMM'
 	const UIF_SPONSOR_LINK = '/sponsor-us' // /sponsor-us
 
 	return (
@@ -12,8 +12,7 @@ export default function Sponsors() {
 						<div className="font-montserrat text-lg md:text-2xl text-center bg-theme-teal p-2 rounded-md bg-opacity-80">I'm a<br />
 							<h1 className="text-2xl lg:text-3xl md:pt-2">Student or Visitor</h1>
 						</div>
-						<a className="bg-theme-grey hover:bg-yellow-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center cursor-not-allowed pointer-events-none" href={STRIPE_DONATE_LINK}> 
-							{/* added cursor-not-allowed pointer-events-none to disable button */}
+						<a className="bg-theme-grey hover:bg-yellow-300 p-3 pb-4 rounded-full w-64 font-montserrat text-2xl md:text-3xl mt-2 md:mt-6 text-center" href={STRIPE_DONATE_LINK}> 
 							Donate
 						</a>
 						<p>via Stripe</p>

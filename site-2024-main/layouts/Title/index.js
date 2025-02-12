@@ -17,7 +17,7 @@ export default function HomeVideo() {
   const elements = [
     {
       src: "/assets/gifs/satellite.gif",
-      size: `${windowWidth / 2}px`, // Adjust size dynamically
+      size: `${windowWidth / 1.8}px`,
       top: "95%",
       left: "85%",
       animation: "float infinite",
@@ -32,7 +32,7 @@ export default function HomeVideo() {
     {
       src: "/assets/gifs/breadboard animation.gif",
       size: `${windowWidth / 3}px`,
-      top: "-25%",
+      top: "0%",
       left: "10%",
       animation: "float 3s ease-in-out infinite",
     },
@@ -40,15 +40,15 @@ export default function HomeVideo() {
       src: "/assets/gifs/compass.gif",
       size: `${windowWidth / 2}px`,
       top: "25%",
-      left: "85%",
-      animation: "float infinite"
+      left: "90%",
+      animation: "float infinite",
     },
     {
       src: "/assets/gifs/compass needle.png",
       size: `${windowWidth / 3}px`,
       top: "25%",
       left: "100%",
-      animation: "spin 3s linear infinite"
+      animation: "spin 3s linear infinite",
     },
     {
       src: "/assets/logo/magnifier.png",
@@ -61,7 +61,7 @@ export default function HomeVideo() {
     {
       src: "/assets/logo/moon.png",
       size: `${windowWidth / 20}px`,
-      top: "60%",
+      top: "15%",
       left: "15%",
       animation: "float 5s ease-in-out infinite",
     },
@@ -72,8 +72,8 @@ export default function HomeVideo() {
       left: "0%",
       zIndex: 1,
       transform: "translate(-10%, -20%)",
-      animation: "fly-across 4s linear forwards", 
-    },    
+      animation: "fly-across 4s linear forwards",
+    },
     {
       src: "/assets/logo/windmill.png",
       size: `${windowWidth / 7}px`,
@@ -87,13 +87,13 @@ export default function HomeVideo() {
       top: "75%",
       left: "-10%",
       animation: "float 8s ease-in-out infinite",
-      zIndex: 1
+      zIndex: 1,
     },
   ];
 
   // Filter elements based on screen size (only fan and beaker for small screens)
-  const filteredElements = windowWidth < 768 
-    ? elements.filter((element) => element.src === "/assets/logo/fan.png" || element.src === "/assets/logo/beaker.png")
+  const filteredElements = windowWidth < 768
+    ? elements.filter((element) => element.src === "/assets/logo/newrocket.png" || element.src === "/assets/gifs/compass.gif" || element.src === "/assets/gifs/satellite.gif" || element.src === "/assets/logo/world.png" || element.src === "/assets/gifs/breadboard animation.gif")
     : elements;
 
   return (
@@ -177,7 +177,7 @@ export default function HomeVideo() {
             fontSize: windowWidth < 768 ? "1rem" : "1.25rem",
             color: "#333",
             fontWeight: "600",
-            marginBottom: "1.5rem",
+            marginBottom: "1rem",
           }}
         >
           April 4th & April 5th, 2025
@@ -185,11 +185,12 @@ export default function HomeVideo() {
       </header>
 
       {/* Buttons */}
-      <div className="flex justify-center gap-8 z-10">
+      <div className="flex justify-center gap-8 z-10 flex-wrap">
         <a
           target="_blank"
           href="https://forms.gle/iwQscCT5DvWS5Fiq8"
-          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+          style={{ minWidth: "200px" }}
         >
           Judging Interest Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
@@ -197,7 +198,8 @@ export default function HomeVideo() {
         <a
           target="_blank"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ-A-2frFJyWgo4B22b40tc3WlAIkd2qqn28JJekO8lavZw/viewform"
-          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+          style={{ minWidth: "200px" }}
         >
           Field Trip Interest Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
@@ -205,13 +207,13 @@ export default function HomeVideo() {
         <a
           target="_blank"
           href="https://forms.gle/2yo5mJYCTqR8jixQA"
-          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110"
+          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+          style={{ minWidth: "200px" }}
         >
           MSDC Interest Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
       </div>
-
 
       {/* Inline Keyframes */}
       <style>{`
@@ -224,39 +226,33 @@ export default function HomeVideo() {
           }
         }
 
-       @keyframes fly-across {
-  0% {
-    transform: translate(0%, 0%) rotate(0deg);
-  }
-  25% {
-    transform: translate(25vw, -30vh) rotate(45deg);
-  }
-  50% {
-    transform: translate(50vw, -50vh) rotate(90deg);
-  }
-  75% {
-    transform: translate(75vw, -30vh) rotate(135deg);
-  }
-  100% {
-    transform: translate(80vw, 0vh) rotate(320deg); /* Adjusted to fit within screen */
-  }
-}
-      `}</style>
-      <style>{`
-  .spin-element {
-  animation: spin 3s linear infinite;
-  transform-origin: center center;
-  position: absolute;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}`}</style>
+        @keyframes fly-across {
+          0% {
+            transform: translate(0%, 0%) rotate(0deg);
+          }
+          25% {
+            transform: translate(25vw, -30vh) rotate(45deg);
+          }
+          50% {
+            transform: translate(50vw, -50vh) rotate(90deg);
+          }
+          75% {
+            transform: translate(75vw, -30vh) rotate(135deg);
+          }
+          100% {
+            transform: translate(80vw, 0vh) rotate(320deg); /* Adjusted to fit within screen */
+          }
+        }
 
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 }
