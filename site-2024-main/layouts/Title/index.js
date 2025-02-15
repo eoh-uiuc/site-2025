@@ -32,7 +32,7 @@ export default function HomeVideo() {
     {
       src: "/assets/gifs/breadboard animation.gif",
       size: `${windowWidth / 3}px`,
-      top: "0%",
+      top: "-25%",
       left: "10%",
       animation: "float 3s ease-in-out infinite",
     },
@@ -61,7 +61,7 @@ export default function HomeVideo() {
     {
       src: "/assets/logo/moon.png",
       size: `${windowWidth / 20}px`,
-      top: "15%",
+      top: "50%",
       left: "15%",
       animation: "float 5s ease-in-out infinite",
     },
@@ -93,7 +93,7 @@ export default function HomeVideo() {
 
   // Filter elements based on screen size (only fan and beaker for small screens)
   const filteredElements = windowWidth < 768
-    ? elements.filter((element) => element.src === "/assets/logo/newrocket.png" || element.src === "/assets/gifs/compass.gif" || element.src === "/assets/gifs/satellite.gif" || element.src === "/assets/logo/world.png" || element.src === "/assets/gifs/breadboard animation.gif")
+    ? elements.filter((element) => element.src === "/assets/logo/newrocket.png" || element.src === "/assets/gifs/compass.gif" || element.src === "/assets/gifs/satellite.gif" || element.src === "/assets/logo/world.png")
     : elements;
 
   return (

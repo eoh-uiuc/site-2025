@@ -36,7 +36,7 @@ export default function Home() {
         </Section>
         <Section
           color="bg-cover bg-center"
-          title="Our 2024 Keynote: Yu Pan"
+          title="Keynote from Anna Oldani"
           id="keynote"
         >
           <KeynoteSpeaker />
