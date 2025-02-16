@@ -167,7 +167,7 @@ const Exhibits = () => {
   //     });
 
   const items = data.data.map((event, idx) => {
-    const occurences = event.occurences
+    const occurences = event.occurences 
       .map((occ) => {
         return {
           startTime: occ.startTime,
