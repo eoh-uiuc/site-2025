@@ -21,6 +21,7 @@ export default function HomeVideo() {
       top: "95%",
       left: "85%",
       animation: "float infinite",
+      zIndex: "0"
     },
     {
       src: "/assets/gifs/beaker.gif",
@@ -28,6 +29,7 @@ export default function HomeVideo() {
       top: "40%",
       left: "80%",
       animation: "float infinite",
+      zIndex: "0",
     },
     {
       src: "/assets/gifs/breadboard animation.gif",
@@ -42,6 +44,7 @@ export default function HomeVideo() {
       top: "25%",
       left: "90%",
       animation: "float infinite",
+      zIndex: "0",
     },
     {
       src: "/assets/gifs/compass needle.png",
@@ -73,6 +76,7 @@ export default function HomeVideo() {
       zIndex: 1,
       transform: "translate(-10%, -20%)",
       animation: "fly-across 4s linear forwards",
+      zIndex: "0",
     },
     {
       src: "/assets/logo/windmill.png",
@@ -206,11 +210,11 @@ export default function HomeVideo() {
         </a>
         <a
           target="_blank"
-          href="https://forms.gle/2yo5mJYCTqR8jixQA"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd2fJYy1U5IZj5itydIiZhaLBCScJIMVwY6_qIAD3jvTn3VFA/viewform"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
           style={{ minWidth: "200px" }}
         >
-          MSDC Interest Form
+          MSDC Registration Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
       </div>
