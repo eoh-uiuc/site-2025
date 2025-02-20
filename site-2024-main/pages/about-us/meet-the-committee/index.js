@@ -142,7 +142,7 @@ const COMMITTEE_HEADSHOTS = [
     Name: "Keya Patel",
     Position: "Director of Judging and Awards",
     Class: "Senior",
-    Major: "Chemistry",
+    Major: "Bioengineering",
   },
   {
     img: "katerina.jpg",
