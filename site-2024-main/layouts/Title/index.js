@@ -21,6 +21,7 @@ export default function HomeVideo() {
       top: "95%",
       left: "85%",
       animation: "float infinite",
+      zIndex: "0"
     },
     {
       src: "/assets/gifs/beaker.gif",
@@ -28,11 +29,12 @@ export default function HomeVideo() {
       top: "40%",
       left: "80%",
       animation: "float infinite",
+      zIndex: "0",
     },
     {
       src: "/assets/gifs/breadboard animation.gif",
       size: `${windowWidth / 3}px`,
-      top: "0%",
+      top: "-25%",
       left: "10%",
       animation: "float 3s ease-in-out infinite",
     },
@@ -42,6 +44,7 @@ export default function HomeVideo() {
       top: "25%",
       left: "90%",
       animation: "float infinite",
+      zIndex: "0",
     },
     {
       src: "/assets/gifs/compass needle.png",
@@ -61,7 +64,7 @@ export default function HomeVideo() {
     {
       src: "/assets/logo/moon.png",
       size: `${windowWidth / 20}px`,
-      top: "15%",
+      top: "50%",
       left: "15%",
       animation: "float 5s ease-in-out infinite",
     },
@@ -73,6 +76,7 @@ export default function HomeVideo() {
       zIndex: 1,
       transform: "translate(-10%, -20%)",
       animation: "fly-across 4s linear forwards",
+      zIndex: "0",
     },
     {
       src: "/assets/logo/windmill.png",
@@ -93,7 +97,7 @@ export default function HomeVideo() {
 
   // Filter elements based on screen size (only fan and beaker for small screens)
   const filteredElements = windowWidth < 768
-    ? elements.filter((element) => element.src === "/assets/logo/newrocket.png" || element.src === "/assets/gifs/compass.gif" || element.src === "/assets/gifs/satellite.gif" || element.src === "/assets/logo/world.png" || element.src === "/assets/gifs/breadboard animation.gif")
+    ? elements.filter((element) => element.src === "/assets/logo/newrocket.png" || element.src === "/assets/gifs/compass.gif" || element.src === "/assets/gifs/satellite.gif" || element.src === "/assets/logo/world.png")
     : elements;
 
   return (
@@ -206,11 +210,11 @@ export default function HomeVideo() {
         </a>
         <a
           target="_blank"
-          href="https://forms.gle/2yo5mJYCTqR8jixQA"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd2fJYy1U5IZj5itydIiZhaLBCScJIMVwY6_qIAD3jvTn3VFA/viewform"
           className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
           style={{ minWidth: "200px" }}
         >
-          MSDC Interest Form
+          MSDC Registration Form
           <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
         </a>
       </div>

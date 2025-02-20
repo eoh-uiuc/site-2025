@@ -77,7 +77,7 @@ module.exports = {
         'waves-bottom': "url('/assets/background/waves-bottom.svg')",
         'waves-bottom2': "url('/assets/background/waves-bottom2.svg')",
         'waves-green1': "url('/assets/background/waves-green1.svg')",
-        'waves-green2': "url('/assets/background/waves-green2.svg')",
+        'waves-green2': "url('/assets/background/website moon.png')",
         'blobs-blue1': "url('/assets/background/blobs-blue1.svg')",
         'waves-t-pink1': "url('/assets/background/waves-top-pink1.svg')",
       },
