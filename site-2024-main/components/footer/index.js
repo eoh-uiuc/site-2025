@@ -15,7 +15,7 @@ const footerSections = [
 	// 		{
 	// 			text: "Schedule",
 	// 			href: "/#schedule"
-	// 		},
+	// 		}, 
 	// 	]
 	// },
 	{
