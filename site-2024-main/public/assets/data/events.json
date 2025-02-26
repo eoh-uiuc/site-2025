@@ -1,63 +1,27 @@
 {
   "events": [
     {
-      "name": "Mini Research Fair",
-      "times": ["Friday, April 5th, 3-4:30 pm"],
-      "location": "CIF 2035",
-      "description": "Some professors will have posters with their research, and undergraduates will be able to talk to them about the research they are doing. They also might have monitors for their research."
+      "name": "Grainger Engineering Alumni Campus Tour",
+      "times": ["Friday, 2:00pm - 3:00pm (Immediately following the Alumni Panel)"],
+      "location": "CIF Monumental Steps",
+      "description": "Welcome back to Illinois! Join the ESTAR Engineering Tour Guides as they show you around new (and old!) campus spaces alike and talk about all that's new in Grainger Engineering."
     },
     {
-      "name": "Professor Panel",
-      "times": ["Friday, April 5th, 12-2 pm"],
-      "location": "CIF 2018",
-      "description": "Professors will talk about the research they do and how undergraduates can get involved."
+      "name": "Grainger Engineering General Campus Tours",
+      "times": ["Friday & Saturday, 10:00am - 11:00am, 12:00pm - 1:00pm, and 1:00pm - 2:00pm"],
+      "location": "Bardeen Quad between CIF and Grainger Library",
+      "description": "Are you interested in seeing some of Grainger Engineering's state-of-the-art lab spaces? Do you want to talk to a current engineering student to see what life is really like in Grainger? Join the ESTAR Engineering Tour Guides as they show you all Grainger Engineering has to offer and more!"
     },
     {
       "name": "I'm Admitted! Grainger Engineering Welcome",
       "times": [
-        "Friday: 10:00am – 11:00am and 2:00 – 3:00pm: Student Panel in CIF Room 3018",
-        "Friday: 11:00am – 2:00pm: College Resource Fair on CIF's Monumental Steps",
-        "Saturday: 11:00am – 12:00pm: Student Panel in CIF Room 3018",
-        "Saturday: 12:00pm – 2:00pm: College Resource Fair on CIF's Monumental Steps"
+        "Student Panel in Room 3018, Friday: 10:00am – 11:00am & 2:00 – 3:00pm",
+        "College Resource Fair on Monumental Steps, Friday: 11:00am – 2:00pm",
+        "Student Panel in Room 3018, Saturday: 11:00am – 12:00pm",
+        "College Resource Fair on Monumental Steps, Saturday: 12:00pm – 2:00pm"
       ],
       "location": "CIF 3018 and CIF Monumental Steps",
       "description": "Congratulations admitted new first-year and transfer engineering students! Start your Engineering Open House visit at the Campus Instructional Facility (CIF) monumental steps to receive a limited-edition gift while supplies last. Then join us for a Student Panel to meet a Dean and connect with current students. Stop by the College Resource Fair to learn about future opportunities and take a fun, commemorative photo! "
-    },
-    {
-      "name": "Prospective/Admitted Students Panel",
-      "times": ["Friday, April 5th, 2-3 pm"],
-      "location": "CIF 2035",
-      "description": "Want to get a feel for life on campus as a Grainger engineering student? Come listen to students talk about their first hand experience. They will be discussing everything from favorite classes to their favorite way to destress on campus!"
-    },
-    {
-      "name": "What I Wish I Knew When I Was in High School Panel",
-      "times": ["Friday, April 5th, 1-2 pm"],
-      "location": "CIF 2035",
-      "description": "Listen in on advice from current college students on what activities helped them discover their passion and any tips they have for prospective students!"
-    },
-    {
-      "name": "Women in Engineering Panel",
-      "times": ["Saturday, April 6th, 1-2 pm"],
-      "location": "CIF 2035",
-      "description": "Check out some of our women engineering students and professors talk about their experiences in their respective fields!"
-    },
-    {
-      "name": "Fusion 360 Workshop",
-      "times": [
-        "Friday, April 5th, 11 am-12 pm",
-        "Saturday, April 6th, 11 am-12 pm"
-      ],
-      "location": "E-Hall Computer Labs",
-      "description": "Learn design skills from UIUC’s engineering students themselves! Join us for a workshop in Fusion 360 at the Engineering Hall computer lab."
-    },
-    {
-      "name": "Python Workshop",
-      "times": [
-        "Friday, April 5th, 12 - 1 pm",
-        "Saturday, April 6th, 12 - 1 pm"
-      ],
-      "location": "E-Hall Computer Labs",
-      "description": "Learn design skills from UIUC’s engineering students themselves! Join us for a workshop in Python at the Engineering Hall computer lab."
     }
   ]
 }
