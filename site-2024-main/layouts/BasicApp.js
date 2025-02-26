@@ -37,6 +37,10 @@ const HEADER_ITEMS = [
     href: "/#sponsors"
   },
   {
+    text: "Field Trips",
+    href: "/field-trips"
+  },
+  {
     text: "Visitor Guide",
     href: "/guide.pdf",
     target: "_blank",

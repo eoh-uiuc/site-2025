@@ -1,6 +1,6 @@
 export default function Sponsors() {
 
-	const STRIPE_DONATE_LINK = 'https://buy.stripe.com/dR600h8hs3iy1S8cMM'
+	const STRIPE_DONATE_LINK = 'https://buy.stripe.com/7sIg2U042455aT6000'
 	const UIF_SPONSOR_LINK = '/sponsor-us' // /sponsor-us
 
 	return (

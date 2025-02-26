@@ -37,9 +37,9 @@ export default function EventList() {
             "bg": "bg-robobrawl"
         },
         {
-            "title": "Keynote by Yu Pan",
+            "title": "Keynote by Anna Oldani",
             "subtitle": "",
-            "blurb": "As a UIUC alumni who started out as a computer science undergraduate and grew into an incredible engineer, Pan has a story worth hearing.",
+            "blurb": "At the forefront of sustainable aviation research and policy, Oldani has a story worth hearing.",
             "link": '#keynote',
             "bg": "bg-keynote"
         },
