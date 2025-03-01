@@ -5,26 +5,14 @@ export default function Directors() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 mx-14 md:mx-auto md:w-3/4 text-sm text-justify">
             <div className=''>
                 <p className="mt-4">
-                    Welcome to the 102nd Engineering Open House (EOH) at the University of Illinois at Urbana, Champaign.
-                    We are very excited to welcome our field trips, community members, students, and faculty coming from various places.
-                    EOH is the world’s largest student-run STEM fair, where students and faculty members from UIUC present the amazing work they have been doing.
-                    This year we will be expanding our projects by having even more special events, and events that have never been seen at EOH or even UIUC before.
+                Welcome to the 103rd Engineering Open House (EOH) at the University of Illinois Urbana-Champaign! We are so excited to welcome university students, faculty, community members, and field trips to campus. EOH is the nation’s largest student-run STEM (Science, Technology, Engineering, and Math) fair, where participants have the opportunity to showcase independent engineering projects and innovations unseen by the scientific community. 
                 </p>
                 <p className="mt-2">
-                    We hope our visitors are able to explore the STEM (Science, Technology, Engineering, and Math) fields, and
-                    learn more about the amazing work being done at the Grainger College of Engineering. This year we welcome 200+ exhibits
-                    and 10+ special events, ranging from rocket launches to car races to environmental awareness.
-                    Every exhibit at EOH showcases the immense effort and impact that is happening in all the different STEM fields.
-                    Our exhibits highlight the prestige of the Grainger College of Engineering and our students.
-                    We hope while you are exploring EOH you <i>Aspire to Inspire</i>.
+                The theme of this year’s event is The Age of Innovation. It is our hope that EOH visitors will foster new curiosity in STEM and learn more about how students at the Grainger College of Engineering are at the forefront of innovation and scientific excellence.
                 </p>
                 <p className="mt-5">
-                    We would like to thank all of our student and faculty-led exhibits, volunteers, corporate sponsors, judges, alumni,
-                    faculty, and Grainger administration. EOH wouldn’t be what it is without your help, imagination and resilience and
-                    dedication. Furthermore, our 30 Directors on our Central Committee are instrumental to EOH. With EOH being a fully
-                    student-run event, we depend heavily on our Directors to execute and plan each event while being full time students.
-                    We are forever grateful for the time and effort they have put into the event. We thank you all for attending EOH and
-                    hope you will be able to gain insight into what engineering is, and <i>Aspire to Inspire</i> you to pursue it in the future.
+                EOH 2025 features over 200 exhibits, including 10 student startups, and 14 special events such as rocket launches, student-engineered cars, and escape rooms. Each exhibit at EOH has been many months in the making, and the majority of projects are entirely student-led. EOH features work from every engineering discipline, celebrating not only current technologies but ushering in a new Age of Innovation.
+
                 </p>
                 <p className="mt-2">
                     Rohini Ramesh & Paymon Sadat <br />
