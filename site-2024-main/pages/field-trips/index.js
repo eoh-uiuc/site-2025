@@ -66,7 +66,7 @@ export default function FieldTripsPage() {
 
         <h3 className="text-lg font-semibold mb-2">For Field Trip Buses:</h3>
         <p className="font-montserrat text-lg">
-          Buses should arrive via <b>Matthews Street</b> and drop off students
+          Buses should arrive via <b>Mathews Street</b> and drop off students
           there, following directions from EOH volunteers.
         </p>
         <p className="font-montserrat text-lg mt-2">
