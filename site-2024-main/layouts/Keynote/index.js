@@ -18,7 +18,7 @@ export const KeynoteSpeaker = () => {
                 </div>
                 <p>
                     <br />
-                    Anna Oldani is at the forefront of sustainable aviation research and policy, including fuel development and deployment and sustainable aviation technologies. 
+                    Dr. Anna Oldani is an Aviation Energy Program Manager at the U.S. Federal Aviation Administration, Office of Environment and Energy, where she leads numerous Sustainable Aviation programs. Her work focuses on Sustainable Aviation Fuel development and deployment. Come to her keynote speech to learn more about her journey through academia here at the University of Illinois and her career path! 
                 </p>
             </div>
             <img src="assets/images/keynote-headshot.png" alt="picture of Anna Oldani" className="w-80 h-80 object-cover rounded-full" />
