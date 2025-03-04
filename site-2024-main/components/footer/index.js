@@ -87,7 +87,7 @@ const footerSections = [
 			{
 				text: "X (formerly Twitter)",
 				href: "https://twitter.com/IllinoisEOH"
-			}
+			} 
 		]
 	},
 ]
