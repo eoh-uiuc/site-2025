@@ -102,6 +102,13 @@ export default function FieldTripsPage() {
 			alt="Parking at E14 illustration"
 		/>
 		</div>
+    <div className="flex justify-center gap-6 mt-6">
+    <img
+			className="w-1/2 md:w-1/3 rounded-md shadow-md"
+			src="assets/images/shuttle.png"
+			alt="Shuttle Information"
+		/>
+    </div>
 
 
       {/* FAQs Section */}
