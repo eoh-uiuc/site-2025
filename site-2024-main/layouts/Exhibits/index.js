@@ -184,13 +184,30 @@ export default class Exhibits extends Component {
 				)
 			: null;
 
+		// const fuse = filterFiltered
+		// 	? new Fuse(filterFiltered, {
+		// 			keys: [ 'event', 'location', 'departmentAffiliation' ],
+		// 			threshold: 0.3,
+		// 			ignoreLocation: true
+					
+		// 		})
+		// 	: null;
+
 		const fuse = filterFiltered
-			? new Fuse(filterFiltered, {
-					keys: [ 'event', 'location', 'departmentAffiliation' ],
+			? new Fuse(
+				filterFiltered.map((item) => ({
+					...item,
+					event: item.event?.toLowerCase(),
+					location: item.location?.toLowerCase(),
+					departmentAffiliation: item.departmentAffiliation?.toLowerCase(),
+				})),
+				{
+					keys: ['event', 'location', 'departmentAffiliation'],
 					threshold: 0.3,
-					ignoreLocation: true
-				})
-			: null;
+					ignoreLocation: true,
+				}
+			)
+			: null;		
 
 		const searchResult = fuse ? fuse.search(query) : null;
 		const filteredUnordered = query && searchResult ? searchResult.map((result) => result.item) : filterFiltered;
