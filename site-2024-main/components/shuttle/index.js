@@ -13,11 +13,38 @@ export const ShuttleInformation = () => {
                 <div className="mb-5">
                     <div className="h-2"></div>
                     <Info>
-                        Shuttle Info coming soon. Check back later!
+                        EOH Shuttles are Peoria Charter buses, NOT the MTD public transit buses
                     </Info>
-                    
+                    <div className="h-2"></div>
+                    The shuttle will run from <b>8:00 AM to 5:30 PM</b> Friday and Saturday. Shuttle stops will
+                    be:<br />
+                    <ul className="ml-2">
+
+                        <li>
+                            Lot E-14
+                        </li>
+                        <li>
+                            S 6th St (close to South Quad)
+                        </li>
+                        <li>
+                            Everitt Laboratory
+                        </li>
+                        <li>
+                            Campus Instructional Facility (CIF)
+                        </li>
+                        <li>
+                            Electrical and Computer Engineering (ECEB)
+                        </li>
+                        <li>
+                            Lot B22
+                        </li>
+                    </ul>
+                    and then will return to E-14 and repeat.
                 </div>
-                
+                <img
+                    alt="Map of EOH Shuttles"
+                    src="assets/images/shuttle.png"
+                />
             </Modal>
             <button onClick={() => setModalOpen(true)}
                 className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
