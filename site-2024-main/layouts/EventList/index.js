@@ -18,41 +18,41 @@ export default function EventList() {
     const events = [
         {
             "title": "Middle School Design Competition",
-            "subtitle": "",
+            "subtitle": "April 4th at 11:30 AM",
             "blurb": "Middle school students in teams of 3 or 4 compete around a central theme",
-            
+            "link": '/msdc',
             "bg": "bg-msdc"
         },
         {
             "title": "High School Design Competition",
-            "subtitle": "",
+            "subtitle": "April 4th at 11:00 AM",
             "blurb": "High school students in teams of 3-5 members compete around a central theme",
-            
+            "link": '/hsdc',
             "bg": "bg-hsdc"
         },
         {
             "title": "Robobrawl",
-            "subtitle": "",
-            "blurb": "An exciting combat robotics showcase!",
+            "subtitle": "April 4th and 5th, between Lot B1 and Transportation Building",
+            "blurb": "Excited for Robobrawl 2025? Join us on for an exciting combat robotics showcase!",
             "bg": "bg-robobrawl"
         },
         {
             "title": "Keynote by Anna Oldani",
-            "subtitle": "",
+            "subtitle": "April 5th at 3 PM, CIF",
             "blurb": "At the forefront of sustainable aviation research and policy, Oldani has a story worth hearing.",
             "link": '#keynote',
             "bg": "bg-keynote"
         },
         {
             "title": "Startup Showcase",
-            "subtitle": "",
+            "subtitle": "April 5th at 11 AM, CIF",
             "blurb": "The EOH Startup Showcase is dedicated to celebrating student entrepreneurs! Come visit startup booths and experience demos, giveaways, and much more!",
             "bg": "bg-startup"
         },
         {
             "title": "Tesla Coil Concert",
             "subtitle": "Sponsored by Chevron",
-            "blurb": "Just as dark falls, visit the Bardeen Quad to see an electrifying display of light and sound.",
+            "blurb": "Just as dark falls, visit the Bardeen Quad to see an electrifying display of light and sound. Starts Friday at 8:30 PM",
             "bg": "bg-tesla"
         },
     ]

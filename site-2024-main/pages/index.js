@@ -43,12 +43,11 @@ export default function Home() {
         </Section>
 
         <Section
-          title="Featured Events of 2024"
+          title="Featured Events"
           color="bg-white"
           id="featured-events"
           wide
         >
-          <p className="text-center">2025 events coming soon!</p>
           <EventList />
         </Section>
         <Section title="Schedule" color="bg-white" id="schedule" wide>
