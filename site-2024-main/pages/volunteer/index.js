@@ -1,39 +1,160 @@
-import React, { useEffect } from "react"
-import { useUser } from "@clerk/nextjs"
-import SlotPicker from "./slotPicker"
-import { SignIn } from "@clerk/nextjs"
-export default function volunteer() {
-  const { isLoaded, isSignedIn, user } = useUser()
+import React, { useState, useEffect } from "react";
+import { auth, provider, firestore, signInWithPopup, signOut, collection, getDocs, doc, updateDoc, arrayUnion } from "/utilities/firebase";
+
+export default function Volunteer() {
+  const [user, setUser] = useState(null);
+  const [volunteerEvents, setVolunteerEvents] = useState([]);
+
+  useEffect(() => {
+    // Check if user is signed in
+    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+      setUser(firebaseUser);
+    });
+
+    // Fetch volunteer events from Firestore
+    const fetchVolunteerEvents = async () => {
+      const eventsRef = collection(firestore, "volunteerEvents");
+      const snapshot = await getDocs(eventsRef);
+      const events = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setVolunteerEvents(events);
+    };
+
+    fetchVolunteerEvents();
+    return () => unsubscribe();
+  }, []);
+
+  // Sign in with Google
+  const handleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
+  // Sign out
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+  // Check if user is already signed up for an event
+  const isUserSignedUp = (event) => {
+    return event.volunteers?.some((volunteer) => volunteer.uid === user?.uid);
+  };
+
+  // Handle signing up or unsigning up
+  const handleSignUpOrUnsignUp = async (event) => {
+    if (!user) {
+      alert("Please sign in to volunteer.");
+      return;
+    }
+  
+    const eventId = event.id;
+    const eventRef = doc(firestore, "volunteerEvents", eventId);
+  
+    try {
+      let updatedVolunteers = [...(event.volunteers || [])];
+  
+      // Check if user is already signed up
+      if (isUserSignedUp(event)) {
+        // Remove user from volunteers
+        updatedVolunteers = updatedVolunteers.filter((volunteer) => volunteer.uid !== user.uid);
+      } else {
+        // Check if maximum capacity is reached
+        if (event.maxCapacity && event.volunteers.length >= event.maxCapacity) {
+          alert("Sorry, this event is already full.");
+          return;
+        }
+  
+        // Add user to volunteers
+        updatedVolunteers.push({
+          uid: user.uid,
+          name: user.displayName || "",
+          email: user.email || "",
+        });
+      }
+  
+      // Update Firestore
+      await updateDoc(eventRef, { volunteers: updatedVolunteers });
+  
+      // Update state immediately
+      setVolunteerEvents((prevEvents) =>
+        prevEvents.map((e) => (e.id === eventId ? { ...e, volunteers: updatedVolunteers } : e))
+      );
+    } catch (error) {
+      console.error("Error signing up/unsigning up for event:", error);
+      alert("Failed to perform the action. Please try again later.");
+    }
+  };
+  
 
   return (
     <div className="w-screen mt-32 mb-16 flex justify-center items-center flex-col overflow-y-scroll">
-      <h1 className="font-bold text-3xl">Volunteer</h1> <br />
-      {isLoaded && isSignedIn && (
-        <div className=" w-7/12">
-          <h1>Welcome {user.firstName}</h1>
+      <h1 className="font-bold text-3xl">Volunteer Sign Up</h1>
+      <br />
+      {user ? (
+        <div className="w-7/12">
+          <h1 className="flex items-center gap-1">
+          Welcome {user.displayName || user.email} 
+          <button 
+            onClick={handleSignOut} 
+            className="underline text-600 hover:text-blue-800"
+          >
+            (Sign Out)
+          </button>
+        </h1>
           <div className="font-montserrat">
-            Please sign up for a shift at EOH 2025! We need all the help we can
-            get to make this event a success. We will be in contact with you as
-            the event approaches to give you more information about your shift.
-            Thank you for your interest in volunteering!
+          Please sign up for a shift at EOH 2025! We need all the help we can get to make this event a success. We will be in contact with you as the event approaches to give you more information about your shift. Thank you for your interest in volunteering!
           </div>
-          <div className="font-montserrat w-full text-center">
+
+          {/* Display Events in Two Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {volunteerEvents.map((event) => (
+              <div key={event.id} className="p-4 border rounded shadow">
+                <h2 className="font-bold text-lg">{event.name}</h2>
+                <p>Description: {event.description}</p>
+                <p>Location: {event.location}</p>
+                <p>Time: {event.time}</p>
+                <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
+                <button
+                  onClick={() => handleSignUpOrUnsignUp(event)}
+                  className={`mt-2 px-4 py-2 ${isUserSignedUp(event) ? 'bg-[#a2d3c2] hover:bg-[#8fb8a8]' : 'bg-[#c578d6] hover:bg-[#a864b3]'} text-white rounded`}
+                >
+                  {isUserSignedUp(event) ? 'Unsign Up' : 'Sign Up'}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Slack Invite Section */}
+          <div className="mt-8 p-4 border rounded shadow text-center">
+            <h2 className="font-bold text-lg">Join Our Volunteering Slack Channel</h2>
+            <p>Stay updated and connect with other volunteers on Slack.</p>
             <a
-              // href="https://join.slack.com/t/eoh2024volunteers/shared_invite/zt-2fh5ftkts-WhB8Z3MSwf3yLGbsySgOQQ"
-              // className="underline"
+              href="https://join.slack.com/t/eohvolunteeri-vec8800/shared_invite/zt-301htu91v-1aXOcbbJMOKwAtdu_KehxA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
             >
-              Volunteer Slack
+              Join Slack
             </a>
           </div>
-          <SlotPicker />
         </div>
-      )}
-      {isLoaded && !isSignedIn && (
-        <div className="relative ">
+      ) : (
+        <div className="relative">
           <p className="text-center">Please sign in to volunteer</p>
-          <SignIn />
+          <button onClick={handleSignIn} className="mt-4 px-4 py-2 bg-green-500 text-white rounded">
+            Sign In with Google
+          </button>
         </div>
       )}
     </div>
-  )
+  );
 }
