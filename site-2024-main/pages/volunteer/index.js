@@ -119,8 +119,6 @@ export default function Volunteer() {
             {volunteerEvents.map((event) => (
               <div key={event.id} className="p-4 border rounded shadow">
                 <h2 className="font-bold text-lg">{event.name}</h2>
-                <p>Description: {event.description}</p>
-                <p>Location: {event.location}</p>
                 <p>Time: {event.time}</p>
                 <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
                 <button
@@ -133,19 +131,36 @@ export default function Volunteer() {
             ))}
           </div>
 
-          {/* Slack Invite Section */}
-          <div className="mt-8 p-4 border rounded shadow text-center">
-            <h2 className="font-bold text-lg">Join Our Volunteering Slack Channel</h2>
-            <p>Stay updated and connect with other volunteers on Slack.</p>
-            <a
-              href="https://join.slack.com/t/eohvolunteeri-vec8800/shared_invite/zt-301htu91v-1aXOcbbJMOKwAtdu_KehxA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
-            >
-              Join Slack
-            </a>
-          </div>
+          <div className="flex flex-wrap gap-8">
+  {/* Volunteering Guide */}
+  <div className="flex-1 mt-8 p-4 border rounded shadow text-center">
+    <h2 className="font-bold text-lg">Volunteering Guide</h2>
+    <p>Check out the volunteer guide for Frequently Asked Questions!</p>
+    <a
+      href="https://docs.google.com/document/d/1bAC8b2-VK7Y-jxBrhISY9rC_hndycAWxqviNPZNY3ik/edit?usp=sharing"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
+    >
+      Guide
+    </a>
+  </div>
+
+  {/* Slack Invite Section */}
+  <div className="flex-1 mt-8 p-4 border rounded shadow text-center">
+    <h2 className="font-bold text-lg">Join Our Volunteering Slack Channel</h2>
+    <p>Stay updated and connect with other volunteers on Slack.</p>
+    <a
+      href="https://join.slack.com/t/eohvolunteeri-vec8800/shared_invite/zt-301htu91v-1aXOcbbJMOKwAtdu_KehxA"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
+    >
+      Join Slack
+    </a>
+  </div>
+</div>
+
         </div>
       ) : (
         <div className="relative">
