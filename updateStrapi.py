@@ -98,4 +98,4 @@ for index, row in df.iterrows():
     else:
         print(f"Failed to add: {row['Exhibit ID #']}")
         print("Status Code:", response.status_code)
-        print("Response:", response.text)
+        print("Response:", response.text)   
