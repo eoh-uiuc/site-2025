@@ -1,30 +1,32 @@
-import Content from "@/content"
-import Info from "../../components/content/info.js"
+import Content from "@/content";
+import Info from "../../components/content/info.js";
+import Button from "@/button";
 
 export default function MSDC() {
   return (
     <Content title="Middle School Design Competition">
       <div className="lg:col-span-3 mb-10">
         <div className="font-montserrat col-span-5 mb-2">
-          This year’s middle school design competition (MSDC) will be held on April 5th from 12 PM to 2 PM in Loomis Laboratory.
+          Our Middle School Design Competition (MSDC) is an engineering-focused competition on Friday, April 4. Students work in teams of 3-5 to create a design and presentation that will be evaluated at the end of the competition. It’s a great opportunity for students to gain hands-on engineering design and teamwork experience!
           <br />
           <br />
           <Info>
-            We have decided not to release the themes this year to ensure a fair
-            competition.
+            We have decided not to release the themes this year to ensure a fair competition.
           </Info>
           <br />
-          Students will be in teams of 3 or 4, and will be given all the materials required.
-          {/* <br /> The link to the registration form can be found below. */}
-          {/* <br />More details coming out soon! */}
-
+          <div className="mt-6 flex justify-center">
+            <Button
+              type="big"
+              className="px-6 py-3 rounded-md drop-shadow-md text-lg font-semibold"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd2fJYy1U5IZj5itydIiZhaLBCScJIMVwY6_qIAD3jvTn3VFA/viewform?usp=dialog"
+              target="_blank"
+            >
+              MSDC Registration
+            </Button>
+          </div>
         </div>
-        <br />
-        <br />
-        {/* <a className="bg-yellow-200 hover:bg-yellow-300 px-6 pt-3 pb-4 rounded-full font-montserrat text-2xl mt-3 md:mt-8 text-center" href="https://forms.gle/s9mSaLqCu4ioFx6S6" target="_blank"> */}
-        {/* </a> */}
         <div className="h-7"></div>
       </div>
     </Content>
-  )
+  );
 }

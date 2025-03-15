@@ -37,6 +37,7 @@ export default function Visitors() {
       <div className="flex flex-col">
           <h3 className="text-2xl font-heading mb-4">Quick Links</h3>
           <a
+            href="/guide.pdf"
             className="flex items-center justify-center gap-2 py-3 px-7 text-center text-white rounded-full bg-black text-xl font-semibold
                         w-full sm:w-96 mx-auto bg-gradient-to-tr from-[#ff8400] via-[#ff6700] to-[#ff8400] shadow-lg hover:shadow-xl transition-shadow duration-300"
           >

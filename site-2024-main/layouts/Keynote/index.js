@@ -28,9 +28,15 @@ export const KeynoteSpeaker = () => {
                 </div>
                 <p>
                     <br />
-                    Dr. Anna Oldani is an Aviation Energy Program Manager at the U.S. Federal Aviation Administration, Office of Environment and Energy, where she leads numerous Sustainable Aviation programs. Her work focuses on <span className="bg-white/50 px-2 rounded">Sustainable Aviation Fuel development and deployment.</span> 
+                    Dr. Anna Oldani is passionate about creating opportunities for students to develop, technology to advance, and communities to grow. 
                     <br />
-                    <span className="bg-white/80 px-2 rounded">Come to her keynote speech to learn more about her journey through academia here at the University of Illinois and her career path!</span>
+                    <span className="bg-white/70 px-2 rounded">
+                        Come to her keynote speech to learn more about her journey through academia here at the University of Illinois 
+                    </span>
+                    <br />
+                    <span className="bg-white/70 px-2 rounded">
+                        and her career path!
+                    </span>
                 </p>
             </div>
             <img 

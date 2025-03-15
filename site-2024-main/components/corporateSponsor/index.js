@@ -8,7 +8,7 @@ export default function CorporateSponsor() {
     "/assets/sponsors/Hendrik.png",
   ]
   const logos_small = [
-    "/assets/sponsors/Burns.png",
+    "/assets/sponsors/MTD.png",
     "/assets/sponsors/Allete.png",
     "/assets/sponsors/Beckman.png",
   ]
