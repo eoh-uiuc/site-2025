@@ -102,7 +102,7 @@ export default function Volunteer() {
       {user ? (
         <div className="w-7/12">
           <h1 className="flex items-center gap-1">
-          Welcome {user.displayName || user.email} 
+          Welcome {user.displayName ? user.displayName.split(' ')[0] : user.email.split('@')[0]} 
           <button 
             onClick={handleSignOut} 
             className="underline text-600 hover:text-blue-800"
