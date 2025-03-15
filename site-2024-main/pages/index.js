@@ -27,15 +27,11 @@ export default function Home() {
 					<AttendEOH />
 				</Section> */}
         <div className="mt-24 sm:mt-16 md:mt-0"></div>
-        
-        {/* <Section color="bg-white" title="Get Involved" id="interest">
-          <Interest />
-        </Section> */}
         <Section color="bg-white" title="Visitors Information" id="visitors">
           <Visitors />
         </Section>
         <Section
-          color="bg-cover bg-center"
+          color="bg-cover bg-center "
           title="Keynote from Anna Oldani"
           id="keynote"
         >
