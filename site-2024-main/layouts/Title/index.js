@@ -190,24 +190,24 @@ export default function HomeVideo() {
 
       {/* Buttons */}
       <div className="flex justify-center gap-8 z-10 flex-wrap">
-        <a
-          target="_blank"
-          href="https://forms.gle/iwQscCT5DvWS5Fiq8"
-          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
-          style={{ minWidth: "200px" }}
-        >
-          Judging Interest Form
-          <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
-        </a>
+      <a
+        target="_blank"
+        href="/vv"
+        className="flex justify-between items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+        style={{ minWidth: "200px" }}
+      >
+        <span>Exhibits</span>
+        <Icon icon="icon-park-outline:right" className="ml-auto text-xl" />
+      </a>
         
         <a
           target="_blank"
-          href="/vv"
-          className="flex items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+          href="/vv?t=map"
+          className="flex justify-between items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
           style={{ minWidth: "200px" }}
         >
-          Exhibits and Campus Map
-          <Icon icon="icon-park-outline:right" className="ml-2 text-xl" />
+          Campus Map
+          <Icon icon="icon-park-outline:right" className="ml-auto text-xl" />
         </a>
       </div>
 
