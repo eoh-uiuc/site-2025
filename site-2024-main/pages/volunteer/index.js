@@ -114,23 +114,6 @@ export default function Volunteer() {
           Please sign up for a shift at EOH 2025! We need all the help we can get to make this event a success. We will be in contact with you as the event approaches to give you more information about your shift. Thank you for your interest in volunteering!
           </div>
 
-          {/* Display Events in Two Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {volunteerEvents.map((event) => (
-              <div key={event.id} className="p-4 border rounded shadow">
-                <h2 className="font-bold text-lg">{event.name}</h2>
-                <p>Time: {event.time}</p>
-                <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
-                <button
-                  onClick={() => handleSignUpOrUnsignUp(event)}
-                  className={`mt-2 px-4 py-2 ${isUserSignedUp(event) ? 'bg-[#a2d3c2] hover:bg-[#8fb8a8]' : 'bg-[#c578d6] hover:bg-[#a864b3]'} text-white rounded`}
-                >
-                  {isUserSignedUp(event) ? 'Unsign Up' : 'Sign Up'}
-                </button>
-              </div>
-            ))}
-          </div>
-
           <div className="flex flex-wrap gap-8">
   {/* Volunteering Guide */}
   <div className="flex-1 mt-8 p-4 border rounded shadow text-center">
@@ -160,6 +143,25 @@ export default function Volunteer() {
     </a>
   </div>
 </div>
+
+          {/* Display Events in Two Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {volunteerEvents.map((event) => (
+              <div key={event.id} className="p-4 border rounded shadow text-center">
+                <h2 className="font-bold text-lg">{event.name}</h2>
+                <p>Time: {event.time}</p>
+                <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
+                <button
+                  onClick={() => handleSignUpOrUnsignUp(event)}
+                  className={`mt-2 px-4 py-2 ${isUserSignedUp(event) ? 'bg-[#a2d3c2] hover:bg-[#8fb8a8]' : 'bg-[#c578d6] hover:bg-[#a864b3]'} text-white rounded`}
+                >
+                  {isUserSignedUp(event) ? 'Unsign Up' : 'Sign Up'}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          
 
         </div>
       ) : (

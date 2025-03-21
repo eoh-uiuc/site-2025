@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 
 export default function HomeVideo() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -188,28 +189,66 @@ export default function HomeVideo() {
         </p>
       </header>
 
-      {/* Buttons */}
-      <div className="flex justify-center gap-8 z-10 flex-wrap">
-      <a
-        target="_blank"
-        href="/vv"
-        className="flex justify-between items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
-        style={{ minWidth: "200px" }}
-      >
-        <span>Exhibits</span>
-        <Icon icon="icon-park-outline:right" className="ml-auto text-xl" />
-      </a>
-        
+{/* Buttons */}
+<div className="flex justify-center gap-8 z-10 flex-wrap">
         <a
           target="_blank"
-          href="/vv?t=map"
+          href="/vv"
           className="flex justify-between items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
           style={{ minWidth: "200px" }}
         >
-          Campus Map
+          Exhibits & Campus Map
           <Icon icon="icon-park-outline:right" className="ml-auto text-xl" />
         </a>
+
+        <button
+          onClick={() => setShowModal(true)} // 👈 open modal
+          className="flex justify-between items-center px-6 py-3 bg-theme-teal text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-110 mb-1"
+          style={{ minWidth: "200px" }}
+        >
+          Parking Info
+          <Icon icon="icon-park-outline:right" className="ml-auto text-xl" />
+        </button>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4">
+    <div className="bg-white rounded-xl p-6 max-w-2xl shadow-lg relative w-full max-h-[90vh] overflow-y-auto">
+      <button
+        onClick={() => setShowModal(false)}
+        className="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold"
+      >
+        &times;
+      </button>
+      <h3 className="text-xl font-bold mb-4">Parking Information</h3>
+
+      <p className="mb-2 font-semibold">On Friday, visitors can park in these lots:</p>
+      <ul className="list-disc pl-6 mb-4">
+        <li>
+          <strong>Lot E-14</strong>: Near State Farm Center. Can be used for all-day parking on Friday April 5th. The shuttle will pick people up from E-14 and send them to the Bardeen Quad/other exhibits.
+        </li>
+        <li>
+          <strong>Lot B-4</strong>: North campus, can also be used for all-day parking April 5th. There is no shuttle stop here, so attendees will have to walk to Bardeen Quad (closest stop would be B-22).
+        </li>
+      </ul>
+
+      <p className="mb-2 font-semibold">On Saturday, visitors can park in:</p>
+      <ul className="list-disc pl-6 space-y-1">
+        <li><strong>Lot B-1</strong>: Springfield Avenue between Mathews and Goodwin</li>
+        <li><strong>Lot B-17</strong>: Harvey Street between Clark and Main</li>
+        <li><strong>Lot C-09</strong>: Chalmers and Sixth</li>
+        <li><strong>Lot D-09</strong>: Illinois and Lincoln</li>
+        <li><strong>Lot E-14</strong>: First Street and Kirby</li>
+        <li><strong>Lot F-23</strong>: Lincoln Avenue and Florida</li>
+        <li><strong>Lot F-28</strong>: Peabody and Dorner Drive</li>
+        <li><strong>Lot B-4</strong>: University and Mathews</li>
+        <li><strong>Lot F-29</strong>: Gregory and Dorner Drive</li>
+      </ul>
+    </div>
+  </div>
+)}
+
 
       {/* Inline Keyframes */}
       <style>{`

@@ -22,6 +22,30 @@
       ],
       "location": "CIF 3018 and CIF Monumental Steps",
       "description": "Congratulations admitted new first-year and transfer engineering students! Start your Engineering Open House visit at the Campus Instructional Facility (CIF) monumental steps to receive a limited-edition gift while supplies last. Then join us for a Student Panel to meet a Dean and connect with current students. Stop by the College Resource Fair to learn about future opportunities and take a fun, commemorative photo! "
+    },
+    {
+      "name": "Mini Research Fair",
+      "times": [
+        "Friday 3:00 PM - 4:30 PM"
+      ],
+      "location": "Sidney Lu MEB Basement",
+      "description": "Professors will have posters with their research, and undergraduates will be able to talk to them about the research they are doing."
+    },
+    {
+      "name": "Professor Panel",
+      "times": [
+        "Friday and Saturday, 1:00 PM -2:30 PM"
+      ],
+      "location": "CIF 2018",
+      "description": "The professor panel is an opportunity for current and prospective students to ask professors about their fields, how to get involved with research, and pursuing academia/graduate school."
+    },
+    {
+      "name": "Alumni Coffee Chats",
+      "times": [
+        "Saturday, 11:00 AM - 1:00 PM"
+      ],
+      "location": "CIF 2036",
+      "description": "Students can get to know alumni in a more personal setting! This is a great opportunity to ask alums about their time at the U of I, the industries they work in, and how students can plan their lives after college."
     }
   ]
 }
