@@ -214,9 +214,21 @@ const Map = () => {
             title="Campus Map"
             interactables={interacts}
           />
-        </div>
 
-        <div className="mx-5">
+        
+          {/* Button for Maps of Buildings */}
+          <div className="mt-5">
+            <a
+              href="https://drive.google.com/drive/folders/1NaqX9LwKSAckk1zrSlnAZHt69lcpkCBG?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
+                          w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-green-800 via-green-500 to-green-700"
+            >
+              <Icon icon="mdi:map" className="text-2xl" />
+              <span>Maps of Building Interiors</span>
+            </a>
+            </div>
 
           <ShuttleInformation />
           <a
@@ -226,7 +238,10 @@ const Map = () => {
           >
             <Icon icon="wpf:faq" className="text-2xl" />
             <span>FAQs</span>
-          </a>
+        </a>
+           
+          </div>
+          <div className="mx-5">
           {/* <div>
               <a
                 href="/shuttle-map.svg"
@@ -269,22 +284,13 @@ const Map = () => {
                       icon="game-icons:barracks-tent"
                       className="text-yellow-500 hover:text-yellow-400 text-3xl"
                     />
-                  </a>
-                  <a
-                    className="flex flex-row items-center py-2 px-3 border shadow-md rounded-md gap-2 hover:bg-green-200 duration-200"
-                    onClick={() =>
-                      window.open(`/assets/maps/${interact.buildingCode.toLowerCase()}.png`, '_blank')
-                    }
-                  >
-                    <Icon
-                      icon="mdi:map"
-                      className="text-2xl text-green-700 hover:text-green-600"
-                    />
+                    <span>Exhibits</span>
                   </a>
                 </span>
               </span>
             ))}
           </div>
+          
         </div>
       </div>
     </>

@@ -50,16 +50,6 @@ export const CardInteract = ({
                                 <a className="" href={`/vv?t=exhibits&q=${encodeURI(buildingCode)}`}>
                                     <Icon icon="game-icons:barracks-tent" className="text-yellow-500 hover:text-yellow-400 text-3xl" />
                                 </a>
-                                <a
-                                  onClick={() =>
-                                    window.open(`/assets/maps/${buildingCode.toLowerCase()}.png`, '_blank')
-                                  }
-                                >
-                                  <Icon
-                                    icon="mdi:map"
-                                    className="text-2xl text-green-700 hover:text-green-600"
-                                  />
-                                </a>
                             </div>
                         </span>
                     </div>
