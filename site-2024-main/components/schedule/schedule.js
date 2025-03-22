@@ -41,7 +41,7 @@ const genTimeSlots = () => {
         dayOneSlots.push(dayOneMs + timeMs8Hrs + (i * timeMsPerSlot))
     }
     let dayTwoSlots = []
-    for (let i = 0; i < totalSlots + 1 - 7; i++) { // I added the minus 7 at the end because we only go to 6PM on Saturday
+    for (let i = 0; i < totalSlots + 1 - 9; i++) { // I added the minus 9 at the end because we only go to 5PM on Saturday
         dayTwoSlots.push(dayTwoMs + timeMs8Hrs + (i * timeMsPerSlot))
     }
 

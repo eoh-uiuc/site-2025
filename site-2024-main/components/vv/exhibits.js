@@ -14,11 +14,24 @@ const ErrorMessageBox = ({ message, onRetry }) => (
   </div>
 )
 
+const bgGradients = {
+  0: 'bg-red-300',
+  1: 'bg-yellow-300',
+  2: 'bg-blue-300',
+  3: 'bg-pink-300',
+  4: 'bg-gray-300',
+  5: 'bg-green-300',
+  
+}
+
 const ExhibitCard = ({ exhibit, idx }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <button key={idx} className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl duration-200`} onClick={() => setExpanded(!expanded)}>
+    <button key={idx} className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl duration-200
+    transition-transform transform hover:scale-105 ${ // This makes them expand on hover  
+      bgGradients[idx % Object.keys(bgGradients).length] // This is where you assign background color to the exhibits
+    }`} onClick={() => setExpanded(!expanded)}>
       <div className="flex flex-row gap-2">
         <p className='text-gray-500'>{exhibit.id}</p>
         <h2 className="font-semibold text-left">{exhibit.title}</h2>
