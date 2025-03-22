@@ -76,8 +76,7 @@ for index, row in df.iterrows():
     # ind+= 1
     # Extract values from specific columns (adjust column names based on your file)
     exhibit_data = {
-    "Exhibit_Number": str(row["Exhibit ID #"]) if pd.notna(row["Exhibit ID #"]) else "",
-    "Exhibit_Name": str(row["Exhibit Name"]) if pd.notna(row["Exhibit Name"]) else "",
+    "title": str(row["Exhibit Name"]) if pd.notna(row["Exhibit Name"]) else "",
     "VisGuide_Description": row["Exhibit Description for Visitor's Guide"] if pd.notna(row["Exhibit Description for Visitor's Guide"]) else "",
     "Building_A": row["Building A"] if pd.notna(row["Building A"]) else "",
     "Sub_Building_A": row["Sub-Building A"] if pd.notna(row["Sub-Building A"]) else "",
