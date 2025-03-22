@@ -214,9 +214,21 @@ const Map = () => {
             title="Campus Map"
             interactables={interacts}
           />
-        </div>
 
-        <div className="mx-5">
+        
+          {/* Button for Maps of Buildings */}
+          <div className="mt-5">
+            <a
+              href="https://drive.google.com/drive/folders/1NaqX9LwKSAckk1zrSlnAZHt69lcpkCBG?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
+                          w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-green-800 via-green-500 to-green-700"
+            >
+              <Icon icon="mdi:map" className="text-2xl" />
+              <span>Maps of Building Interiors</span>
+            </a>
+            </div>
 
           <ShuttleInformation />
           <a
@@ -226,7 +238,10 @@ const Map = () => {
           >
             <Icon icon="wpf:faq" className="text-2xl" />
             <span>FAQs</span>
-          </a>
+        </a>
+           
+          </div>
+          <div className="mx-5">
           {/* <div>
               <a
                 href="/shuttle-map.svg"
@@ -275,6 +290,7 @@ const Map = () => {
               </span>
             ))}
           </div>
+          
         </div>
       </div>
     </>

@@ -1,17 +1,30 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { LOCATIONS } from "../../utilities/links.js";
+import { useEffect, useState } from "react";
 
 export const KeynoteSpeaker = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkWindowSize = () => {
+            setIsMobile(window.innerWidth <= 768); // Adjust as per your mobile screen size
+        };
+        checkWindowSize();
+        window.addEventListener("resize", checkWindowSize);
+        return () => {
+            window.removeEventListener("resize", checkWindowSize);
+        };
+    }, []);
+
     return (
         <div 
             className="flex flex-col md:flex-row md:justify-center items-center gap-8 px-14 relative min-h-[500px] pb-40"
             style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, white 100%), 
-                                  url('/assets/images/website_moon.png')`, // Gradient overlay
-                backgroundSize: '100% 50%', // Keeps the background image limited to the lower half
-                backgroundPosition: 'center bottom 75px', // Positions the background at the bottom
-                backgroundRepeat: 'no-repeat' // Prevents repeating
-            }}
+                backgroundImage: !isMobile && `linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, white 100%), url('/assets/images/website_moon.png')`,
+                backgroundSize: 'contain', // Ensures the image fits without cropping
+                backgroundPosition: 'center bottom -50px', // Moves the image further down
+                backgroundRepeat: 'no-repeat'
+            }}            
         >
             <div className="flex flex-col md:w-1/2 gap-3">
                 <div className="flex flex-col md:flex-row gap-5 text-lg">
@@ -27,16 +40,9 @@ export const KeynoteSpeaker = () => {
                     </span>
                 </div>
                 <p>
-                    <br />
                     Dr. Anna Oldani is passionate about creating opportunities for students to develop, technology to advance, and communities to grow. 
-                    <br />
-                    <span className="bg-white/70 px-2 rounded">
                         Come to her keynote speech to learn more about her journey through academia here at the University of Illinois 
-                    </span>
-                    <br />
-                    <span className="bg-white/70 px-2 rounded">
                         and her career path!
-                    </span>
                 </p>
             </div>
             <img 
