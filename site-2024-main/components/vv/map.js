@@ -199,6 +199,54 @@ const Map = () => {
     }),
   ]
 
+  const [modalImages, setModalImages] = useState([]);
+  const [noMapAvailable, setNoMapAvailable] = useState(false);
+
+  const openModal = async (buildingCode) => {
+    let images = [];
+
+    if (buildingCode === "Sidney Lu") {
+      images = [
+        "/assets/maps/sidney lu0.png",
+        "/assets/maps/sidney lu1.png",
+        "/assets/maps/sidney lu2.png",
+      ];
+    } else {
+      const floor1Url = `/assets/maps/${buildingCode.toLowerCase()}1.png`;
+      const floor2Url = `/assets/maps/${buildingCode.toLowerCase()}2.png`;
+
+      try {
+        const res1 = await fetch(floor1Url, { method: 'HEAD' });
+
+        if (res1.ok) {
+          try {
+            const res2 = await fetch(floor2Url, { method: 'HEAD' });
+            if (res2.ok) {
+              images = [floor1Url, floor2Url];
+            } else {
+              images = [floor1Url];
+            }
+          } catch {
+            images = [floor1Url];
+          }
+          setNoMapAvailable(false); // ✅ Maps exist
+        } else {
+          setNoMapAvailable(true); // ❌ No map available
+        }
+      } catch {
+        setNoMapAvailable(true); // ❌ No map available
+      }
+    }
+
+    setModalImages(images);
+  };
+  
+
+  const closeModal = () => {
+    setModalImages([]);
+    setNoMapAvailable(false); // Reset state when closing modal
+  };
+
   return (
     <>
       <div className="xs:hidden mx-5 flex flex-col gap-5">
@@ -207,29 +255,42 @@ const Map = () => {
         <img src="/campus-map.svg" alt="Campus Map" />
       </div>
       <div className="flex flex-col lg:flex-row justify-center gap-5 items-center lg:items-start">
-        {/* <img src={'/assets/campus_map.png'} alt="Campus Map" className='h-full object-cover' /> */}
         <div className="hidden xs:block">
           <Remage
             src="/assets/images/eoh-maponly2.png"
             title="Campus Map"
             interactables={interacts}
           />
+        </div>
 
-        
-          {/* Button for Maps of Buildings */}
-          <div className="mt-5">
-            <a
-              href="https://drive.google.com/drive/folders/1NaqX9LwKSAckk1zrSlnAZHt69lcpkCBG?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-3 text-center text-white rounded-full bg-black text-xl font-semibold
-                          w-full sm:w-96 mx-auto my-3 bg-gradient-to-tr from-green-800 via-green-500 to-green-700"
+        {(modalImages.length > 0 || noMapAvailable) && (
+        <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
+          <div className="modal-content bg-white p-5 rounded-lg relative w-11/12 sm:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-2xl text-gray-700 hover:text-gray-500 z-50"
             >
-              <Icon icon="mdi:map" className="text-2xl" />
-              <span>Maps of Building Interiors</span>
-            </a>
-            </div>
+              &times;
+            </button>
 
+            {noMapAvailable ? (
+        <p className="text-center text-gray-600">No map available for this building.</p>
+      ) : (
+        modalImages.map((src, idx) => (
+          <img key={idx} src={src} alt={`Floor ${idx + 1}`} className="mb-3" />
+        ))
+      )}
+
+            {modalImages.map((src, idx) => (
+              <img key={idx} src={src} alt={`Floor ${idx + 1}`} className="mb-3 w-full" />
+            ))}
+          </div>
+        </div>
+      )}
+
+
+
+        <div className="mx-5">
           <ShuttleInformation />
           <a
             href="/faq"
@@ -238,20 +299,8 @@ const Map = () => {
           >
             <Icon icon="wpf:faq" className="text-2xl" />
             <span>FAQs</span>
-        </a>
-           
-          </div>
-          <div className="mx-5">
-          {/* <div>
-              <a
-                href="/shuttle-map.svg"
-                className="flex items-center justify-center gap-2 my-2 py-3 px-7 text-center text-white rounded-full bg-black text-xl font-semibold
-                          sm:w-2/3 md:w-full bg-gradient-to-tr from-pink-800 via-pink-500 to-pink-700"
-              >
-                <Icon icon="bxs:bus" className="text-2xl" />
-                <span>Shuttle Map</span>
-              </a>
-            </div> */}
+          </a>
+
           <h2 className="font-heading text-2xl my-3">Locations</h2>
           <div className="flex flex-col gap-3">
             {interacts.map((interact, idx) => (
@@ -284,17 +333,24 @@ const Map = () => {
                       icon="game-icons:barracks-tent"
                       className="text-yellow-500 hover:text-yellow-400 text-3xl"
                     />
-                    <span>Exhibits</span>
+                  </a>
+                  <a
+                    className="flex flex-row items-center py-2 px-3 border shadow-md rounded-md gap-2 hover:bg-green-200 duration-200"
+                    onClick={() => openModal(interact.buildingCode)} // Open modal with the building's image
+                  >
+                    <Icon
+                      icon="mdi:map"
+                      className="text-2xl text-green-700 hover:text-green-600"
+                    />
                   </a>
                 </span>
               </span>
             ))}
           </div>
-          
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Map
+export default Map;
