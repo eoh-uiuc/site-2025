@@ -16,7 +16,7 @@ const HEADER_ITEMS = [
   { text: "Volunteer", href: "https://docs.google.com/forms/d/e/1FAIpQLScVcRNQLDGu9HYPoOUNaYS_aYT2vzZ4nBsIK37fqTmNd2DpCw/viewform?usp=header" },
   {
     text: "Contact Us",
-    href: CONTACT_US
+    href: CONTACT_US 
   },
   {
     text: "FAQs",
