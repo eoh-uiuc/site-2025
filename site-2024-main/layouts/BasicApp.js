@@ -13,7 +13,7 @@ const CONTACT_US = '/contact-us';
 const SOCIALS = { LINKTREE_URL, FB_URL, INSTA_URL, TWITTER_URL };
 
 const HEADER_ITEMS = [
-  { text: "Volunteer", href: "https://docs.google.com/forms/d/e/1FAIpQLScVcRNQLDGu9HYPoOUNaYS_aYT2vzZ4nBsIK37fqTmNd2DpCw/viewform?usp=header" },
+  { text: "Volunteer", href: "/volunteer" },
   {
     text: "Contact Us",
     href: CONTACT_US 

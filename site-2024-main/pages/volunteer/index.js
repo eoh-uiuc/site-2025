@@ -65,7 +65,7 @@ export default function Volunteer() {
 
     // Ensure user is signed up for one of the required events before signing up for other events
     if (!isRequiredEventSignedUp() && !["Thursday Set Up", "Thursday Set Up 2", "Saturday Tear Down", "Saturday Tear Down 2"].includes(event.name)) {
-      alert("You must sign up for one of the required events Thursday Set Up, Thursday Set Up 2, Saturday Tear Down, Saturday Tear Down 2 before signing up for other events.");
+      alert("You must sign up for one of the required events (Thursday Set Up, Thursday Set Up 2, Saturday Tear Down, Saturday Tear Down 2) before signing up for other events.");
       return;
     }
 
@@ -108,12 +108,54 @@ export default function Volunteer() {
       }
     } catch (error) {
       console.error("Error signing up/unsigning up for event:", error);
-      alert("Check with hospitality directors first!");
+      alert("Error signing up, try again!");
     }
   };
 
   return (
     <div className="w-screen mt-32 mb-16 flex justify-center items-center flex-col overflow-y-scroll">
+      <div className="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-900 p-4 mb-6 mx-4 w-11/12 md:w-7/12 rounded shadow-md space-y-3">
+  <div>
+    <p className="font-semibold">📣 Required Town Hall Meeting</p>
+    <p className="text-sm mt-1">
+      All volunteers must attend <strong>one</strong> of the following:
+      <ul className="list-disc ml-5 mt-1">
+        <li><strong>March 25</strong>, 6–7 PM @ Mumford 103</li>
+        <li><strong>March 27</strong>, 6–7 PM @ Siebel CS 1404</li>
+      </ul>
+    </p>
+  </div>
+
+  <div>
+    <p className="font-semibold">📘 Volunteer Guide</p>
+    <p className="text-sm mt-1">
+      Make sure to read the guide before your shift. <br />
+      <a
+        href="https://docs.google.com/document/d/1bAC8b2-VK7Y-jxBrhISY9rC_hndycAWxqviNPZNY3ik/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 underline"
+      >
+        View Volunteer Guide →
+      </a>
+    </p>
+  </div>
+
+  <div>
+    <p className="font-semibold">💬 Join the Slack</p>
+    <p className="text-sm mt-1">
+      Stay updated and ask questions in our Slack group. <br />
+      <a
+        href="https://join.slack.com/t/eohvolunteeri-vec8800/shared_invite/zt-301htu91v-1aXOcbbJMOKwAtdu_KehxA"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 underline"
+      >
+        Join Slack →
+      </a>
+    </p>
+  </div>
+</div>
       <h1 className="font-bold text-3xl">Volunteer Sign Up</h1>
       <br />
       {user ? (
@@ -128,36 +170,6 @@ export default function Volunteer() {
             Please sign up for a shift at EOH 2025! We need all the help we can get to make this event a success. We will be in contact with you as the event approaches to give you more information about your shift. Thank you for your interest in volunteering!
           </div>
 
-          <div className="flex flex-wrap gap-8">
-            {/* Volunteering Guide */}
-            <div className="flex-1 mt-8 p-4 border rounded shadow text-center">
-              <h2 className="font-bold text-lg">Volunteering Guide</h2>
-              <p>Check out the volunteer guide for Frequently Asked Questions!</p>
-              <a
-                href="https://docs.google.com/document/d/1bAC8b2-VK7Y-jxBrhISY9rC_hndycAWxqviNPZNY3ik/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
-              >
-                Guide
-              </a>
-            </div>
-
-            {/* Slack Invite Section */}
-            <div className="flex-1 mt-8 p-4 border rounded shadow text-center">
-              <h2 className="font-bold text-lg">Join Our Volunteering Slack Channel</h2>
-              <p>Stay updated and connect with other volunteers on Slack.</p>
-              <a
-                href="https://join.slack.com/t/eohvolunteeri-vec8800/shared_invite/zt-301htu91v-1aXOcbbJMOKwAtdu_KehxA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block px-4 py-2 bg-[#ff8400] text-white rounded"
-              >
-                Join Slack
-              </a>
-            </div>
-          </div>
-
           {/* Display Events in Two Columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {volunteerEvents.map((event) => (
@@ -166,12 +178,22 @@ export default function Volunteer() {
                 {event.description && <p>Description: {event.description}</p>}
                 {event.time && <p><strong>Time: {event.time}</strong></p>}
                 <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
-                <button
-                  onClick={() => handleSignUpOrUnsignUp(event)}
-                  className={`mt-2 px-4 py-2 ${isUserSignedUp(event) ? 'bg-[#a2d3c2] hover:bg-[#8fb8a8]' : 'bg-[#c578d6] hover:bg-[#a864b3]'} text-white rounded`}
-                >
-                  {isUserSignedUp(event) ? 'Unsign Up' : 'Sign Up'}
-                </button>
+                {["Friday Robobrawl", "Saturday Robobrawl"].includes(event.name) ? (
+  <button
+    disabled
+    className="mt-2 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed opacity-70"
+  >
+    Sign Up
+  </button>
+) : (
+  <button
+    onClick={() => handleSignUpOrUnsignUp(event)}
+    className={`mt-2 px-4 py-2 ${isUserSignedUp(event) ? 'bg-[#a2d3c2] hover:bg-[#8fb8a8]' : 'bg-[#c578d6] hover:bg-[#a864b3]'} text-white rounded`}
+  >
+    {isUserSignedUp(event) ? 'Unsign Up' : 'Sign Up'}
+  </button>
+)}
+
               </div>
             ))}
           </div>
