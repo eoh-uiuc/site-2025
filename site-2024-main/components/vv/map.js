@@ -124,7 +124,7 @@ const Map = () => {
       top: "27%",
       left: "39.5%",
       heading: "Transportation Building",
-      buildingCode: "Transportation Building",
+      buildingCode: "TB",
       mapsLink: LOCATIONS.TransportationBuilding,
     }),
     CardInteract({

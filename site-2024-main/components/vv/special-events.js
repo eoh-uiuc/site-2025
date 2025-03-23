@@ -9,12 +9,19 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 const bgGradients = {
-  0: "bg-gradient-to-tr from-red-100 to-red-300",
-  1: "bg-gradient-to-tl from-yellow-100 to-yellow-300",
-  2: "bg-gradient-to-tr from-purple-100 to-blue-300",
-  3: "bg-gradient-to-tr from-red-100 to-pink-300",
-  4: "bg-gradient-to-tr from-gray-100 to-gray-300",
-  5: "bg-gradient-to-tr from-green-100 to-green-300",
+  // 0: "bg-gradient-to-tr from-red-100 to-red-300",
+  // 1: "bg-gradient-to-tl from-yellow-100 to-yellow-300",
+  // 2: "bg-gradient-to-tr from-purple-100 to-blue-300",
+  // 3: "bg-gradient-to-tr from-red-100 to-pink-300",
+  // 4: "bg-gradient-to-tr from-gray-100 to-gray-300",
+  // 5: "bg-gradient-to-tr from-green-100 to-green-300",
+  0: 'bg-red-300',
+  1: 'bg-yellow-300',
+  2: 'bg-blue-300',
+  3: 'bg-pink-300',
+  4: 'bg-gray-300',
+  5: 'bg-green-300',
+  
 }
 
 const ErrorMessageBox = ({ message, onRetry }) => (
@@ -54,7 +61,8 @@ const SpecialEventCard = ({ event, idx }) => {
   return (
     <button
       key={idx}
-      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl duration-200 ${
+      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl duration-200
+        transition-transform transform hover:scale-105 ${
         bgGradients[idx % Object.keys(bgGradients).length]
       }`}
       onClick={() => setExpanded(!expanded)}
@@ -81,6 +89,7 @@ const SpecialEventCard = ({ event, idx }) => {
 
       <div className={`${expanded ? "" : "h-30 line-clamp-4"} my-2`}>
         <div dangerouslySetInnerHTML={{ __html: event.description }}></div>
+        {/* <div><p>{event.description}</p></div> */}
       </div>
       {expanded && (
         <div className="flex flex-col w-full gap-3">
@@ -191,7 +200,7 @@ const Exhibits = () => {
       location: event.location,
       picture: (event.picture?.url || ""), // event.picture
       shortTitle: event.shortTitle,
-      description: event.Description,
+      description: event.description,
       slots: occurences,
     }
   })

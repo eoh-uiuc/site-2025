@@ -8,23 +8,30 @@ import { Modal } from './modal.js';
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const DAY_ONE = 5
-const DAY_TWO = 6
+const DAY_ONE = 4
+const DAY_TWO = 5
 
 const slotGradients = {
-    0: 'bg-gradient-to-tr from-red-800 via-red-500 to-red-700',
-    1: 'bg-gradient-to-tr from-yellow-600 via-yellow-400 to-yellow-500',
-    2: 'bg-gradient-to-tr from-purple-800 via-purple-700 to-blue-800',
-    3: 'bg-gradient-to-tr from-red-500 via-pink-600 to-pink-400',
-    4: 'bg-gradient-to-tr from-gray-800 via-gray-500 to-gray-700',
-    5: 'bg-gradient-to-tr from-green-800 via-green-500 to-green-700',
+    // 0: 'bg-gradient-to-tr from-red-800 via-red-500 to-red-700',
+    // 1: 'bg-gradient-to-tr from-yellow-600 via-yellow-400 to-yellow-500',
+    // 2: 'bg-gradient-to-tr from-purple-800 via-purple-700 to-blue-800',
+    // 3: 'bg-gradient-to-tr from-red-500 via-pink-600 to-pink-400',
+    // 4: 'bg-gradient-to-tr from-gray-800 via-gray-500 to-gray-700',
+    // 5: 'bg-gradient-to-tr from-green-800 via-green-500 to-green-700',
+
+    0: 'bg-red-700',
+    1: 'bg-yellow-500',
+    2: 'bg-blue-800',
+    3: 'bg-pink-400',
+    4: 'bg-gray-700',
+    5: 'bg-green-700',
 }
 
 // 1000 ms/sec * 60 sec/min * 30 min
 const timeMsPerSlot = 1000 * 60 * 30;
 const timeMs8Hrs = 1000 * 60 * 60 * 8.5;
-var dayOneMs = dayjs(new Date(2024, 3, DAY_ONE)).tz("America/Chicago").valueOf();
-var dayTwoMs = dayjs(new Date(2024, 3, DAY_TWO)).tz("America/Chicago").valueOf();
+var dayOneMs = dayjs(new Date(2025, 3, DAY_ONE)).tz("America/Chicago").valueOf();
+var dayTwoMs = dayjs(new Date(2025, 3, DAY_TWO)).tz("America/Chicago").valueOf();
 
 const genTimeSlots = () => {
     const totalSlots = 26;
@@ -34,7 +41,7 @@ const genTimeSlots = () => {
         dayOneSlots.push(dayOneMs + timeMs8Hrs + (i * timeMsPerSlot))
     }
     let dayTwoSlots = []
-    for (let i = 0; i < totalSlots + 1; i++) {
+    for (let i = 0; i < totalSlots + 1 - 9; i++) { // I added the minus 9 at the end because we only go to 5PM on Saturday
         dayTwoSlots.push(dayTwoMs + timeMs8Hrs + (i * timeMsPerSlot))
     }
 
@@ -61,7 +68,7 @@ export function Schedule() {
     const fetcher = (url) => fetch(url).then((res) => res.json());
 
     const { data, error, isLoading } = useSWR(
-        "https://n1.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture",
+        "https://n11.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture",
         fetcher
     );
 
@@ -71,10 +78,10 @@ export function Schedule() {
     const slots = genTimeSlots();
 
     const scheduleData = data.data.map((event, idx) => {
-        const occurences = event.attributes.occurences.data.map(occ => {
+        const occurences = event.occurences.map(occ => {
             return {
-                startTime: occ.attributes.startTime,
-                endTime: occ.attributes.endTime,
+                startTime: occ.startTime,
+                endTime: occ.endTime,
                 colIndex: idx
             }
         }).map(slot => {
@@ -96,11 +103,11 @@ export function Schedule() {
 
         return {
             col: idx,
-            title: event.attributes.title,
-            location: event.attributes.location,
-            picture: event.attributes.picture,
-            shortTitle: event.attributes.shortTitle,
-            description: event.attributes.Description,
+            title: event.title,
+            location: event.location,
+            picture: event.picture,
+            shortTitle: event.shortTitle,
+            description: event.description,
             slots: occurences
         }
     })
@@ -123,11 +130,11 @@ export function Schedule() {
                 <button
                     onClick={() => setDayOne(true)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl
-                    ${onDayOne ? activeStyles : inactiveStyles}`}>Friday, April 5th</button>
+                    ${onDayOne ? activeStyles : inactiveStyles}`}>Friday, April 4th</button>
                 <button
                     onClick={() => setDayOne(false)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl 
-                    ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 6th</button>
+                    ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 5th</button>
             </span>
             <div className="max-h-128 overflow-x-hidden p-4 bg-gradient-to-tr from-pink-50 via-yellow-50 to-blue-100 rounded-xl flex flex-col">
                 <div className="flex flex-row gap-0">
@@ -150,9 +157,9 @@ export function Schedule() {
                         <div className="flex flex-row pb-4 items-end h-24">
                             {scheduleData.map(event => {
                                 return (<button className={`font-montserrat w-[96px] min-w-[96px] pr-2 pl-1 text-sm break-words 
-                                                        ${hoverSlot.colIndex == event.col ? 'font-semibold' : ''}`} key={event.col}
+                                                        ${hoverSlot.colIndex == event.col ? 'font-bold' : 'font-semibold'}`} key={event.col}
                                     onClick={() => setModalColIdx(event.col)}>
-                                    {event.shortTitle ? event.shortTitle : event.title}
+                                    {event.title}
                                 </button>);
                             })}
                         </div>
@@ -160,7 +167,8 @@ export function Schedule() {
                             slot =>
                                 <div className={`absolute w-[96px] min-w-[96px] ${slotGradients[slot.colIndex % Object.keys(slotGradients).length]} 
                                             cursor-pointer duration-300 rounded-lg border border-white
-                                            text-xs flex items-center justify-center text-white select-none glowing`}
+                                            text-xs flex items-center justify-center text-white select-none glowing 
+                                            shadow-md transition-transform transform hover:scale-105`}
                                     style={{
                                         top: `${slot.rowIndex * 32 + 96}px`,
                                         height: `${slot.duration * 32}px`,
@@ -179,7 +187,7 @@ export function Schedule() {
                                                     scheduleData[slot.colIndex].title.substring(0, 25) + '...' : scheduleData[slot.colIndex].title}
                                             </p>
                                             <p>
-                                                {slot.display}
+                                                {slot.display} {/* This is what causes the times to be displayed */}
                                             </p>
                                         </div>
                                         :
@@ -194,9 +202,9 @@ export function Schedule() {
                         )}
                         <div className="absolute flex flex-row py-4 items-start h-28 bottom-0">
                             {scheduleData.map(event => {
-                                return (<button className={`font-montserrat w-[96px] min-w-[96px] pr-2 pl-1 text-sm break-words ${hoverSlot.colIndex == event.col ? 'font-bold' : ''}`} key={event.col}
+                                return (<button className={`font-montserrat w-[96px] min-w-[96px] pr-2 pl-1 text-sm break-words ${hoverSlot.colIndex == event.col ? 'font-bold' : 'font-semibold'}`} key={event.col}
                                     onClick={() => setModalColIdx(event.col)}>
-                                    {event.shortTitle ? event.shortTitle : event.title}
+                                    {event.title}
                                 </button>);
                             })}
                         </div>

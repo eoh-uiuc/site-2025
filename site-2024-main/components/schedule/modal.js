@@ -5,7 +5,7 @@ export const Modal = ({ close, event }) => {
     if (event == null) {
         return;
     }
-    const picture = event.picture?.data?.attributes?.formats?.large?.url
+    const picture = event?.picture?.formats?.medium?.url
 
     return (
       <>
@@ -33,11 +33,13 @@ export const Modal = ({ close, event }) => {
                   <span>{event.location}</span>
                 </span>
                 <div
-                  dangerouslySetInnerHTML={{ __html: event.description }}
-                ></div>
+                  // dangerouslySetInnerHTML={{ __html: event.description }}
+                >
+                  <p>{event.description}</p>
+                </div>
                 {picture && (
                   <img
-                    src={`https://n1.eohillinois.org${picture}`}
+                    src={`${picture}`}
                     alt="Picture related to this event"
                     className="rounded-lg"
                   />
