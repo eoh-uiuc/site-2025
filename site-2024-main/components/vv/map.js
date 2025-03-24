@@ -263,30 +263,27 @@ const Map = () => {
           />
         </div>
 
-        {(modalImages.length > 0 || noMapAvailable) && (
-        <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
-          <div className="modal-content bg-white p-5 rounded-lg relative w-11/12 sm:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto">
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 text-2xl text-gray-700 hover:text-gray-500 z-50"
-            >
-              &times;
-            </button>
+        {modalImages.length > 0 && (
+  <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
+    <div className="modal-content bg-white p-5 rounded-lg relative w-11/12 sm:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto">
+      <button
+        onClick={closeModal}
+        className="absolute top-2 right-2 text-2xl text-gray-700 hover:text-gray-500 z-50"
+      >
+        &times;
+      </button>
 
-            {noMapAvailable ? (
+      {noMapAvailable ? (
         <p className="text-center text-gray-600">No map available for this building.</p>
       ) : (
         modalImages.map((src, idx) => (
-          <img key={idx} src={src} alt={`Floor ${idx + 1}`} className="mb-3" />
+          <img key={idx} src={src} alt={`Floor ${idx + 1}`} className="mb-3 w-full" />
         ))
       )}
+    </div>
+  </div>
+)}
 
-            {modalImages.map((src, idx) => (
-              <img key={idx} src={src} alt={`Floor ${idx + 1}`} className="mb-3 w-full" />
-            ))}
-          </div>
-        </div>
-      )}
 
 
 
