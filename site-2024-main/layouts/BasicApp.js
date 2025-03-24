@@ -16,7 +16,7 @@ const HEADER_ITEMS = [
   { text: "Volunteer", href: "/volunteer" },
   {
     text: "Contact Us",
-    href: CONTACT_US 
+    href: CONTACT_US
   },
   {
     text: "FAQs",
