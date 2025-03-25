@@ -30,8 +30,9 @@ const slotGradients = {
 // 1000 ms/sec * 60 sec/min * 30 min
 const timeMsPerSlot = 1000 * 60 * 30;
 const timeMs8Hrs = 1000 * 60 * 60 * 8.5;
-var dayOneMs = dayjs(new Date(2025, 3, DAY_ONE)).tz("America/Chicago").valueOf();
-var dayTwoMs = dayjs(new Date(2025, 3, DAY_TWO)).tz("America/Chicago").valueOf();
+const dayOneMs = dayjs.tz("2025-04-04 00:00", "America/Chicago").valueOf();
+const dayTwoMs = dayjs.tz("2025-04-05 00:00", "America/Chicago").valueOf();
+
 
 const genTimeSlots = () => {
     const totalSlots = 26;
@@ -128,11 +129,11 @@ export function Schedule() {
             <Modal event={modalColIdx != null ? scheduleData[modalColIdx] : null} close={() => setModalColIdx(null)} />
             <span className='flex flex-row justify-start gap-1 mt-3 mx-4 md:mx-8'>
                 <button
-                    onClick={() => setDayOne(true)}
+                    onClick={() => setDayOne(false)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl
                     ${onDayOne ? activeStyles : inactiveStyles}`}>Friday, April 4th</button>
                 <button
-                    onClick={() => setDayOne(false)}
+                    onClick={() => setDayOne(true)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl 
                     ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 5th</button>
             </span>
