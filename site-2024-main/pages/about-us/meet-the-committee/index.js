@@ -96,7 +96,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "Aerospace Engineering",
   },
   {
-    img: "arpit.jpg",
+    img: "BlankProfile.png",
     Name: "Arpit Bansal",
     Position: "Director of Special Events",
     Class: "Junior",
@@ -180,7 +180,7 @@ const COMMITTEE_HEADSHOTS = [
     Major: "Mechanical Engineering",
   },
   {
-    img: "BlankProfile.png",
+    img: "arryan.jpg",
     Name: "Arryan Kanodia",
     Position: "Senior Director of Hospitality",
     Class: "Senior",
