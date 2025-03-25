@@ -226,10 +226,10 @@ export default function HomeVideo() {
       <p className="mb-2 font-semibold">On Friday, visitors can park in these lots:</p>
       <ul className="list-disc pl-6 mb-4">
         <li>
-          <strong>Lot E-14</strong>: Near State Farm Center. Can be used for all-day parking on Friday April 5th. The shuttle will pick people up from E-14 and send them to the Bardeen Quad/other exhibits.
+          <strong>Lot E-14</strong>: Near State Farm Center. Can be used for all-day parking on Friday April 4th. The shuttle will pick people up from E-14 and send them to the Bardeen Quad/other exhibits.
         </li>
         <li>
-          <strong>Lot B-4</strong>: North campus, can also be used for all-day parking April 5th. There is no shuttle stop here, so attendees will have to walk to Bardeen Quad (closest stop would be B-22).
+          <strong>Lot B-4</strong>: North campus, can also be used for all-day parking April 4th. There is no shuttle stop here, so attendees will have to walk to Bardeen Quad (closest stop would be B-22).
         </li>
       </ul>
 
