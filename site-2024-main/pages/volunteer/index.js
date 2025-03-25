@@ -223,8 +223,8 @@ export default function Volunteer() {
             {volunteerEvents.map((event) => (
               <div key={event.id} className="p-4 border rounded shadow text-center">
                 <h2 className="font-bold text-lg">{event.name}</h2>
-                {event.description && <p>Description: {event.description}</p>}
                 {event.time && <p><strong>Time: {event.time}</strong></p>}
+                {event.description && <p>Description: {event.description}</p>}
                 <p>Volunteers: {event.volunteers?.length || 0} / {event.maxCapacity || "N/A"}</p>
                 {["Friday Robobrawl", "Saturday Robobrawl"].includes(event.name) ? (
   <button
