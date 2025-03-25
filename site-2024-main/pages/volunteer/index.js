@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { auth, provider, firestore, signInWithPopup, signOut, collection, getDocs, doc, updateDoc, arrayUnion } from "/utilities/firebase";
+import { auth, provider, firestore, signInWithPopup, signOut, collection, getDocs, doc, getDoc, updateDoc, arrayUnion } from "/utilities/firebase";
+
 
 export default function Volunteer() {
   const [user, setUser] = useState(null);
   const [volunteerEvents, setVolunteerEvents] = useState([]);
   const [requiredEventsSignedUp, setRequiredEventsSignedUp] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // State to track admin status
+  const [eventEmails, setEventEmails] = useState({}); // State to store event emails
 
   useEffect(() => {
     // Check if user is signed in
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
       setUser(firebaseUser);
+
+      // Check if user is admin (example: check for admin email domain)
+      if (firebaseUser) {
+        const isAdminUser = firebaseUser.email === 'tusharj2004@gmail.com' || firebaseUser.email === 'kpact2@illinois.edu' || firebaseUser.email === 'shaandoshi4@gmail.com' || firebaseUser.email === 'aliciak2@illinois.edu' || firebaseUser.email === 'azh4@illinois.edu' || firebaseUser.email === 'atsig2@illinois.edu' || firebaseUser.email === 'arryank2@illinois.edu';
+        setIsAdmin(isAdminUser);
+      } else {
+        setIsAdmin(false);
+      } 
     });
 
     // Fetch volunteer events from Firestore
@@ -26,6 +37,43 @@ export default function Volunteer() {
     fetchVolunteerEvents();
     return () => unsubscribe();
   }, []);
+
+  // Function to fetch event emails when admin button is clicked
+  const handleViewEventEmails = async (eventId) => {
+    const eventRef = doc(firestore, "volunteerEvents", eventId);
+    const eventDoc = await getDoc(eventRef);
+    if (eventDoc.exists()) {
+      const eventData = eventDoc.data();
+      if (eventData.volunteers) {
+        const emails = eventData.volunteers.map(volunteer => volunteer.email);
+        setEventEmails(prevState => ({
+          ...prevState,
+          [eventId]: emails
+        }));
+      }
+    }
+  };
+
+  const handleCloseEmails = () => {
+    setShowEmails(false); // Hide emails when "Close Emails" button is clicked
+  };
+
+  // Render function for displaying event emails
+  const renderEventEmails = (eventId) => {
+    if (eventEmails[eventId]) {
+      return (
+        <div>
+          <p>Emails:</p>
+          <ul>
+            {eventEmails[eventId].map((email, index) => (
+              <li key={index}>{email}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+    return null;
+  };
 
   // Sign in with Google
   const handleSignIn = async () => {
@@ -206,6 +254,52 @@ export default function Volunteer() {
           </button>
         </div>
       )}
+      {/* Admin button to view emails */}
+      {isAdmin && (
+      <div className="mt-8 w-7/12">
+        <h2 className="text-xl font-bold text-center mb-4">Admin Section</h2>
+        {volunteerEvents.map((event) => (
+          <div
+            key={event.id}
+            className="p-4 border rounded-lg shadow mb-4 bg-gray-100"
+          >
+            <h3 className="font-semibold text-lg">{event.name}</h3>
+            {!eventEmails[event.id] ? (
+              <button
+                onClick={() => handleViewEventEmails(event.id)}
+                className="mt-2 px-4 py-2 bg-[#c578d6] hover:bg-[#a864b3] text-white rounded"
+              >
+                View Emails
+              </button>
+            ) : (
+              <button
+                onClick={() =>
+                  setEventEmails((prev) => {
+                    const updated = { ...prev };
+                    delete updated[event.id];
+                    return updated;
+                  })
+                }
+                className="mt-2 px-4 py-2 bg-[#a2d3c2] hover:bg-[#8fb8a8] text-white rounded"
+              >
+                Close Emails
+              </button>
+            )}
+            {eventEmails[event.id] && (
+              <div className="mt-4">
+                <p className="text-sm font-semibold">Emails (Copy-Paste):</p>
+                <textarea
+                  className="w-full mt-2 p-2 border rounded"
+                  rows="4"
+                  readOnly
+                  value={eventEmails[event.id].join(", ")}
+                />
+              </div>
+            )}
+          </div>
+        ))}
+  </div>
+)}
     </div>
   );
 }
