@@ -2,9 +2,10 @@ import { Icon } from '@iconify/react';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { Modal } from './modal.js';
+
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -37,20 +38,21 @@ const dayTwoMs = dayjs.tz("2025-04-05 00:00", "America/Chicago").valueOf();
 const genTimeSlots = () => {
     const totalSlots = 26;
 
-    let dayOneSlots = []
+    let dayOneSlots = [];
     for (let i = 0; i < totalSlots + 1; i++) {
-        dayOneSlots.push(dayOneMs + timeMs8Hrs + (i * timeMsPerSlot))
+        dayOneSlots.push(dayOneMs + timeMs8Hrs + (i * timeMsPerSlot));
     }
-    let dayTwoSlots = []
-    for (let i = 0; i < totalSlots + 1 - 9; i++) { // I added the minus 9 at the end because we only go to 5PM on Saturday
-        dayTwoSlots.push(dayTwoMs + timeMs8Hrs + (i * timeMsPerSlot))
+
+    let dayTwoSlots = [];
+    for (let i = 0; i < totalSlots + 1 - 9; i++) { // Adjusted to end at 5 PM on Day 2
+        dayTwoSlots.push(dayTwoMs + timeMs8Hrs + (i * timeMsPerSlot));
     }
 
     return {
         DAY_ONE: dayOneSlots,
-        DAY_TWO: dayTwoSlots
+        DAY_TWO: dayTwoSlots,
     };
-}
+};
 
 export function Schedule() {
     const nullSlot = {
@@ -65,43 +67,62 @@ export function Schedule() {
     const [modalColIdx, setModalColIdx] = useState(null);
     const [onDayOne, setDayOne] = useState(true);
     const [modalOpen, setModalOpen] = useState(false);
+    const [itinerary, setItinerary] = useState([]); // State to store saved slots
+    const [showItinerary, setShowItinerary] = useState(false);
 
-    const fetcher = (url) => fetch(url).then((res) => res.json());
+    useEffect(() => {
+        const savedItinerary = localStorage.getItem('itinerary');
+        if (savedItinerary) {
+            setItinerary(JSON.parse(savedItinerary));
+        }
+    }, []);
 
-    const { data, error, isLoading } = useSWR(
-        "https://n11.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture",
-        fetcher
-    );
+    // Update localStorage whenever itinerary changes
+    useEffect(() => {
+        localStorage.setItem('itinerary', JSON.stringify(itinerary));
+    }, [itinerary]);
 
-    if (error) return "An error has occurred.";
-    if (isLoading) return "Loading...";
+    const toggleItineraryItem = (colIndex, rowIndex, date) => {
+        const slotIdentifier = `${colIndex}-${rowIndex}-${date}`;
+        setItinerary(prev => (
+            prev.includes(slotIdentifier)
+                ? prev.filter(item => item !== slotIdentifier)
+                : [...prev, slotIdentifier]
+        ));
+    };
 
-    const slots = genTimeSlots();
+   // Fetch data using useSWR
+   const fetcher = (url) => fetch(url).then((res) => res.json());
+
+   const { data, error, isLoading } = useSWR(
+       "https://n11.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture",
+       fetcher
+   );
+
+   if (error) return "An error has occurred.";
+   if (isLoading) return "Loading...";
+
+   const slots = genTimeSlots();
+
 
     const scheduleData = data.data.map((event, idx) => {
         const occurences = event.occurences.map(occ => {
-            return {
-                startTime: occ.startTime,
-                endTime: occ.endTime,
-                colIndex: idx
-            }
-        }).map(slot => {
-            const start = dayjs(slot.startTime).tz('America/Chicago')
-            const end = dayjs(slot.endTime).tz('America/Chicago')
-            const date = start.date()
+            const start = dayjs(occ.startTime).tz('America/Chicago');
+            const end = dayjs(occ.endTime).tz('America/Chicago');
+            const date = start.date() === 4 ? DAY_ONE : DAY_TWO; // Set the date based on the event
             const duration = end.diff(start) / timeMsPerSlot;
-            const rowIndex = (start.valueOf() - (date == DAY_ONE ? dayOneMs : dayTwoMs) - timeMs8Hrs) / timeMsPerSlot;
+            const rowIndex = (start.valueOf() - (date === DAY_ONE ? dayOneMs : dayTwoMs) - timeMs8Hrs) / timeMsPerSlot;
             return {
-                colIndex: slot.colIndex,
+                colIndex: idx,
                 duration,
                 rowIndex,
-                date,
+                date,  // Include date in the slot data
                 startMs: start.valueOf(),
                 endMs: end.valueOf(),
                 display: `${start.format('h:mm')} to ${end.format('h:mm')}`
-            }
-        })
-
+            };
+        });
+    
         return {
             col: idx,
             title: event.title,
@@ -110,8 +131,8 @@ export function Schedule() {
             shortTitle: event.shortTitle,
             description: event.description,
             slots: occurences
-        }
-    })
+        };
+    });
     const allSlots = scheduleData.map(item => item.slots).flat();
 
     const dayOneSlots = allSlots.filter(occurence => {
@@ -121,12 +142,24 @@ export function Schedule() {
         return occurence.date == DAY_TWO
     });
 
+    const visibleSlots = (onDayOne ? dayOneSlots : dayTwoSlots).filter((slot) =>
+        !showItinerary || itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`)
+    );
+    
+    
+
     const activeStyles = "border-white bg-gradient-to-tr from-purple-800 via-purple-600 to-blue-700 text-white"
     const inactiveStyles = "border-black border-t-2 border-l-2 border-r-2 bg-transparent hover:bg-gradient-to-tr from-purple-200 via-purple-100 to-blue-200 text-black";
 
     return (
         <>
-            <Modal event={modalColIdx != null ? scheduleData[modalColIdx] : null} close={() => setModalColIdx(null)} />
+            <Modal 
+    event={modalColIdx != null ? scheduleData[modalColIdx] : null} 
+    close={() => setModalColIdx(null)} 
+    toggleItineraryItem={toggleItineraryItem} // Pass the toggle function here
+/>
+
+
             <span className='flex flex-row justify-start gap-1 mt-3 mx-4 md:mx-8'>
                 <button
                     onClick={() => setDayOne(true)}
@@ -137,7 +170,15 @@ export function Schedule() {
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl 
                     ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 5th</button>
             </span>
-            <div className="max-h-128 overflow-x-hidden p-4 bg-gradient-to-tr from-pink-50 via-yellow-50 to-blue-100 rounded-xl flex flex-col">
+            <div className="flex justify-end px-6 mb-2">
+                <button
+                    className="bg-purple-700 text-white px-4 py-2 rounded-xl font-semibold hover:bg-purple-800"
+                    onClick={() => setShowItinerary(!showItinerary)}
+                >
+                    {showItinerary ? "Hide My Itinerary" : "View My Itinerary"}
+                </button>
+            </div>
+             <div className="max-h-128 overflow-x-hidden p-4 bg-gradient-to-tr from-pink-50 via-yellow-50 to-blue-100 rounded-xl flex flex-col">
                 <div className="flex flex-row gap-0">
                     <div className="flex flex-col">
                         <div className='h-24 flex items-end justify-center'>
@@ -156,51 +197,63 @@ export function Schedule() {
                     </div>
                     <div className="relative overflow-x-scroll w-full overflow-y-hidden">
                         <div className="flex flex-row pb-4 items-end h-24">
-                            {scheduleData.map(event => {
-                                return (<button className={`font-montserrat w-[96px] min-w-[96px] pr-2 pl-1 text-sm break-words 
-                                                        ${hoverSlot.colIndex == event.col ? 'font-bold' : 'font-semibold'}`} key={event.col}
-                                    onClick={() => setModalColIdx(event.col)}>
-                                    {event.title}
-                                </button>);
-                            })}
+                        {scheduleData.map(event => (
+    <div key={event.col} className="w-[96px] min-w-[96px] pr-2 pl-1 text-center">
+        <button
+            className={`font-montserrat text-sm break-words ${hoverSlot.colIndex === event.col ? 'font-bold' : 'font-semibold'}`}
+            onClick={() => setModalColIdx(event.col)}
+        >
+            {event.title}
+        </button>
+    </div>
+))}
+
                         </div>
-                        {(onDayOne ? dayOneSlots : dayTwoSlots).map(
-                            slot =>
-                                <div className={`absolute w-[96px] min-w-[96px] ${slotGradients[slot.colIndex % Object.keys(slotGradients).length]} 
-                                            cursor-pointer duration-300 rounded-lg border border-white
-                                            text-xs flex items-center justify-center text-white select-none glowing 
-                                            shadow-md transition-transform transform hover:scale-105`}
-                                    style={{
-                                        top: `${slot.rowIndex * 32 + 96}px`,
-                                        height: `${slot.duration * 32}px`,
-                                        left: `${slot.colIndex * 96}px`
-                                    }}
-                                    key={`${slot.rowIndex}-${slot.colIndex}`}
-                                    onMouseEnter={() => { setHoverSlot(slot) }}
-                                    onMouseLeave={() => { setHoverSlot(nullSlot) }}
-                                    onClick={() => setModalColIdx(slot.colIndex)}
-                                >
-                                    {/* {slot.duration == 1 ? '30 minutes' : slot.duration == 2 ? '1 hour' : `${slot.duration / 2} hours`} */}
-                                    {slot.duration > 1 ?
-                                        <div className='flex flex-col gap-1 text-center p-0.5'>
-                                            <p>{
-                                                scheduleData[slot.colIndex].title.length > 25 ?
-                                                    scheduleData[slot.colIndex].title.substring(0, 25) + '...' : scheduleData[slot.colIndex].title}
-                                            </p>
-                                            <p>
-                                                {slot.display} {/* This is what causes the times to be displayed */}
-                                            </p>
-                                        </div>
-                                        :
-                                        <div className='overflow-hidden'>
-                                            {/* <p className='slot-text text-xs'>{scheduleData[slot.colIndex].title}</p> */}
-                                            <p className='text-xs'>
-                                                {slot.display}
-                                            </p>
-                                        </div>
-                                    }
-                                </div>
-                        )}
+                        
+                        {visibleSlots.map(slot => (
+    <div
+        className={`absolute w-[96px] min-w-[96px] ${slotGradients[slot.colIndex % Object.keys(slotGradients).length]} 
+                    cursor-pointer duration-300 rounded-lg border border-white
+                    text-xs flex items-center justify-center text-white select-none glowing 
+                    shadow-md transition-transform transform hover:scale-105`}
+        style={{
+            top: `${slot.rowIndex * 32 + 96}px`,
+            height: `${slot.duration * 32}px`,
+            left: `${slot.colIndex * 96}px`
+        }}
+        key={`${slot.rowIndex}-${slot.colIndex}`}
+        onMouseEnter={() => { setHoverSlot(slot) }}
+        onMouseLeave={() => { setHoverSlot(nullSlot) }}
+        onClick={() => setModalColIdx(slot.colIndex)}
+    >
+        {slot.duration > 1 ?
+            <div className='flex flex-col gap-1 text-center p-0.5'>
+                <p>{scheduleData[slot.colIndex].title.length > 25 ? `${scheduleData[slot.colIndex].title.substring(0, 25)}...` : scheduleData[slot.colIndex].title}</p>
+                <p>{slot.display}</p>
+            </div>
+            :
+            <div className='overflow-hidden'>
+                <p className='text-xs'>
+                    {slot.display}
+                </p>
+            </div>
+        }
+        {/* Toggle button to add/remove from itinerary */}
+        <button
+            className={`text-sm mt-1 ${
+                itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`) ? 'text-yellow-400' : 'text-gray-500'
+            }`}
+            onClick={(e) => {
+                e.stopPropagation(); // Prevent event from bubbling to parent elements
+                toggleItineraryItem(slot.colIndex, slot.rowIndex, slot.date);
+            }}
+            style={{ position: 'absolute', top: '1px', right: '4px' }}
+        >
+            {itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`) ? '★' : '☆'}
+        </button>
+    </div>
+))}
+       
                         <div className="absolute flex flex-row py-4 items-start h-28 bottom-0">
                             {scheduleData.map(event => {
                                 return (<button className={`font-montserrat w-[96px] min-w-[96px] pr-2 pl-1 text-sm break-words ${hoverSlot.colIndex == event.col ? 'font-bold' : 'font-semibold'}`} key={event.col}
