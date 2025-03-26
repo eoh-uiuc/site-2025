@@ -159,7 +159,14 @@ export function Schedule() {
     toggleItineraryItem={toggleItineraryItem} // Pass the toggle function here
 />
 
-
+<div className="flex justify-end px-6 mb-2">
+                <button
+                    className="bg-purple-700 text-white px-4 py-2 rounded-xl font-semibold hover:bg-purple-800"
+                    onClick={() => setShowItinerary(!showItinerary)}
+                >
+                    {showItinerary ? "Hide My Itinerary" : "View My Itinerary"}
+                </button>
+            </div>
             <span className='flex flex-row justify-start gap-1 mt-3 mx-4 md:mx-8'>
                 <button
                     onClick={() => setDayOne(true)}
@@ -170,14 +177,7 @@ export function Schedule() {
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl 
                     ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 5th</button>
             </span>
-            <div className="flex justify-end px-6 mb-2">
-                <button
-                    className="bg-purple-700 text-white px-4 py-2 rounded-xl font-semibold hover:bg-purple-800"
-                    onClick={() => setShowItinerary(!showItinerary)}
-                >
-                    {showItinerary ? "Hide My Itinerary" : "View My Itinerary"}
-                </button>
-            </div>
+            
              <div className="max-h-128 overflow-x-hidden p-4 bg-gradient-to-tr from-pink-50 via-yellow-50 to-blue-100 rounded-xl flex flex-col">
                 <div className="flex flex-row gap-0">
                     <div className="flex flex-col">
