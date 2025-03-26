@@ -63,7 +63,7 @@ export function Schedule() {
     }
     const [hoverSlot, setHoverSlot] = useState(nullSlot);
     const [modalColIdx, setModalColIdx] = useState(null);
-    const [onDayOne, setDayOne] = useState(false);
+    const [onDayOne, setDayOne] = useState(true);
     const [modalOpen, setModalOpen] = useState(false);
 
     const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -129,11 +129,11 @@ export function Schedule() {
             <Modal event={modalColIdx != null ? scheduleData[modalColIdx] : null} close={() => setModalColIdx(null)} />
             <span className='flex flex-row justify-start gap-1 mt-3 mx-4 md:mx-8'>
                 <button
-                    onClick={() => setDayOne(false)}
+                    onClick={() => setDayOne(true)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl
                     ${onDayOne ? activeStyles : inactiveStyles}`}>Friday, April 4th</button>
                 <button
-                    onClick={() => setDayOne(true)}
+                    onClick={() => setDayOne(false)}
                     className={`p-3 md:p-5 px-5 md:px-7 font-bold font-montserrat rounded-t-xl 
                     ${onDayOne ? inactiveStyles : activeStyles}`}>Saturday, April 5th</button>
             </span>
