@@ -179,18 +179,6 @@
         "page": 16
     },
     {
-        "exhibitId": 99,
-        "descriptionShort": "Tired of your drone always flying into your furniture and walls? Come check out our drone's ability to autonomously avoid obstacles and redirect itself without crashing. At this exhibit you get to challenge our drone by setting up your own obstacles and seeing if it can fly through them!",
-        "rsoName": "AE483: Autonomous Systems Lab",
-        "tag1": "Robotics",
-        "tag2": "Future-Oriented",
-        "tag3": "Programming",
-        "event": "Autonomous Drone: Road to Artificial Intelligence",
-        "idWLocation": 99,
-        "location": "EV",
-        "page": 35
-    },
-    {
         "exhibitId": 170,
         "descriptionShort": "The exhibition is about the application of drones in terrain mapping and characterization. \nThe booth will show the various type of drones and the sensors on the self-made payload. ",
         "rsoName": "AUVSL",

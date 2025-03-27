@@ -8,6 +8,7 @@ export default function Volunteer() {
   const [requiredEventsSignedUp, setRequiredEventsSignedUp] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false); // State to track admin status
   const [eventEmails, setEventEmails] = useState({}); // State to store event emails
+  const [allEventEmails, setAllEventEmails] = useState([]);
 
   useEffect(() => {
     // Check if user is signed in
@@ -53,6 +54,30 @@ export default function Volunteer() {
       }
     }
   };
+
+  const fetchAllEventEmails = async () => {
+    let allEmailsSet = new Set(); // Using a Set to avoid duplicates
+    
+    for (const event of volunteerEvents) {
+      const eventRef = doc(firestore, "volunteerEvents", event.id);
+      const eventDoc = await getDoc(eventRef);
+      
+      if (eventDoc.exists()) {
+        const eventData = eventDoc.data();
+        
+        if (eventData.volunteers) {
+          eventData.volunteers.forEach((volunteer) => {
+            allEmailsSet.add(volunteer.email); // Add each email to the Set
+          });
+        }
+      }
+    }
+    
+    const uniqueEmails = Array.from(allEmailsSet); // Convert Set back to array
+    
+    setAllEventEmails(uniqueEmails); // Update state with unique emails
+  };
+  
 
   const handleCloseEmails = () => {
     setShowEmails(false); // Hide emails when "Close Emails" button is clicked
@@ -256,50 +281,83 @@ export default function Volunteer() {
       )}
       {/* Admin button to view emails */}
       {isAdmin && (
-      <div className="mt-8 w-7/12">
-        <h2 className="text-xl font-bold text-center mb-4">Admin Section</h2>
-        {volunteerEvents.map((event) => (
-          <div
-            key={event.id}
-            className="p-4 border rounded-lg shadow mb-4 bg-gray-100"
-          >
-            <h3 className="font-semibold text-lg">{event.name}</h3>
-            {!eventEmails[event.id] ? (
-              <button
-                onClick={() => handleViewEventEmails(event.id)}
-                className="mt-2 px-4 py-2 bg-[#c578d6] hover:bg-[#a864b3] text-white rounded"
-              >
-                View Emails
-              </button>
-            ) : (
-              <button
-                onClick={() =>
-                  setEventEmails((prev) => {
+  <div className="mt-8 w-7/12">
+    <h2 className="text-xl font-bold text-center mb-4">Admin Section</h2>
+
+    {/* Fetch All Emails & Close All Emails Buttons */}
+    <div className="flex justify-center gap-4 mb-6">
+      <button
+        onClick={fetchAllEventEmails}
+        className="px-4 py-2 bg-[#c578d6] hover:bg-[#a864b3] text-white rounded"
+      >
+        Fetch All Event Emails
+      </button>
+      {allEventEmails.length > 0 && (
+        <button
+          onClick={() => setAllEventEmails([])}
+          className="px-4 py-2 bg-[#c578d6] hover:bg-[#a864b3] text-white rounded"
+        >
+          Close All Emails
+        </button>
+      )}
+    </div>
+
+    {/* Display All Emails */}
+    {allEventEmails.length > 0 && (
+      <div className="bg-gray-100 p-4 border rounded shadow mb-8">
+        <h3 className="font-semibold mb-2">All Event Emails:</h3>
+        <textarea
+          className="w-full p-2 border rounded"
+          rows="5"
+          readOnly
+          value={allEventEmails.join(", ")}
+        />
+      </div>
+    )}
+
+    {/* Individual Event Email Blocks */}
+    <div className="grid gap-4">
+      {volunteerEvents.map((event) => (
+        <div
+          key={event.id}
+          className="p-4 border rounded shadow bg-gray-100"
+        >
+          <h3 className="font-semibold text-lg mb-2">{event.name}</h3>
+
+          {/* Toggle Button */}
+          <button
+            onClick={() =>
+              eventEmails[event.id]
+                ? setEventEmails((prev) => {
                     const updated = { ...prev };
                     delete updated[event.id];
                     return updated;
                   })
-                }
-                className="mt-2 px-4 py-2 bg-[#a2d3c2] hover:bg-[#8fb8a8] text-white rounded"
-              >
-                Close Emails
-              </button>
-            )}
-            {eventEmails[event.id] && (
-              <div className="mt-4">
-                <p className="text-sm font-semibold">Emails (Copy-Paste):</p>
-                <textarea
-                  className="w-full mt-2 p-2 border rounded"
-                  rows="4"
-                  readOnly
-                  value={eventEmails[event.id].join(", ")}
-                />
-              </div>
-            )}
-          </div>
-        ))}
+                : handleViewEventEmails(event.id)
+            }
+            className="px-4 py-2 bg-[#c578d6] hover:bg-[#a864b3] text-white rounded"
+          >
+            {eventEmails[event.id] ? 'Close Emails' : 'View Emails'}
+          </button>
+
+          {/* Display Event Emails if Expanded */}
+          {eventEmails[event.id] && (
+            <div className="mt-4">
+              <p className="text-sm font-semibold">Emails (Copy-Paste):</p>
+              <textarea
+                className="w-full mt-2 p-2 border rounded"
+                rows="4"
+                readOnly
+                value={eventEmails[event.id].join(", ")}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   </div>
 )}
+
     </div>
   );
 }

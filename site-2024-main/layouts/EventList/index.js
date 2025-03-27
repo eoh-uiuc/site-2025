@@ -46,7 +46,7 @@ export default function EventList() {
         {
             "title": "Startup Showcase",
             "subtitle": "April 5th at 11 AM, CIF",
-            "blurb": "The EOH Startup Showcase is dedicated to celebrating student entrepreneurs! Come visit startup booths and experience demos, giveaways, and much more!",
+            "blurb": "Come visit startup booths and experience demos, giveaways, and much more!",
             "link": '/showcase.pdf',
             "bg": "bg-startup"
         },

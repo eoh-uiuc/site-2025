@@ -31,12 +31,25 @@ export default function Home() {
           <Visitors />
         </Section>
         <Section
-          color="bg-cover bg-center "
-          title="Keynote from Anna Oldani"
-          id="keynote"
-        >
-          <KeynoteSpeaker />
-        </Section>
+  color="bg-cover bg-center"
+  id="keynote"
+  title={
+    <span className="block text-center font-bold">
+      {/* Mobile version: with <br> */}
+      <span className="block sm:hidden">
+        Keynote from<br />Anna Oldani
+      </span>
+      {/* Desktop version: no <br> */}
+      <span className="hidden sm:inline">
+        Keynote from Anna Oldani
+      </span>
+    </span>
+  }
+>
+  <KeynoteSpeaker />
+</Section>
+
+
 
         <Section
           title="Featured Events"
