@@ -93,9 +93,9 @@ export default function Home() {
           <CorporateSponsorLayout />
         </Section>
 
-        <Section color="white" title="EOH 2024 Awards" id="awards">
+        {/* <Section color="white" title="EOH 2024 Awards" id="awards">
           <Awards />
-        </Section>
+        </Section> */}
         
         <div className="h-12"></div>
       </main>
