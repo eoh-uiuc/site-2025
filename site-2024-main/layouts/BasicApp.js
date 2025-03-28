@@ -13,6 +13,7 @@ const CONTACT_US = '/contact-us';
 const SOCIALS = { LINKTREE_URL, FB_URL, INSTA_URL, TWITTER_URL };
 
 const HEADER_ITEMS = [
+  { text: "Visitor View", href: "/vv" },
   { text: "Volunteer", href: "/volunteer" },
   {
     text: "Contact Us",

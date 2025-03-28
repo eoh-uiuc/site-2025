@@ -212,7 +212,7 @@ export function Schedule() {
                         
                         {visibleSlots.map(slot => (
     <div
-        className={`absolute w-[96px] min-w-[96px] ${slotGradients[slot.colIndex % Object.keys(slotGradients).length]} 
+        className={`absolute w-[96px] min-w-[96px] ${slotGradients[slot.colIndex % Object.keys(slotGradients).length]}
                     cursor-pointer duration-300 rounded-lg border border-white
                     text-xs flex items-center justify-center text-white select-none glowing 
                     shadow-md transition-transform transform hover:scale-105`}
@@ -247,7 +247,7 @@ export function Schedule() {
                 e.stopPropagation(); // Prevent event from bubbling to parent elements
                 toggleItineraryItem(slot.colIndex, slot.rowIndex, slot.date);
             }}
-            style={{ position: 'absolute', top: '1px', right: '4px' }}
+            style={{ position: 'absolute', top: '1px', right: '4px', fontSize: '25px' }}
         >
             {itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`) ? '★' : '☆'}
         </button>

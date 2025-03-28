@@ -130,7 +130,7 @@ const Exhibits = () => {
   )
   const [searchBoxText, setSearchBoxText] = useState("")
   const [searchOpen, setSearchOpen] = useState(false)
-  const itemsPerPage = 25
+  const itemsPerPage = 30
 
   const fetcher = (url) => fetch(url).then((res) => res.json())
 

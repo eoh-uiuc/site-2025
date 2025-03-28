@@ -23,7 +23,7 @@ const Faqs = () => {
   const [expandedId, setExpandedId] = useState(null);
 
   const { data, error, isLoading } = useSWR(
-    `https://n11.eohillinois.org/api/faqs`,
+    `https://n11.eohillinois.org/api/faqs?sort=updatedAt:desc`,
     fetcher
   );
 

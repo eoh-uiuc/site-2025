@@ -33,7 +33,7 @@ const Map = () => {
       top: "18%",
       left: "18%",
       heading: "Coordinated Sciences Lab",
-      buildingCode: "Coordinated Sciences",
+      buildingCode: "CSL",
       mapsLink: LOCATIONS.CoordinatedSciencesLab,
     }),
     CardInteract({
@@ -138,7 +138,7 @@ const Map = () => {
       top: "29.5%",
       left: "43.8%",
       heading: "Sidney Lu (MEB)",
-      buildingCode: "Sidney Lu",
+      buildingCode: "MEB",
       mapsLink: LOCATIONS.SidneyLu,
     }),
     CardInteract({
