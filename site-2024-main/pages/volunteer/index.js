@@ -189,12 +189,14 @@ export default function Volunteer() {
     <div className="w-screen mt-32 mb-16 flex justify-center items-center flex-col overflow-y-scroll">
       <div className="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-900 p-4 mb-6 mx-4 w-11/12 md:w-7/12 rounded shadow-md space-y-3">
   <div>
-    <p className="font-semibold">📣 Required Town Hall Meeting</p>
+    <p className="font-semibold">📣 Required Sign Ups</p>
     <p className="text-sm mt-1">
-      All volunteers must attend <strong>one</strong> of the following:
+      All volunteers must sign up for <strong>one</strong> of the following before signing up for any other events:
       <ul className="list-disc ml-5 mt-1">
-        <li><strong>March 25</strong>, 6–7 PM @ Mumford 103</li>
-        <li><strong>March 27</strong>, 6–7 PM @ Siebel CS 1404</li>
+        <li>Thursday Set Up</li>
+        <li>Thursday Set Up 2</li>
+        <li>Saturday Tear Down</li>
+        <li>Saturday Tear Down 2</li>
       </ul>
     </p>
   </div>
