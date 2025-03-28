@@ -79,7 +79,7 @@ const Exhibits = () => {
     // 'https://n11.eohillinois.org/api/exhibits',
     `https://n11.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
     ${searchTerm == '' ? '' :
-      `&filters[$or][0][Exhibit_Name][$contains]=${searchTerm}&filters[$or][1][VisGuide_Description][$contains]=${searchTerm}&filters[$or][2][Exhibit_Number][$eq]=${searchTerm}&filters[$or][3][Affiliation][$eq]=${searchTerm}&filters[$or][4][Building_A][$contains]=${searchTerm}&filters[$or][5][Tags][$contains]=${searchTerm}`}`,
+      `&filters[$or][0][Exhibit_Name][$containsi]=${searchTerm}&filters[$or][1][VisGuide_Description][$containsi]=${searchTerm}&filters[$or][2][Exhibit_Number][$eq]=${searchTerm}&filters[$or][3][Affiliation][$eq]=${searchTerm}&filters[$or][4][Building_A][$containsi]=${searchTerm}&filters[$or][5][Tags][$containsi]=${searchTerm}`}`,
     fetcher
   );
 
