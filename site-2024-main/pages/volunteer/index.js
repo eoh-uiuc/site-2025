@@ -191,11 +191,7 @@ export default function Volunteer() {
   <div>
     <p className="font-semibold">📣 Required Town Hall Meeting</p>
     <p className="text-sm mt-1">
-      All volunteers must attend <strong>one</strong> of the following:
-      <ul className="list-disc ml-5 mt-1">
-        <li><strong>March 25</strong>, 6–7 PM @ Mumford 103</li>
-        <li><strong>March 27</strong>, 6–7 PM @ Siebel CS 1404</li>
-      </ul>
+      If you were not able to attend a Town Hall please Slack, Text, or Email Hospitality Directors <strong>Arryan</strong> (217-649-5875) or <strong>Kate</strong> (847-532-2909) by <strong>Monday 11:59PM</strong> to schedule a meeting time! 
     </p>
   </div>
 
