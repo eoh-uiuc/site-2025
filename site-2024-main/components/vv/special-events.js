@@ -276,6 +276,7 @@ const Exhibits = () => {
           <SpecialEventCard event={item} idx={idx} key={idx} />
         ))}
       </div>
+      */}
 
       <div className="flex flex-row justify-between items-center mx-5">
         <p>Page {currentPage} of {numPages}</p>
