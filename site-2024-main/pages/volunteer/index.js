@@ -189,7 +189,7 @@ export default function Volunteer() {
     <div className="w-screen mt-32 mb-16 flex justify-center items-center flex-col overflow-y-scroll">
       <div className="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-900 p-4 mb-6 mx-4 w-11/12 md:w-7/12 rounded shadow-md space-y-3">
   <div>
-    <p className="font-semibold">📣 Required Town Hall Meeting</p>
+    <p className="font-semibold">📣 Required Sign Ups</p>
     <p className="text-sm mt-1">
       If you were not able to attend a Town Hall please Slack, Text, or Email Hospitality Directors <strong>Arryan</strong> (217-649-5875) or <strong>Kate</strong> (847-532-2909) by <strong>Monday 11:59PM</strong> to schedule a meeting time! 
     </p>

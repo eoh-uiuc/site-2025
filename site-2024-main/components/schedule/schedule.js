@@ -5,159 +5,164 @@ import utc from 'dayjs/plugin/utc';
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { Modal } from './modal.js';
+import Fuse from 'fuse.js';
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-const DAY_ONE = 4
-const DAY_TWO = 5
+const DAY_ONE = 4;
+const DAY_TWO = 5;
 
 const slotGradients = {
-    // 0: 'bg-gradient-to-tr from-red-800 via-red-500 to-red-700',
-    // 1: 'bg-gradient-to-tr from-yellow-600 via-yellow-400 to-yellow-500',
-    // 2: 'bg-gradient-to-tr from-purple-800 via-purple-700 to-blue-800',
-    // 3: 'bg-gradient-to-tr from-red-500 via-pink-600 to-pink-400',
-    // 4: 'bg-gradient-to-tr from-gray-800 via-gray-500 to-gray-700',
-    // 5: 'bg-gradient-to-tr from-green-800 via-green-500 to-green-700',
+  0: 'bg-red-700',
+  1: 'bg-yellow-500',
+  2: 'bg-blue-800',
+  3: 'bg-pink-400',
+  4: 'bg-gray-700',
+  5: 'bg-green-700',
+};
 
-    0: 'bg-red-700',
-    1: 'bg-yellow-500',
-    2: 'bg-blue-800',
-    3: 'bg-pink-400',
-    4: 'bg-gray-700',
-    5: 'bg-green-700',
-}
-
-// 1000 ms/sec * 60 sec/min * 30 min
 const timeMsPerSlot = 1000 * 60 * 30;
 const timeMs8Hrs = 1000 * 60 * 60 * 8.5;
-const dayOneMs = dayjs.tz("2025-04-04 00:00", "America/Chicago").valueOf();
-const dayTwoMs = dayjs.tz("2025-04-05 00:00", "America/Chicago").valueOf();
-
+const dayOneMs = dayjs.tz('2025-04-04 00:00', 'America/Chicago').valueOf();
+const dayTwoMs = dayjs.tz('2025-04-05 00:00', 'America/Chicago').valueOf();
 
 const genTimeSlots = () => {
-    const totalSlots = 26;
+  const totalSlots = 26;
 
-    let dayOneSlots = [];
-    for (let i = 0; i < totalSlots + 1; i++) {
-        dayOneSlots.push(dayOneMs + timeMs8Hrs + (i * timeMsPerSlot));
-    }
+  let dayOneSlots = [];
+  for (let i = 0; i < totalSlots + 1; i++) {
+    dayOneSlots.push(dayOneMs + timeMs8Hrs + i * timeMsPerSlot);
+  }
 
-    let dayTwoSlots = [];
-    for (let i = 0; i < totalSlots + 1 - 9; i++) { // Adjusted to end at 5 PM on Day 2
-        dayTwoSlots.push(dayTwoMs + timeMs8Hrs + (i * timeMsPerSlot));
-    }
+  let dayTwoSlots = [];
+  for (let i = 0; i < totalSlots + 1 - 9; i++) {
+    dayTwoSlots.push(dayTwoMs + timeMs8Hrs + i * timeMsPerSlot);
+  }
 
-    return {
-        DAY_ONE: dayOneSlots,
-        DAY_TWO: dayTwoSlots,
-    };
+  return {
+    DAY_ONE: dayOneSlots,
+    DAY_TWO: dayTwoSlots,
+  };
 };
 
 export function Schedule() {
-    const nullSlot = {
-        colIndex: null,
-        duration: null,
-        rowIndex: null,
-        date: null,
-        startMs: null,
-        endMs: null
+  const nullSlot = {
+    colIndex: null,
+    duration: null,
+    rowIndex: null,
+    date: null,
+    startMs: null,
+    endMs: null,
+  };
+
+  const [hoverSlot, setHoverSlot] = useState(nullSlot);
+  const [modalColIdx, setModalColIdx] = useState(null);
+  const [onDayOne, setDayOne] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [itinerary, setItinerary] = useState([]);
+  const [showItinerary, setShowItinerary] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    const savedItinerary = localStorage.getItem('itinerary');
+    if (savedItinerary) {
+      setItinerary(JSON.parse(savedItinerary));
     }
-    const [hoverSlot, setHoverSlot] = useState(nullSlot);
-    const [modalColIdx, setModalColIdx] = useState(null);
-    const [onDayOne, setDayOne] = useState(true);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [itinerary, setItinerary] = useState([]); // State to store saved slots
-    const [showItinerary, setShowItinerary] = useState(false);
+  }, []);
 
-    useEffect(() => {
-        const savedItinerary = localStorage.getItem('itinerary');
-        if (savedItinerary) {
-            setItinerary(JSON.parse(savedItinerary));
-        }
-    }, []);
+  useEffect(() => {
+    localStorage.setItem('itinerary', JSON.stringify(itinerary));
+  }, [itinerary]);
 
-    // Update localStorage whenever itinerary changes
-    useEffect(() => {
-        localStorage.setItem('itinerary', JSON.stringify(itinerary));
-    }, [itinerary]);
-
-    const toggleItineraryItem = (colIndex, rowIndex, date) => {
-        const slotIdentifier = `${colIndex}-${rowIndex}-${date}`;
-        setItinerary(prev => (
-            prev.includes(slotIdentifier)
-                ? prev.filter(item => item !== slotIdentifier)
-                : [...prev, slotIdentifier]
-        ));
-    };
-
-   // Fetch data using useSWR
-   const fetcher = (url) => fetch(url).then((res) => res.json());
-
-   const { data, error, isLoading } = useSWR(
-       "https://n11.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture",
-       fetcher
-   );
-
-   if (error) return "An error has occurred.";
-   if (isLoading) return "Loading...";
-
-   const slots = genTimeSlots();
-
-
-    const scheduleData = data.data.map((event, idx) => {
-        const occurences = event.occurences.map(occ => {
-            const start = dayjs(occ.startTime).tz('America/Chicago');
-            const end = dayjs(occ.endTime).tz('America/Chicago');
-            const date = start.date() === 4 ? DAY_ONE : DAY_TWO; // Set the date based on the event
-            const duration = end.diff(start) / timeMsPerSlot;
-            const rowIndex = (start.valueOf() - (date === DAY_ONE ? dayOneMs : dayTwoMs) - timeMs8Hrs) / timeMsPerSlot;
-            return {
-                colIndex: idx,
-                duration,
-                rowIndex,
-                date,  // Include date in the slot data
-                startMs: start.valueOf(),
-                endMs: end.valueOf(),
-                display: `${start.format('h:mm')} to ${end.format('h:mm')}`
-            };
-        });
-    
-        return {
-            col: idx,
-            title: event.title,
-            location: event.location,
-            picture: event.picture,
-            shortTitle: event.shortTitle,
-            description: event.description,
-            slots: occurences
-        };
-    });
-    const allSlots = scheduleData.map(item => item.slots).flat();
-
-    const dayOneSlots = allSlots.filter(occurence => {
-        return occurence.date == DAY_ONE
-    });
-    const dayTwoSlots = allSlots.filter(occurence => {
-        return occurence.date == DAY_TWO
-    });
-
-    const visibleSlots = (onDayOne ? dayOneSlots : dayTwoSlots).filter((slot) =>
-        !showItinerary || itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`)
+  const toggleItineraryItem = (colIndex, rowIndex, date) => {
+    const slotIdentifier = `${colIndex}-${rowIndex}-${date}`;
+    setItinerary((prev) =>
+      prev.includes(slotIdentifier)
+        ? prev.filter((item) => item !== slotIdentifier)
+        : [...prev, slotIdentifier]
     );
-    
-    
+  };
 
-    const activeStyles = "border-white bg-gradient-to-tr from-purple-800 via-purple-600 to-blue-700 text-white"
-    const inactiveStyles = "border-black border-t-2 border-l-2 border-r-2 bg-transparent hover:bg-gradient-to-tr from-purple-200 via-purple-100 to-blue-200 text-black";
+  const fetcher = (url) => fetch(url).then((res) => res.json());
 
-    return (
-        <>
-            <Modal 
-    event={modalColIdx != null ? scheduleData[modalColIdx] : null} 
-    close={() => setModalColIdx(null)} 
-    toggleItineraryItem={toggleItineraryItem} // Pass the toggle function here
-/>
+  const { data, error, isLoading } = useSWR(
+    'https://n11.eohillinois.org/api/events?populate=occurences&pagination[pageSize]=40&populate=picture',
+    fetcher
+  );
+
+  if (error) return 'An error has occurred.';
+  if (isLoading) return 'Loading...';
+
+  const slots = genTimeSlots();
+
+  const scheduleData = data.data.map((event, idx) => {
+    const occurences = event.occurences.map((occ) => {
+      const start = dayjs(occ.startTime).tz('America/Chicago');
+      const end = dayjs(occ.endTime).tz('America/Chicago');
+      const date = start.date() === 4 ? DAY_ONE : DAY_TWO;
+      const duration = end.diff(start) / timeMsPerSlot;
+      const rowIndex =
+        (start.valueOf() -
+          (date === DAY_ONE ? dayOneMs : dayTwoMs) -
+          timeMs8Hrs) /
+        timeMsPerSlot;
+      return {
+        colIndex: idx,
+        duration,
+        rowIndex,
+        date,
+        startMs: start.valueOf(),
+        endMs: end.valueOf(),
+        display: `${start.format('h:mm')} to ${end.format('h:mm')}`,
+      };
+    });
+
+    return {
+      col: idx,
+      title: event.title,
+      location: event.location,
+      picture: event.picture,
+      shortTitle: event.shortTitle,
+      description: event.description,
+      slots: occurences,
+    };
+  });
+
+  const allSlots = scheduleData.map((item) => item.slots).flat();
+  const dayOneSlots = allSlots.filter((o) => o.date === DAY_ONE);
+  const dayTwoSlots = allSlots.filter((o) => o.date === DAY_TWO);
+
+  const fuse = new Fuse(scheduleData, {
+    keys: ['title', 'location', 'description'],
+    threshold: 0.4,
+  });
+
+  const filteredEvents = searchQuery
+    ? fuse.search(searchQuery).map((r) => r.item)
+    : scheduleData;
+
+  const filteredColIndices = new Set(filteredEvents.map((e) => e.col));
+
+  const visibleSlots = (onDayOne ? dayOneSlots : dayTwoSlots).filter(
+    (slot) =>
+      (!showItinerary ||
+        itinerary.includes(`${slot.colIndex}-${slot.rowIndex}-${slot.date}`)) &&
+      filteredColIndices.has(slot.colIndex)
+  );
+
+  const activeStyles =
+    'border-white bg-gradient-to-tr from-purple-800 via-purple-600 to-blue-700 text-white';
+  const inactiveStyles =
+    'border-black border-t-2 border-l-2 border-r-2 bg-transparent hover:bg-gradient-to-tr from-purple-200 via-purple-100 to-blue-200 text-black';
+
+  return (
+    <>
+      <Modal
+        event={modalColIdx != null ? scheduleData[modalColIdx] : null}
+        close={() => setModalColIdx(null)}
+        toggleItineraryItem={toggleItineraryItem}
+      />
 
 <div className="flex justify-end px-6 mb-2">
                 <button
