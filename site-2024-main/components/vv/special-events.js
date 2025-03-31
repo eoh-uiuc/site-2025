@@ -274,7 +274,7 @@ const Exhibits = () => {
       <div className="mx-5 flex flex-row flex-wrap gap-3">
         {filteredItems.map((item, idx) => (
           <SpecialEventCard event={item} idx={idx} key={idx} />
-        ))}
+        ))} 
       </div>
       */}
 
