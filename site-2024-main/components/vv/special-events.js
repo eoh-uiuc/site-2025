@@ -31,7 +31,38 @@ const ErrorMessageBox = ({ message, onRetry }) => (
   </div>
 )
 
-const SpecialEventCard = ({ event, idx }) => {
+const EventsContainer = ({ initialItems }) => {
+  const [items, setItems] = useState(initialItems);
+
+  // Function to toggle favorite status
+  const toggleFavorite = (id) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, favorite: !item.favorite } : item
+      )
+    );
+  };
+
+  return (
+    <div>
+      <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">Favorited Events</h1>
+      <div className="mx-5 flex flex-row flex-wrap gap-3 min-h-[300px] mv-10">
+        {items.filter(item => item.favorite)
+        .map((item, idx) => (
+          <SpecialEventCard event={item} idx={idx} key={idx} toggleFavorite={toggleFavorite} />
+        ))}
+      </div>
+      <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">All Events</h1>
+      <div className="mx-5 flex flex-row flex-wrap gap-3">
+        {items.map((item, idx) => (
+          <SpecialEventCard event={item} idx={idx} key={idx} toggleFavorite={toggleFavorite} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const SpecialEventCard = ({ event, idx, toggleFavorite }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -46,17 +77,39 @@ const SpecialEventCard = ({ event, idx }) => {
         {event.title}
       </h2>
 
-      <div className="flex flex-col gap-1">
-        {event.location && (
+      <div className="flex flex-row justify-between items-start">
+        {/* Left side content */}
+        <div className="flex flex-col justify-between gap-1">
+          {event.location && (
+            <span className="flex flex-row gap-2">
+              <Icon icon="carbon:location-filled" className="text-xl text-blue-800" />
+              <span>{event.location}</span>
+            </span>
+          )}
           <span className="flex flex-row gap-2">
-            <Icon icon="carbon:location-filled" className="text-xl text-blue-800" />
-            <span>{event.location}</span>
+            <Icon icon="mingcute:time-line" className="text-xl text-blue-800" />
+            <span>Click to see times!</span>
           </span>
-        )}
-        <span className="flex flex-row gap-2">
-          <Icon icon="mingcute:time-line" className="text-xl text-blue-800" />
-          <span>Click to see times!</span>
-        </span>
+        </div>
+
+        {/* Right side star icon */}
+        <div className="ml-4">
+          <button
+            className="w-10 h-10"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents card from toggling when clicking the star
+              console.log("CLICK")
+              toggleFavorite(event.id)
+            }}
+          >
+            <Icon
+              icon="ic:round-star"
+              className={`text-3xl duration-200 ${
+                event.favorite ? "text-yellow-400" : "text-gray-400"
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       <div className={`${expanded ? "" : "h-30 line-clamp-4"} my-2`}>
@@ -142,6 +195,7 @@ const Exhibits = () => {
       location: event.location || "",
       description: event.description || "",
       slots: occurences,
+      favorite: false,
       picture: event.picture?.url || "",
       shortTitle: event.shortTitle || "",
     }
@@ -164,7 +218,7 @@ const Exhibits = () => {
   return (
     <div className="flex flex-col gap-5">
       <span className="flex flex-row justify-between mx-8">
-        <h1 className="font-heading text-2xl mt-2 md:text-center md:mx-0">
+        <h1 className="font-heading text-5xl mt-2 md:text-center md:mx-0">
           Special Events
         </h1>
         <button onClick={() => setSearchOpen(!searchOpen)}>
@@ -208,11 +262,21 @@ const Exhibits = () => {
         </div>
       )}
 
+      {/* THIS IS WHAT ILL REPLACE WITH EVENTS CONTAINER */}
+      <EventsContainer initialItems={items}/>
+      {/* <div className="mx-5 flex flex-row flex-wrap gap-3">
+        {items.filter(item => item.favorite)
+        .map((item, idx) => (
+          <SpecialEventCard event={item} idx={idx} key={idx} />
+        ))}
+      </div>
+      <h1>HELLO</h1>
       <div className="mx-5 flex flex-row flex-wrap gap-3">
         {filteredItems.map((item, idx) => (
           <SpecialEventCard event={item} idx={idx} key={idx} />
         ))}
       </div>
+      */}
 
       <div className="flex flex-row justify-between items-center mx-5">
         <p>Page {currentPage} of {numPages}</p>

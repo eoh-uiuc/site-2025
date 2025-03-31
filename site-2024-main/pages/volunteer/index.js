@@ -191,13 +191,7 @@ export default function Volunteer() {
   <div>
     <p className="font-semibold">📣 Required Sign Ups</p>
     <p className="text-sm mt-1">
-      All volunteers must sign up for <strong>one</strong> of the following before signing up for any other events:
-      <ul className="list-disc ml-5 mt-1">
-        <li>Thursday Set Up</li>
-        <li>Thursday Set Up 2</li>
-        <li>Saturday Tear Down</li>
-        <li>Saturday Tear Down 2</li>
-      </ul>
+      If you were not able to attend a Town Hall please Slack, Text, or Email Hospitality Directors <strong>Arryan</strong> (217-649-5875) or <strong>Kate</strong> (847-532-2909) by <strong>Monday 11:59PM</strong> to schedule a meeting time! 
     </p>
   </div>
 
