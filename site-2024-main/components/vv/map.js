@@ -67,7 +67,7 @@ const Map = () => {
     CardInteract({
       top: "18%",
       left: "30.5%",
-      heading: "Siebel Center for Computer Science",
+      heading: "Siebel School of Computing and Data Science",
       buildingCode: "Siebel",
       mapsLink: LOCATIONS.SiebelCS,
     }),
