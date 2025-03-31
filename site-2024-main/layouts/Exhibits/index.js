@@ -2,40 +2,30 @@ import Button from '@/button';
 import Filter from '@/filter/index.js';
 import Paginate from '@/paginate';
 import { getHost } from '@utilities/host.js';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Bubbles from './bubbles.js';
 import Fuse from 'fuse.js';
 import SearchBar from 'material-ui-search-bar';
 import _, { map } from 'underscore';
 
 const BUILDINGS = [
-	// 'Beckman Institute',
-	// 'CSL Studio',
 	'Electrical and Computer Engineering Building',
-	// 'Coordinated Science Laboratory (CSL)',
 	'Hydrosystems Lab',
 	'National Center for Supercomputing Applications',
-	// 'Hoeft Micro and Nanotechnology Laboratory',
 	'Newmark (Crane Bay)',
 	'Siebel Center',
-	// 'Kenney Gym Annex',
 	'Digital Computer Laboratory',
-	// 'Grainger Engineering Library',
 	'Grainger Loading Dock',
 	'Talbot Lab',
-	// 'Mechanical Engineering Laboratory (MEL)',
 	'Campus Instructional Facility (CIF)',
 	'Materials Science & Engineering Building',
 	'Transportation Building',
 	'Everitt Laboratory',
 	'Sidney Lu Mechanical Engineering Building',
 	'Loomis Laboratory',
-	// 'Materials Research Laboratory (MRL)',
-	// 'Illini Union',
 	'Natural History Building',
 	'Engineering Hall',
 	'Springfield',
-	// "Bardeen Quad",
 	'North Quad',
 	'Matthews Ave',
 	'Observatory'
@@ -96,13 +86,10 @@ const LOCS_TO_BUILDING_SHORT = {
 export default class Exhibits extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			bubbleAt: 'All',
 			affiliation: 'All',
 			rso: 'All',
-			// department: 'All',
-			// t_audience: 'All',
 			tag: [],
 			query: '',
 			exhibits: null
@@ -123,9 +110,7 @@ export default class Exhibits extends Component {
 	}
 
 	handleClick = (name) => {
-		this.setState({
-			bubbleAt: name
-		});
+		this.setState({ bubbleAt: name });
 	};
 
 	onScheduleItemClick = (location) => {
@@ -144,7 +129,7 @@ export default class Exhibits extends Component {
 						locationLong: LOCS_TO_BUILDINGS[location] || location,
 						...other
 					};
-				})
+			})
 			: null;
 
 		const noFilter =
@@ -155,18 +140,10 @@ export default class Exhibits extends Component {
 			t_audience == 'All' &&
 			query == '' &&
 			tag.length == 0;
+
 		const filterFiltered = exhibitsWithLocations
 			? exhibitsWithLocations.filter(
-					({
-						locationLong,
-						exhibitAffiliation,
-						rsoName,
-						departmentAffiliation,
-						audience,
-						tag1,
-						tag2,
-						tag3
-					}) => {
+					({ locationLong, exhibitAffiliation, rsoName, departmentAffiliation, audience, tag1, tag2, tag3 }) => {
 						if (bubbleAt !== 'All' && !locationLong.includes(bubbleAt)) return false;
 						if (affiliation !== 'All' && affiliation !== exhibitAffiliation) return false;
 						if (rso !== 'All' && rso !== rsoName) return false;
@@ -186,16 +163,19 @@ export default class Exhibits extends Component {
 
 		const fuse = filterFiltered
 			? new Fuse(filterFiltered, {
-					keys: [ 'event', 'location', 'departmentAffiliation' ],
-					threshold: 0.3,
-					ignoreLocation: true
-				})
+				includeScore: true,
+				threshold: 0.5,
+				distance: 200,
+				minMatchCharLength: 2,
+				ignoreLocation: true,
+				keys: ['event', 'location', 'locationLong', 'departmentAffiliation']
+			})
 			: null;
 
 		const searchResult = fuse ? fuse.search(query) : null;
 		const filteredUnordered = query && searchResult ? searchResult.map((result) => result.item) : filterFiltered;
 		const filtered = filteredUnordered ? _.sortBy(filteredUnordered, ({ event, rsoName }) => event || rsoName) : null;
-		console.log(filtered)
+		console.log(filtered);
 
 		return (
 			<div>
