@@ -71,7 +71,7 @@ const Exhibits = () => {
   const [searchTerm, setSearchTerm] = useQueryParam('q', withDefault(StringParam, ''));;
   const [searchBoxText, setSearchBoxText] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
-  const itemsPerPage = 25;
+  const itemsPerPage = 24;
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -163,7 +163,8 @@ const Exhibits = () => {
         </div>
       }
 
-      <div className="mx-5 flex flex-row flex-wrap gap-3">
+      <div className="w-full flex flex-wrap justify-center gap-5 px-4">
+
         {items.map((item, idx) => (
           <ExhibitCard exhibit={item} idx={idx} key={idx} />
         ))}

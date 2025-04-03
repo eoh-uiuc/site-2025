@@ -46,15 +46,15 @@ const EventsContainer = ({ initialItems }) => {
   return (
     <div>
       <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">Favorited Events</h1>
-      <div className="mx-5 flex flex-row flex-wrap gap-3 min-h-[300px] mv-10">
-        {items.filter(item => item.favorite)
+      <div className="w-full flex flex-wrap justify-center gap-5 px-4 max-w-screen-xl mx-auto">
+      {items.filter(item => item.favorite)
         .map((item, idx) => (
           <SpecialEventCard event={item} idx={idx} key={idx} toggleFavorite={toggleFavorite} />
         ))}
       </div>
       <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">All Events</h1>
-      <div className="mx-5 flex flex-row flex-wrap gap-3">
-        {items.map((item, idx) => (
+      <div className="w-full flex flex-wrap justify-center gap-5 px-4 max-w-screen-xl mx-auto">
+      {items.map((item, idx) => (
           <SpecialEventCard event={item} idx={idx} key={idx} toggleFavorite={toggleFavorite} />
         ))}
       </div>
