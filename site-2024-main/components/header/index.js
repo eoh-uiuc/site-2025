@@ -27,13 +27,13 @@ export default function Header({ headerItems }) {
 
   return (
     <Fragment>
-      {/* Mobile */}
+      {/* Mobile */} 
       <div className="fixed top-0 lg:hidden w-screen h-24 bg-white border-4 flex flex-col justify-center z-30">
         <div className="flex justify-center flex-row w-full">
           <Link href="/">
             <img
               src="/assets/logo/eohlogo2025.png"
-              className="absolute left-6 top-0 h-16 w-min mt-3 cursor-pointer object-contain "
+              className="absolute left-6 sm:left-1 top-0 h-16 w-min mt-3 cursor-pointer object-contain "
             />
           </Link>
 
