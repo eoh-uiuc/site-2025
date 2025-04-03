@@ -316,6 +316,7 @@ const Map = () => {
 
 
 
+
         <div className="mx-5">
           <ShuttleInformation />
           <a
