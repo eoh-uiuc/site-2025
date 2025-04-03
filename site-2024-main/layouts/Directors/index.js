@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Directors() {
     return (
-        <div className="flex flex-col items-center gap-6 mx-14 md:mx-auto md:w-3/4 text-sm text-justify">
-            {/* Committee photo displayed above the directors' note */}
+        <div className="flex flex-col items-center gap-6 mx-6 md:mx-auto md:w-3/4 text-sm text-center md:text-justify">
+        {/* Committee photo displayed above the directors' note */}
             <img 
                 src="assets/images/committee-shot.jpg" 
                 alt="Group picture of the EOH 2024 committee" 
