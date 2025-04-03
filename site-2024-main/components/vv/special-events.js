@@ -37,7 +37,8 @@ const SpecialEventCard = ({ event, idx, toggleFavorite }) => {
   return (
     <button
       key={idx}
-      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl transition-transform transform hover:scale-105 ${bgGradients[idx % Object.keys(bgGradients).length]}`}
+      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl transition-transform transform hover:scale-105 
+      ${event.color}`}
       onClick={() => setExpanded(!expanded)}
     >
       <h2 className="font-heading text-lg font-semibold text-center mx-auto">{event.title}</h2>
@@ -118,6 +119,7 @@ const SpecialEvents = () => {
       favorite: false,
       picture: event.picture?.url || "",
       shortTitle: event.shortTitle || "",
+      color: bgGradients[idx % Object.keys(bgGradients).length] || "",
     }
   })
 
