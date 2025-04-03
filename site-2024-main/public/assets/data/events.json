@@ -24,6 +24,12 @@
       "description": "Congratulations admitted new first-year and transfer engineering students! Start your Engineering Open House visit at the Campus Instructional Facility (CIF) monumental steps to receive a limited-edition gift while supplies last. Then join us for a Student Panel to meet a Dean and connect with current students. Stop by the College Resource Fair to learn about future opportunities and take a fun, commemorative photo! "
     },
     {
+      "name": "Grainger Alumni Panel",
+      "times": ["Saturday, 3:00pm - 4:30pm"],
+      "location": "CIF Monumental Steps",
+      "description": "Want to hear more about the amazing things UIUC Alumni have done after graduating? Come to our Alumni Panel to discuss current Alumni's careers, advice, and time at UIUC!"
+    },
+    {
       "name": "Mini Research Fair",
       "times": [
         "Friday 3:00 PM - 4:30 PM"
