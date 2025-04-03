@@ -5,8 +5,10 @@ import { LOCATIONS } from "../../utilities/links.js"
 import { Icon } from "@iconify/react"
 import { Modal } from "../modal/index.js"
 import { ShuttleInformation } from "../shuttle/index.js"
+import useMapModal from "./map-modal.js"
 
 const Map = () => {
+  const { modalImages, noMapAvailable, openModal, closeModal } = useMapModal();
   const interacts = [
     CardInteract({
       top: "13.5%",
@@ -14,6 +16,7 @@ const Map = () => {
       heading: "Beckman Institute",
       buildingCode: "Beckman",
       mapsLink: LOCATIONS.Beckman,
+      openModal: openModal,
     }),
     CardInteract({
       top: "10.5%",
@@ -21,6 +24,7 @@ const Map = () => {
       heading: "CSL Studio",
       buildingCode: "CSL",
       mapsLink: LOCATIONS.CSL,
+      openModal: openModal,
     }),
     CardInteract({
       top: "20.5%",
@@ -28,6 +32,7 @@ const Map = () => {
       heading: "ECEB",
       buildingCode: "ECEB",
       mapsLink: LOCATIONS.ECEB,
+      openModal: openModal,
     }),
     CardInteract({
       top: "18%",
@@ -35,6 +40,7 @@ const Map = () => {
       heading: "Coordinated Sciences Lab",
       buildingCode: "CSL",
       mapsLink: LOCATIONS.CoordinatedSciencesLab,
+      openModal: openModal,
     }),
     CardInteract({
       top: "17%",
@@ -42,6 +48,7 @@ const Map = () => {
       heading: "Hydrosystems Laboratory",
       buildingCode: "Hydrosystems",
       mapsLink: LOCATIONS.HydrosystemsLab,
+      openModal: openModal,
     }),
     CardInteract({
       top: "13%",
@@ -49,6 +56,7 @@ const Map = () => {
       heading: "NCSA",
       buildingCode: "NCSA",
       mapsLink: LOCATIONS.NCSA,
+      openModal: openModal,
     }),
     CardInteract({
       top: "24%",
@@ -56,6 +64,7 @@ const Map = () => {
       heading: "Nick Holonyak Nanotechnology Lab",
       buildingCode: "HMNTL",
       mapsLink: LOCATIONS.NanotechLab,
+      openModal: openModal,
     }),
     CardInteract({
       top: "21%",
@@ -63,6 +72,7 @@ const Map = () => {
       heading: "Newmark Civil Engineering Lab",
       buildingCode: "Newmark",
       mapsLink: LOCATIONS.Newmark,
+      openModal: openModal,
     }),
     CardInteract({
       top: "18%",
@@ -70,6 +80,7 @@ const Map = () => {
       heading: "Siebel School of Computing and Data Science",
       buildingCode: "Siebel",
       mapsLink: LOCATIONS.SiebelCS,
+      openModal: openModal,
     }),
     CardInteract({
       top: "20%",
@@ -77,6 +88,7 @@ const Map = () => {
       heading: "Engineering Student Project Laboratory (ESPL)",
       buildingCode: "ESPL",
       mapsLink: LOCATIONS.ESPL,
+      openModal: openModal,
     }),
     CardInteract({
       top: "24.3%",
@@ -84,6 +96,7 @@ const Map = () => {
       heading: "Digital Computer Laboratory",
       buildingCode: "DCL",
       mapsLink: LOCATIONS.DCL,
+      openModal: openModal,
     }),
     CardInteract({
       top: "28%",
@@ -91,6 +104,7 @@ const Map = () => {
       heading: "Grainger Engineering Library",
       buildingCode: "Grainger Library",
       mapsLink: LOCATIONS.Grainger,
+      openModal: openModal,
     }),
     CardInteract({
       top: "33.5%",
@@ -98,6 +112,7 @@ const Map = () => {
       heading: "Talbot Laboratory",
       buildingCode: "Talbot",
       mapsLink: LOCATIONS.Talbot,
+      openModal: openModal,
     }),
     CardInteract({
       top: "29.5%",
@@ -105,6 +120,7 @@ const Map = () => {
       heading: "Mechanical Engineering Lab (MEL)",
       buildingCode: "MEL",
       mapsLink: LOCATIONS.MEL,
+      openModal: openModal,
     }),
     CardInteract({
       top: "30.5%",
@@ -112,6 +128,7 @@ const Map = () => {
       heading: "Campus Instructional Facility (CIF)",
       buildingCode: "CIF",
       mapsLink: LOCATIONS.CIF,
+      openModal: openModal,
     }),
     CardInteract({
       top: "32%",
@@ -119,6 +136,7 @@ const Map = () => {
       heading: "Material Science & Engineering (MSEB)",
       buildingCode: "MSEB",
       mapsLink: LOCATIONS.MSEB,
+      openModal: openModal,
     }),
     CardInteract({
       top: "27%",
@@ -126,6 +144,7 @@ const Map = () => {
       heading: "Transportation Building",
       buildingCode: "TB",
       mapsLink: LOCATIONS.TransportationBuilding,
+      openModal: openModal,
     }),
     CardInteract({
       top: "36.5%",
@@ -133,6 +152,7 @@ const Map = () => {
       heading: "Everitt Laboratory",
       buildingCode: "Everitt",
       mapsLink: LOCATIONS.Everitt,
+      openModal: openModal,
     }),
     CardInteract({
       top: "29.5%",
@@ -140,6 +160,7 @@ const Map = () => {
       heading: "Sidney Lu (MEB)",
       buildingCode: "MEB",
       mapsLink: LOCATIONS.SidneyLu,
+      openModal: openModal,
     }),
     CardInteract({
       top: "25%",
@@ -147,6 +168,7 @@ const Map = () => {
       heading: "Loomis Laboratory (Physics)",
       buildingCode: "Loomis",
       mapsLink: LOCATIONS.Loomis,
+      openModal: openModal,
     }),
     CardInteract({
       top: "21.5%",
@@ -154,6 +176,7 @@ const Map = () => {
       heading: "Materials Research Laboratory (MRL)",
       buildingCode: "MRL",
       mapsLink: LOCATIONS.MRL,
+      openModal: openModal,
     }),
     CardInteract({
       top: "36.5%",
@@ -161,6 +184,7 @@ const Map = () => {
       heading: "Natural History Building (NHB)",
       buildingCode: "NHB",
       mapsLink: LOCATIONS.NHB,
+      openModal: openModal,
     }),
     CardInteract({
       top: "34.5%",
@@ -168,6 +192,7 @@ const Map = () => {
       heading: "Engineering Hall",
       buildingCode: "Engineering Hall",
       mapsLink: LOCATIONS.EHall,
+      openModal: openModal,
     }),
     CardInteract({
       top: "37%",
@@ -175,6 +200,7 @@ const Map = () => {
       heading: "Graziano Plaza",
       buildingCode: "Graziano",
       mapsLink: LOCATIONS.GrazianoPlaza,
+      openModal: openModal,
     }),
     CardInteract({
       top: "72.5%",
@@ -182,6 +208,7 @@ const Map = () => {
       heading: "Stock Pavilion",
       buildingCode: "Stock Pavilion",
       mapsLink: LOCATIONS.StockPavillion,
+      openModal: openModal,
     }),
     CardInteract({
       top: "54%",
@@ -189,6 +216,7 @@ const Map = () => {
       heading: "Observatory",
       buildingCode: "Observatory",
       mapsLink: LOCATIONS.Observatory,
+      openModal: openModal,
     }),
     CardInteract({
       top: "32.3%",
@@ -196,58 +224,57 @@ const Map = () => {
       heading: "Bardeen Quad",
       buildingCode: "Bardeen Quad",
       mapsLink: LOCATIONS.BardeenQuad,
+      openModal: openModal,
     }),
   ]
 
-  const [modalImages, setModalImages] = useState([]);
-  const [noMapAvailable, setNoMapAvailable] = useState(false);
+  // const [modalImages, setModalImages] = useState([]);
+  // const [noMapAvailable, setNoMapAvailable] = useState(false);
 
-  const openModal = async (buildingCode) => {
-    let images = [];
+  // const openModal = async (buildingCode) => {
+  //   let images = [];
 
-    if (buildingCode === "MEB") {
-      images = [
-        "/assets/maps/sidney lu0.jpg",
-        "/assets/maps/sidney lu1.jpg",
-        "/assets/maps/sidney lu2.jpg",
-      ];
-    }
-    else if (buildingCode === "TB") {
-      images = [
-        "/assets/maps/tb1.jpg",
-        "/assets/maps/tb2.jpg",
-        "/assets/maps/tb3.jpg",
-      ];
-    } else {
-      const floor1Url = `/assets/maps/${buildingCode.toLowerCase()}1.jpg`;
-      const floor2Url = `/assets/maps/${buildingCode.toLowerCase()}2.jpg`;
+  //   if (buildingCode === "Sidney Lu") {
+  //     images = [
+  //       "/assets/maps/sidney lu0.png",
+  //       "/assets/maps/sidney lu1.png",
+  //       "/assets/maps/sidney lu2.png",
+  //     ];
+  //   } else {
+  //     const floor1Url = `/assets/maps/${buildingCode.toLowerCase()}1.png`;
+  //     const floor2Url = `/assets/maps/${buildingCode.toLowerCase()}2.png`;
 
-      try {
-        const res1 = await fetch(floor1Url, { method: 'HEAD' });
+  //     try {
+  //       const res1 = await fetch(floor1Url, { method: 'HEAD' });
 
-        if (res1.ok) {
-          try {
-            const res2 = await fetch(floor2Url, { method: 'HEAD' });
-            images = res2.ok ? [floor1Url, floor2Url] : [floor1Url];
-          } catch {
-            images = [floor1Url];
-          }
-          setNoMapAvailable(false); // ✅ Maps exist
-        } else {
-          setNoMapAvailable(true); // ❌ No map available
-        }
-      } catch {
-        setNoMapAvailable(true); // ❌ No map available
-      }
-    }
+  //       if (res1.ok) {
+  //         try {
+  //           const res2 = await fetch(floor2Url, { method: 'HEAD' });
+  //           if (res2.ok) {
+  //             images = [floor1Url, floor2Url];
+  //           } else {
+  //             images = [floor1Url];
+  //           }
+  //         } catch {
+  //           images = [floor1Url];
+  //         }
+  //         setNoMapAvailable(false); // ✅ Maps exist
+  //       } else {
+  //         setNoMapAvailable(true); // ❌ No map available
+  //       }
+  //     } catch {
+  //       setNoMapAvailable(true); // ❌ No map available
+  //     }
+  //   }
 
-    setModalImages(images);
-  };
+  //   setModalImages(images);
+  // };
+  
 
-  const closeModal = () => {
-    setModalImages([]);
-    setNoMapAvailable(false); // Reset state when closing modal
-  };
+  // const closeModal = () => {
+  //   setModalImages([]);
+  //   setNoMapAvailable(false); // Reset state when closing modal
+  // };
 
   return (
     <>
@@ -336,7 +363,7 @@ const Map = () => {
                   </a>
                   <a
                     className="flex flex-row items-center py-2 px-3 border shadow-md rounded-md gap-2 hover:bg-green-200 duration-200"
-                    onClick={() => openModal(interact.buildingCode)} // Open modal with the building's image
+                    onClick={() => openModal(interact.buildingCode)}
                   >
                     <Icon
                       icon="mdi:map"

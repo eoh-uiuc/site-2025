@@ -1,12 +1,15 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
+// import {openModal, closeModal } from "./map.js"
+import useMapModal from "./map-modal.js";
 
 export const CardInteract = ({
     top,
     left,
     heading = "",
     buildingCode = "",
-    mapsLink = ""
+    mapsLink = "",
+    openModal,
 }) => {
     const [isHovering, setHovering] = useState(false);
     const [timeoutId, setTimeoutId] = useState();
@@ -18,6 +21,7 @@ export const CardInteract = ({
         mapsLink,
         buildingCode,
         render: (state, active, setActive) => {
+            // const {openModal} = useMapModal();
             const clearSelection = () => {
                 setHovering(false);
                 setActive(null);
@@ -49,6 +53,9 @@ export const CardInteract = ({
                                 }
                                 <a className="" href={`/vv?t=exhibits&q=${encodeURI(buildingCode)}`}>
                                     <Icon icon="game-icons:barracks-tent" className="text-yellow-500 hover:text-yellow-400 text-3xl" />
+                                </a>
+                                <a className="" onClick={() => openModal(buildingCode)}>
+                                    <Icon icon="mdi:map" className="text-green-700 hover:text-green-600 text-3xl" />
                                 </a>
                             </div>
                         </span>
