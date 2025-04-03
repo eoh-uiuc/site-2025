@@ -33,7 +33,7 @@ export default function Header({ headerItems }) {
           <Link href="/">
             <img
               src="/assets/logo/eohlogo2025.png"
-              className="absolute left-6 sm:left-1 top-0 h-16 w-min mt-3 cursor-pointer object-contain "
+              className="absolute left-6 top-0 h-16 w-min mt-3 cursor-pointer object-contain "
             />
           </Link>
 
