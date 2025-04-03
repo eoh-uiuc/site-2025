@@ -37,10 +37,10 @@ export default function EventList() {
             "bg": "bg-robobrawl"
         },
         {
-            "title": "Keynote by Anna Oldani",
-            "subtitle": "April 5th at 3 PM, CIF",
-            "blurb": "At the forefront of sustainable aviation research and policy, Oldani has a story worth hearing.",
-            "link": '#keynote',
+            "title": "EOH x Mom's Weekend",
+            "subtitle": "",
+            "blurb": "We would like to invite all Grainger Engineering Moms to explore the unique features of EOH that have been organized in celebration.",
+            "link": '/EOHxmoms.pdf',
             "bg": "bg-keynote"
         },
         {
