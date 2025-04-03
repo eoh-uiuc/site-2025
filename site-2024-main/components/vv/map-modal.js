@@ -6,25 +6,28 @@ const useMapModal = () => {
     const openModal = async (buildingCode) => {
         let images = ["/assets/images/default_image.png"];
 
-        if (buildingCode === "Sidney Lu") {
-        images = [
-            "/assets/maps/sidney lu0.png",
-            "/assets/maps/sidney lu1.png",
-            "/assets/maps/sidney lu2.png",
-        ];
+        if (buildingCode === "MEB") {
+            images = [
+              "/assets/maps/sidney lu0.jpg",
+              "/assets/maps/sidney lu1.jpg",
+              "/assets/maps/sidney lu2.jpg",
+            ];
+        }
+        else if (buildingCode === "TB") {
+            images = [
+              "/assets/maps/tb1.jpg",
+              "/assets/maps/tb2.jpg",
+              "/assets/maps/tb3.jpg",
+            ];
         } else {
-            const floor1Url = `/assets/maps/${buildingCode.toLowerCase()}1.png`;
-            const floor2Url = `/assets/maps/${buildingCode.toLowerCase()}2.png`;
+            const floor1Url = `/assets/maps/${buildingCode.toLowerCase()}1.jpg`;
+            const floor2Url = `/assets/maps/${buildingCode.toLowerCase()}2.jpg`;
             try {
                 const res1 = await fetch(floor1Url, { method: "HEAD" });
                 if (res1.ok) {
                 try {
                     const res2 = await fetch(floor2Url, { method: "HEAD" });
-                    if (res2.ok) {
-                        images = [floor1Url, floor2Url];
-                    } else {
-                        images = [floor1Url];
-                    }
+                    images = res2.ok ? [floor1Url, floor2Url] : [floor1Url];
                 } catch {
                     images = [floor1Url];
                 }
