@@ -51,7 +51,7 @@ export default function Header({ headerItems }) {
       />
 
       {/* Desktop */}
-      <div className="hidden lg:block fixed top-0 w-screen h-20 bg-white flex-col justify-center z-30">
+      <div className="hidden lg:block fixed top-0 w-screen h-24 bg-white flex-col justify-center z-30">
         <div className="w-3/4 m-auto py-0">
           <nav className="flex flex-row w-full">
             <Link href="/">
