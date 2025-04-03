@@ -144,10 +144,32 @@ const SpecialEvents = () => {
   }
 
   const EventsContainer = ({ initialItems }) => {
-    const [items, setItems] = useState(initialItems);
+    const [items, setItems] = useState(() => {
+      // Load favorited events from localStorage
+      const storedFavorites = JSON.parse(localStorage.getItem("favoritedEvents")) || {};
+      return initialItems.map(item => ({
+          ...item,
+          favorite: storedFavorites[item.id] || false, // Apply stored favorite status
+      }));
+    });
+
     const toggleFavorite = (id) => {
-      setItems((prev) => prev.map((i) => i.id === id ? { ...i, favorite: !i.favorite } : i))
-    }
+        setItems((prev) => {
+            const updatedItems = prev.map((i) =>
+                i.id === id ? { ...i, favorite: !i.favorite } : i
+            );
+
+            // Save updated favorite status in localStorage
+            const newFavorites = updatedItems.reduce((acc, item) => {
+                acc[item.id] = item.favorite;
+                return acc;
+            }, {});
+
+            localStorage.setItem("favoritedEvents", JSON.stringify(newFavorites));
+
+            return updatedItems;
+        });
+    };  
     return (
       <div>
         <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">Favorited Events</h1>
