@@ -161,19 +161,29 @@ export default class Exhibits extends Component {
 				)
 			: null;
 
-		const fuse = filterFiltered
-			? new Fuse(filterFiltered, {
+			const fuseOptions = {
 				includeScore: true,
-				threshold: 0.5,
-				distance: 200,
-				minMatchCharLength: 2,
+				includeMatches: true,
+				threshold: 0.3,
+				location: 0,
+				distance: 100,
+				minMatchCharLength: 1,
+				useExtendedSearch: true,
 				ignoreLocation: true,
-				keys: ['event', 'location', 'locationLong', 'departmentAffiliation']
-			})
-			: null;
+				keys: ['event', 'location', 'locationLong', 'departmentAffiliation', 'rsoName', 'tag1', 'tag2', 'tag3']
+			};
+			
+		const fuse = filterFiltered ? new Fuse(filterFiltered, fuseOptions) : null;			
+		const cleanedQuery = query?.trim();
 
-		const searchResult = fuse ? fuse.search(query) : null;
-		const filteredUnordered = query && searchResult ? searchResult.map((result) => result.item) : filterFiltered;
+		const searchResult = fuse && cleanedQuery && cleanedQuery.length >= 1
+			? fuse.search(cleanedQuery)
+			: null;
+			
+		const filteredUnordered = cleanedQuery && searchResult?.length
+		? searchResult.map((result) => result.item)
+		: filterFiltered;
+					
 		const filtered = filteredUnordered ? _.sortBy(filteredUnordered, ({ event, rsoName }) => event || rsoName) : null;
 		console.log(filtered);
 
@@ -386,24 +396,17 @@ export default class Exhibits extends Component {
 						</div>
 						<hr className="my-5 w-16 mx-auto" />
 					</div>
-					<div className="block block text-center col-span-3 lg:col-span-5">
-						{/* <span className="relative inline-block date uppercase font-medium text-theme-purp text-xl mt-5">
-							Exhibits
-						</span>
-						<hr className="my-5 w-16 mx-auto" /> */}
-						{filtered && (
-							<div>
-								<Paginate
-									items={filtered}
-									onClick={() => {}}
-									lg_cols={3}
-									md_cols={2}
-									sm_cols={3}
-									lg_at={1024}
-									center
-								/>
-							</div>
-						)}
+					<div className="w-full flex justify-center items-center col-span-3 lg:col-span-5 px-4">
+					{filtered && (
+						<div className="w-full max-w-screen-xl">
+						<Paginate
+							items={filtered}
+							onClick={() => {}}
+							itemsPerPage={5}
+							center
+						/>
+						</div>
+					)}
 					</div>
 				</div>
 			</div>

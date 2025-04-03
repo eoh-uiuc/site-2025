@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import useSWR from 'swr';
 import { useQueryParam, StringParam, withDefault } from 'use-query-params';
+import Fuse from 'fuse.js';
 
 const ErrorMessageBox = ({ message, onRetry }) => (
   <div style={{ margin: '20px', padding: '20px', backgroundColor: '#ffcccc', color: '#cc0000', borderRadius: '5px', textAlign: 'center' }}>
@@ -75,13 +76,18 @@ const Exhibits = () => {
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
+  // const { data, error, isLoading } = useSWR(
+  //   // 'https://n11.eohillinois.org/api/exhibits',
+  //   `https://n11.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
+  //   ${searchTerm == '' ? '' :
+  //     `&filters[$or][0][Exhibit_Name][$containsi]=${searchTerm}&filters[$or][1][VisGuide_Description][$containsi]=${searchTerm}&filters[$or][2][Exhibit_Number][$eq]=${searchTerm}&filters[$or][3][Affiliation][$eq]=${searchTerm}&filters[$or][4][Building_A][$containsi]=${searchTerm}&filters[$or][5][Tags][$containsi]=${searchTerm}`}`,
+  //   fetcher
+  // );
   const { data, error, isLoading } = useSWR(
-    // 'https://n11.eohillinois.org/api/exhibits',
-    `https://n11.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}
-    ${searchTerm == '' ? '' :
-      `&filters[$or][0][Exhibit_Name][$containsi]=${searchTerm}&filters[$or][1][VisGuide_Description][$containsi]=${searchTerm}&filters[$or][2][Exhibit_Number][$eq]=${searchTerm}&filters[$or][3][Affiliation][$eq]=${searchTerm}&filters[$or][4][Building_A][$containsi]=${searchTerm}&filters[$or][5][Tags][$containsi]=${searchTerm}`}`,
+    `https://n11.eohillinois.org/api/exhibits?pagination[page]=${currentPage}&pagination[pageSize]=${itemsPerPage}`,
     fetcher
   );
+  
 
   if (error) {
     return <ErrorMessageBox message="failed to load, retry" onRetry={() => window.location.reload()} />;
@@ -99,6 +105,12 @@ const Exhibits = () => {
           className="w-20"
         />
       </div>);
+  const runSearch = () => {
+    setSearchTerm(searchBoxText.trim());
+    setSearchBoxText('');
+    setSearchOpen(false);
+    setCurrentPage(1);
+  };
 
 // .map(e => e.attributes)
   const items = data.data
@@ -122,7 +134,23 @@ const Exhibits = () => {
   if (numPages != pageCount) {
     setNumPages(pageCount)
   }
-
+  const fuseOptions = {
+    includeScore: true,
+    threshold: 0.35,
+    distance: 200,
+    minMatchCharLength: 1,
+    ignoreLocation: true,
+    keys: ['title', 'content', 'buildingA', 'subBuildingA', 'affiliation', 'tags']
+  };
+  
+  const fuse = new Fuse(items, fuseOptions);
+  const trimmedQuery = searchTerm.trim();
+  const fuseResults = trimmedQuery ? fuse.search(trimmedQuery) : null;
+  
+  const filteredItems = fuseResults
+    ? fuseResults.map(result => result.item)
+    : items;
+  
   return (
     <div className="flex flex-col gap-5">
 
@@ -135,18 +163,22 @@ const Exhibits = () => {
 
       {searchOpen &&
         <span className="flex flex-row w-full px-5">
-          <input className={`border rounded-l-xl p-2 border-gray-600 duration-300 flex-grow`}
-            placeholder='Building, category, department, etc.'
-            onChange={e => setSearchBoxText(e.target.value)}
-            value={searchBoxText} />
-          <button className='rounded-r-xl bg-blue-700 p-3 font-semibold text-white'
-            onClick={() => {
-              setSearchTerm(searchBoxText);
-              setSearchBoxText('')
-              setSearchOpen(false)
-              setCurrentPage(1)
-            }}>
-            Go</button>
+          <input
+            className="border rounded-l-xl p-2 border-gray-600 duration-300 flex-grow"
+            placeholder="Building, category, department, etc."
+            onChange={(e) => setSearchBoxText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') runSearch();
+            }}
+            value={searchBoxText}
+          />
+          <button
+            className="rounded-r-xl bg-blue-700 p-3 font-semibold text-white"
+            onClick={runSearch}
+          >
+            Go
+          </button>
+
         </span>
       }
 
@@ -165,9 +197,10 @@ const Exhibits = () => {
 
       <div className="w-full flex flex-wrap justify-center gap-5 px-4">
 
-        {items.map((item, idx) => (
-          <ExhibitCard exhibit={item} idx={idx} key={idx} />
-        ))}
+      {filteredItems.map((item, idx) => (
+        <ExhibitCard exhibit={item} idx={idx} key={idx} />
+      ))}
+
       </div>
       <div className="flex flex-row justify-between items-center mx-5">
         <p>Page {currentPage} of {numPages} </p>
