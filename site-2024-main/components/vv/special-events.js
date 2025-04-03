@@ -37,7 +37,8 @@ const SpecialEventCard = ({ event, idx, toggleFavorite }) => {
   return (
     <button
       key={idx}
-      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl transition-transform transform hover:scale-105 ${bgGradients[idx % Object.keys(bgGradients).length]}`}
+      className={`border rounded-lg p-5 md:w-96 w-full flex flex-col gap-2 text-left shadow-md hover:shadow-xl transition-transform transform hover:scale-105 
+      ${event.color}`}
       onClick={() => setExpanded(!expanded)}
     >
       <h2 className="font-heading text-lg font-semibold text-center mx-auto">{event.title}</h2>
@@ -118,6 +119,7 @@ const SpecialEvents = () => {
       favorite: false,
       picture: event.picture?.url || "",
       shortTitle: event.shortTitle || "",
+      color: bgGradients[idx % Object.keys(bgGradients).length] || "",
     }
   })
 
@@ -142,10 +144,32 @@ const SpecialEvents = () => {
   }
 
   const EventsContainer = ({ initialItems }) => {
-    const [items, setItems] = useState(initialItems);
+    const [items, setItems] = useState(() => {
+      // Load favorited events from localStorage
+      const storedFavorites = JSON.parse(localStorage.getItem("favoritedEvents")) || {};
+      return initialItems.map(item => ({
+          ...item,
+          favorite: storedFavorites[item.id] || false, // Apply stored favorite status
+      }));
+    });
+
     const toggleFavorite = (id) => {
-      setItems((prev) => prev.map((i) => i.id === id ? { ...i, favorite: !i.favorite } : i))
-    }
+        setItems((prev) => {
+            const updatedItems = prev.map((i) =>
+                i.id === id ? { ...i, favorite: !i.favorite } : i
+            );
+
+            // Save updated favorite status in localStorage
+            const newFavorites = updatedItems.reduce((acc, item) => {
+                acc[item.id] = item.favorite;
+                return acc;
+            }, {});
+
+            localStorage.setItem("favoritedEvents", JSON.stringify(newFavorites));
+
+            return updatedItems;
+        });
+    };  
     return (
       <div>
         <h1 className="font-heading text-3xl mt-2 md:text-center md:mx-0 m-10">Favorited Events</h1>
