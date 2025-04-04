@@ -136,7 +136,7 @@ const Exhibits = () => {
   }
   const fuseOptions = {
     includeScore: true,
-    threshold: 0.35,
+    threshold: 0.2,
     distance: 200,
     minMatchCharLength: 1,
     ignoreLocation: true,
