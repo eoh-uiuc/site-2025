@@ -88,8 +88,6 @@ const Faqs = () => {
     </div>
   );
 
-
-
 }
 
 export default Faqs;
