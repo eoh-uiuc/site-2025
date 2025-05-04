@@ -111,10 +111,16 @@ export default function Awards() {
         {
           awards.map((a, idx) =>
             <button
-              onClick={() => setAward(a)}
-              className={`w-72 ${slotGradients[idx % Object.keys(slotGradients).length]} rounded-lg duration-200 hover:rounded-xl p-4 text-white flex items-center justify-center`} key={a.title}>
-              <h4 className='text-lg font-semibold text-center'>{a.title}</h4>
-            </button>
+  onClick={() => setAward(a)}
+  className={`w-72 ${slotGradients[idx % Object.keys(slotGradients).length]} 
+              rounded-lg duration-300 hover:rounded-xl p-4 text-white 
+              flex items-center justify-center 
+              shadow-lg hover:shadow-xl transition-shadow`} 
+  key={a.title}
+>
+  <h4 className='text-lg font-semibold text-center'>{a.title}</h4>
+</button>
+
           )
         }
       </div>
