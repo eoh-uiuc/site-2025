@@ -113,10 +113,9 @@ export default function Awards() {
             <button
   onClick={() => setAward(a)}
   className={`w-72 ${slotGradients[idx % Object.keys(slotGradients).length]} 
-              rounded-lg duration-300 hover:rounded-xl p-4 text-white 
-              flex items-center justify-center 
-              shadow-lg hover:shadow-xl transition-shadow`} 
-  key={a.title}
+            rounded-lg p-4 text-white 
+            flex items-center justify-center 
+            shadow-lg shadow-gray-600 hover:shadow-lg hover:rounded-xl duration-300`}
 >
   <h4 className='text-lg font-semibold text-center'>{a.title}</h4>
 </button>
