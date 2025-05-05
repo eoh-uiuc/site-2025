@@ -4,7 +4,7 @@ import pandas as pd
 
 # Strapi API URL and authentication token
 STRAPI_URL = "https://n11.eohillinois.org/api/exhibits"  # Replace with your Strapi URL
-API_TOKEN = "67664b08649e5baf984d0bed6f84c5b99f3c8a782038a5f943b8dda301a2091d52397f6f57c042e16d976f6c16615298b4780d0d80e2f6ecefe7cfb2c538f3d293ea8954ef7d35947f2f53160b8b540b3c424faaae447d3f358dd45f2de073d5958adbf75a22368dcc3973f1f4be549fb95fa22e23a2d894ea3fb37b6f4260f5"  # Replace with your API token
+API_TOKEN = ""  # Replace with your API token
 
 
 # THIS IS THE EXHIBITS
