@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage": ".",
   "scripts": {
     "preinstall": "npm config set legacy-peer-deps true",
     "dev": "next dev",
