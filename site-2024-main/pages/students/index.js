@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import Content from "@/content"
 import EventCard from "@/eventCard"
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+
+// Dynamically import Masonry components client-side only
+const ResponsiveMasonry = dynamic(
+  () => import("react-responsive-masonry").then(mod => mod.ResponsiveMasonry),
+  { ssr: false }
+)
+const Masonry = dynamic(
+  () => import("react-responsive-masonry").then(mod => mod.default),
+  { ssr: false }
+)
 
 export default function StartupShowcasePage() {
   const [events, setEvents] = useState([])
@@ -9,17 +19,11 @@ export default function StartupShowcasePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/assets/data/events.json", {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
+        const res = await fetch("/assets/data/events.json")
         const data = await res.json()
-        console.log(data)
         setEvents(data.events)
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     }
     fetchData()
@@ -38,7 +42,9 @@ export default function StartupShowcasePage() {
         </p>
       </div>
       <div className="container mx-auto px-4 mt-4">
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+        >
           <Masonry>
             {events.map((event, index) => (
               <EventCard
